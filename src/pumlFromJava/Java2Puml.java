@@ -8,6 +8,7 @@ public class Java2Puml
     public static void main(String[] args)
     {
         ToolProvider toolProvider = ToolProvider.findFirst("javadoc").get();
+        System.out.println(args);
         System.out.println(toolProvider.name());
 
 /*
@@ -15,5 +16,6 @@ public class Java2Puml
       <package> ... <fichiers>
  */
         toolProvider.run(System.out, System.err, args);
+        //toolProvider.run(System.out, System.err, "pumlFromJava /home/jungdamien/Documents/sae/P21/p21_projet/src");
     }
 }

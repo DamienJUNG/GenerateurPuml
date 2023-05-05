@@ -1,11 +1,21 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+hide footbox
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam style strictuml
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+interface Doclet{}
+interface Option {}
+interface DocletEnvironement {}
+interface Reporter
+interface Taglet
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+class StandartDoclet
+
+enum Kind
+enum ModuleMode
+enum Location
+
 @enduml

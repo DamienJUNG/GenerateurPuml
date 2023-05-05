@@ -1,11 +1,26 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+hide footbox
+skinparam style strictuml
 
-autonumber
+participant Java2Puml.class as Java2Puml
+participant ToolProvider.class as ToolProvider
+participant "toolProvider : ToolProvider" as toolProvider
+participant FirstDoclet.class as FirstDoclet
+participant "doclet : Doclet" as doclet
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+[o->Java2Puml : main(args)
+Java2Puml -> ToolProvider ++: findFirst("javadoc").get()
+create toolProvider
+ToolProvider -->> toolProvider : <<Create>> ToolProvider()
+return toolProvider = findFirst("javadoc").get()
+Java2Puml -> toolProvider ++:run(System.out,System.err,args)
+toolProvider -> FirstDoclet ++:
+create doclet
+FirstDoclet -->> doclet : <<Create>> FirstDoclet()
+FirstDoclet -> doclet ++
+doclet -> doclet : dumpElement(element)
+return
+return
+return
 @enduml
