@@ -5,13 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/pumlFromJava/FirstDoclet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/pumlFromJava/Java2Puml.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Boisson.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Brigand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/CasDeTestStandard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Cowboy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Dame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Genre.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Histoire2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Histoire4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/HorsLaLoi.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Narrateur.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Nommable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Personnage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Ripou.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/p21_projet/western/Substantif.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/Rapport.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Boisson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Brigand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/CasDeTestStandard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Cowboy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Dame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Genre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Histoire2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Histoire4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/HorsLaLoi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Narrateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Nommable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Personnage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Ripou.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/western/Substantif.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uml/DCa.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uml/DCc.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uml/Doclet.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p21_projet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/p21_projet.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pumlFromJava/Java2Puml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/Java2Puml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/DCa.puml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/DCa.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/Doclet.puml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/Doclet.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +55,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="UML Sequence" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,35 +73,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultPlantUmlFileTemplate": "UML Sequence",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/jungdamien/Documents/sae/P21/p21_projet",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.scopes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Sequence&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jungdamien/Documents/sae/P21/p21_projet/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pumlFromJava" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Java2Puml" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="pumlFromJava.Java2Puml" />
       <module name="p21_projet" />
-      <option name="PROGRAM_PARAMETERS" value="-sourcepath $PROJECT_DIR$/../../../P21/Western/src -doclet pumlFromJava.FirstDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western" />
+      <option name="PROGRAM_PARAMETERS" value="-private -sourcepath ./src -doclet pumlFromJava.pumlDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western -d orange/" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pumlFromJava.*" />
@@ -91,7 +133,9 @@
       <workItem from="1683194502999" duration="3840000" />
       <workItem from="1683219457299" duration="2752000" />
       <workItem from="1683286572689" duration="7604000" />
-      <workItem from="1683304281367" duration="722000" />
+      <workItem from="1683304281367" duration="3368000" />
+      <workItem from="1683315759429" duration="5529000" />
+      <workItem from="1683545899155" duration="9613000" />
     </task>
     <servers />
   </component>
