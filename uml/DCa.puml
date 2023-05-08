@@ -1,0 +1,41 @@
+@startuml
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+
+interface Doclet <<interface>>
+interface Option <<interface>>
+interface DocletEnvironnement <<interface>>
+interface Taglet <<interface>>
+
+class StandardDoclet implements Doclet
+
+enum Location <<enum>> extends Location implements Location
+{
+    CONSTRUCTOR
+    FIELD
+    METHOD
+    MODULE
+    OVERVIEW
+    PACKAGE
+    TYPE
+}
+
+enum Kind <<enum>> extends Kind implements Kind
+{
+    EXTENDED
+    OTHER
+    STANDAR
+}
+
+enum ModuleMode <<enum>> extends ModuleMode implements ModuleMode
+{
+    ALL
+    API
+}
+
+Taglet - Location
+DocletEnvironnement - ModuleMode
+Option - Kind
+@enduml
