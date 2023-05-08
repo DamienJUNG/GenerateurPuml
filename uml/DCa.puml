@@ -1,21 +1,46 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
-hide footbox
+skinparam style strictuml
+hide empty members
 skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
-skinparam style strictuml
 
-interface Doclet{}
-interface Option {}
-interface DocletEnvironement {}
-interface Reporter
-interface Taglet
+interface Doclet <<interface>>
+interface Reporter <<interface>>
 
-class StandartDoclet
+interface Option <<interface>>
 
-enum Kind
-enum ModuleMode
-enum Location
+interface DocletEnvironnement <<interface>>
 
+interface Taglet <<interface>>
+
+class StandardDoclet implements Doclet
+
+enum Kind <<enum>>
+{
+    EXTENDED
+    OTHER
+    STANDAR
+}
+
+enum Location <<enum>>
+{
+    CONSTRUCTOR
+    FIELD
+    METHOD
+    MODULE
+    OVERVIEW
+    PACKAGE
+    TYPE
+}
+
+enum ModuleMode <<enum>>
+{
+    ALL
+    API
+}
+
+Taglet - Location
+DocletEnvironnement - ModuleMode
+Doclet -Option
+Option - Kind
 @enduml
