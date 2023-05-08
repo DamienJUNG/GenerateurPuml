@@ -57,7 +57,7 @@ class StandardDoclet implements Doclet {
     + getReporter(): Reporter
 }
 
-enum Kind <<enum>> extends Kind implements Kind
+enum Kind <<enum>> extends Kind
 {
     EXTENDED
     OTHER
@@ -66,7 +66,7 @@ enum Kind <<enum>> extends Kind implements Kind
     + {static}valueOf(name: String) : Doclet.Option.Kind
 }
 
-enum Location <<enum>> extends Location implements Location
+enum Location <<enum>> extends Location
 {
     CONSTRUCTOR
     FIELD
@@ -79,7 +79,7 @@ enum Location <<enum>> extends Location implements Location
     + {static}valueOf(name: String) : Taglet.Location
 }
 
-enum ModuleMode <<enum>> extends ModuleMode implements ModuleMode
+enum ModuleMode <<enum>> extends ModuleMode
 {
     ALL
     API
