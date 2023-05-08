@@ -1,9 +1,5 @@
 package pumlFromJava;
-
-import jdk.javadoc.doclet.Doclet;
-
 import java.util.spi.ToolProvider;
-import java.io.*;
 
 public class Java2Puml
 {

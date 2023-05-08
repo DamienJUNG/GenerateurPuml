@@ -10,19 +10,19 @@ skinparam classbordercolor red
 skinparam classattribute none
 skinparam classborderthickness 2
 
-class Boisson
-class Substantif
-enum Genre
-class Histoire3
-class Brigand
+class Dame
 class Personnage
 interface HorsLaLoi
+class Boisson
 class Cowboy
-class Dame
+class Substantif
+enum Genre
 class Ripou
-class HistoireTest
+class Brigand
 class Histoire1
+class Histoire3
 class Histoire4
 class Narrateur
+class HistoireTest
 
 @enduml
