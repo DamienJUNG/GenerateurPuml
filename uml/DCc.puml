@@ -4,16 +4,53 @@ hide empty members
 skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 
-interface Doclet <<interface>>
-interface Option <<interface>>
-interface DocletEnvironnement <<interface>>
-interface Taglet <<interface>>
+interface Doclet <<interface>> {
+    + init(locale : Locale, reporter : Reprorter)
+    + getName() : String
+    + getSupportedOptions() : Set<? extends Doclet.Option>
+    + getSupportedSourceVersion() : SourceVersion
+    + run(environment : DocletEnvironment) : boolean
+}
+
+interface Option <<interface>>{
+    + getArgumentCount() : int
+    + getDescription() : String
+    + getKind() : Doclet.Option.Kind
+    + getNames() : List<String>
+    + getParameters() : String
+    + process(option: String, arguments: List<String>): boolean
+}
+
+interface DocletEnvironnement <<interface>>{
+    + getSpecifiedElements(): Set<? extends Element>
+    + getIncludedElements(): Set<? extends Element>
+    + getDocTrees(): DocTreess
+    + getElementUtils(): Elements
+    + getTypeUtils(): Types
+    + isIncluded(e: Element): boolean
+    + isSelected(e: Element): boolean
+    + getJavaFileManager(): JavaFileManager
+    + getSourceVersion(): SourceVersion
+    + getModuleMode(): DocletEnvironment.ModuleMode
+    + getFileKind(type: TypeElement): JavaFileObject.Kind
+}
+
+interface Taglet <<interface>>{
+    + getAllowedLocations(): Set<Taglet.Location>
+    + isInlineTag(): boolean
+    + isBlockTag(): boolean
+    'a voir comment précise que c'est default'
+    + getName(): String
+    + init(env: DocletEnvironment,doclet: Doclet)
+    'aussi en default'
+    + toString(tags: List<? extends DocTree>, element: Element): String
+}
 
 class StandardDoclet implements Doclet {
     + <<create>> StandardDoclet()
     + init(locale :Locale, reporter: Reporter)
     + getName(): String
-    + getSupportedOptions() :
+    + getSupportedOptions() : Set<? extends Doclet.Option>
     + getSupportedSourceVersion(): SourceVersion
     + run(docEnv: DocletEnvironment): Boolean
     + getLocale(): Locale
@@ -25,8 +62,8 @@ enum Kind <<enum>> extends Kind implements Kind
     EXTENDED
     OTHER
     STANDAR
-    + {static}values():
-    + {static}valueOf(name: String)
+    + {static}values(): Doclet.Option.Kind[]
+    + {static}valueOf(name: String) : Doclet.Option.Kind
 }
 
 enum Location <<enum>> extends Location implements Location
@@ -38,16 +75,16 @@ enum Location <<enum>> extends Location implements Location
     OVERVIEW
     PACKAGE
     TYPE
-    + {static}values():
-    + {static}valueOf(name: String)
+    + {static}values(): Taglet.Location[]
+    + {static}valueOf(name: String) : Taglet.Location
 }
 
 enum ModuleMode <<enum>> extends ModuleMode implements ModuleMode
 {
     ALL
     API
-    + {static}values():
-    + {static}valueOf(name: String)
+    + {static}values(): DocletEnvironment.ModuleMode[]
+    + {static}valueOf(name: String) : DocletEnvironment.ModuleMode
 }
 
 Taglet - Location
