@@ -14,12 +14,6 @@ public class Java2Puml
     javadoc -private -sourcepath <src> -doclet pumlFromJava.FirstDoclet -docletpath out/production/<projet>
       <package> ... <fichiers>
  */
-        try{
-            toolProvider.run(System.out, System.err, args);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
 
         toolProvider.run(System.out, System.err, args);
     }

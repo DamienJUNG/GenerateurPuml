@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="" />
+    <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/Java2Puml.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/Java2Puml.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/Rapport.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapports/Rapport.md" beforeDir="false" afterPath="$PROJECT_DIR$/rapports/Rapport.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/Java2Puml.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/Java2Puml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/Rapport.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/western.puml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +49,7 @@
     "DefaultPlantUmlFileTemplate": "UML Sequence",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/jungdamien/Documents/sae/P21/p21Projet/src",
     "node.js.detected.package.eslint": "true",
@@ -68,7 +79,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="pumlFromJava.Java2Puml" />
       <module name="p21Projet" />
-      <option name="PROGRAM_PARAMETERS" value="-private -sourcepath ./src -doclet pumlFromJava.pumlDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western -d orange/" />
+      <option name="PROGRAM_PARAMETERS" value="-private -sourcepath ./src -doclet pumlFromJava.pumlDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western -d exemples" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pumlFromJava.*" />
@@ -100,7 +111,7 @@
       <workItem from="1683568979778" duration="9000" />
       <workItem from="1683569055940" duration="24000" />
       <workItem from="1683569120433" duration="49000" />
-      <workItem from="1683569462920" duration="1296000" />
+      <workItem from="1683569462920" duration="3796000" />
     </task>
     <servers />
   </component>

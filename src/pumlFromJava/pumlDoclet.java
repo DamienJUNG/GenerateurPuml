@@ -111,9 +111,9 @@ public class pumlDoclet implements Doclet{
             if (name.equals("")){name=environment.getSpecifiedElements().toArray()[0]+".puml";}
             FileWriter file;
             try{
-                file = new FileWriter(path+name);
+                file = new FileWriter(path+"/"+name);
             }
-            catch(Exception e) {
+            catch(IOException e) {
                 System.out.println(path+" n'existe pas, le fichier apparaîtra dans le répertoire courant");
                 file = new FileWriter("./"+name);
             }
@@ -146,13 +146,5 @@ public class pumlDoclet implements Doclet{
 
     private void dumpElement(Element element)
     {
-        System.out.print("---- ");
-        System.out.println("element: " + element);
-        System.out.println("kind: " + element.getKind());
-        System.out.println("simpleName: " + element.getSimpleName());
-        System.out.println("enclosingElement: " + element.getEnclosingElement());
-        System.out.println("enclosedElement: " + element.getEnclosedElements());
-        System.out.println("modifiers: " + element.getModifiers());
-        System.out.println();
     }
 }
