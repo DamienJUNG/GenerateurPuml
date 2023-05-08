@@ -6,8 +6,11 @@ import jdk.javadoc.doclet.Reporter;
 
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -25,7 +28,7 @@ import java.util.Set;
  * A minimal doclet that just prints out the names of the
  * selected elements.
  */
-public class FirstDoclet implements Doclet {
+public class FirstDoclet implements Doclet{
     @Override
     public void init(Locale locale, Reporter reporter) {  }
 
@@ -37,6 +40,7 @@ public class FirstDoclet implements Doclet {
         // help when doclet-specific options are provided.
         return getClass().getSimpleName();
     }
+
 
     @Override
     public Set<? extends Option> getSupportedOptions() {
@@ -60,8 +64,8 @@ public class FirstDoclet implements Doclet {
         // In this case, it just prints out the names of the
         // elements specified on the command line.
         System.out.println(this.getName());
-        System.out.println(environment.getSpecifiedElements());
-        System.out.println(environment.getIncludedElements());
+        System.out.println("SpecifiedElements : "+environment.getSpecifiedElements());
+        System.out.println("IncludedElements : "+environment.getIncludedElements());
         for (Element element : environment.getSpecifiedElements())
         {
             dumpElement(element);

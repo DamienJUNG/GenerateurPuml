@@ -1,6 +1,9 @@
 package pumlFromJava;
 
+import jdk.javadoc.doclet.Doclet;
+
 import java.util.spi.ToolProvider;
+import java.io.*;
 
 public class Java2Puml
 {
@@ -14,6 +17,11 @@ public class Java2Puml
     javadoc -private -sourcepath <src> -doclet pumlFromJava.FirstDoclet -docletpath out/production/<projet>
       <package> ... <fichiers>
  */
-        toolProvider.run(System.out, System.err, args);
+        try{
+            toolProvider.run(System.out, System.err, args);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

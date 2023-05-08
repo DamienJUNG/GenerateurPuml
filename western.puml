@@ -1,0 +1,28 @@
+@startuml
+
+'Code généré automatiquement ;>
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classbackgroundColor LightGoldenRodYellow
+skinparam classbordercolor red
+skinparam classattribute none
+skinparam classborderthickness 2
+
+class Boisson
+class Substantif
+enum Genre
+class Histoire3
+class Brigand
+class Personnage
+interface HorsLaLoi
+class Cowboy
+class Dame
+class Ripou
+class HistoireTest
+class Histoire1
+class Histoire4
+class Narrateur
+
+@enduml
