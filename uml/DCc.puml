@@ -55,26 +55,24 @@ interface Taglet <<interface>>{
 
 class StandardDoclet implements Doclet {
     + <<create>> StandardDoclet()
-    + init(locale : Locale, reporter : Reporter)
+    + init(locale :Locale, reporter: Reporter)
     + getName(): String
-    + getSupportedOptions() : Set<? extends Doclet.Option>
+    + getSupportedOptions() :
     + getSupportedSourceVersion(): SourceVersion
     + run(docEnv: DocletEnvironment): Boolean
     + getLocale(): Locale
     + getReporter(): Reporter
 }
-
 enum Kind <<enum>>
 {
     EXTENDED
     OTHER
-    STANDAR
+    STANDARD
     + {static}values(): Doclet.Option.Kind[]
     + {static}valueOf(name: String) : Doclet.Option.Kind
 }
 
-enum Location <<enum>>
-{
+enum Location <<enum>> {
     CONSTRUCTOR
     FIELD
     METHOD
@@ -82,8 +80,8 @@ enum Location <<enum>>
     OVERVIEW
     PACKAGE
     TYPE
-    + {static}values(): Taglet.Location[]
-    + {static}valueOf(name: String) : Taglet.Location
+    + {static}values():
+    + {static}valueOf(name: String)
 }
 
 enum ModuleMode <<enum>>

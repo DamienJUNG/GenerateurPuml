@@ -14,16 +14,14 @@ interface DocletEnvironnement <<interface>>
 interface Taglet <<interface>>
 
 class StandardDoclet implements Doclet
-
 enum Kind <<enum>>
 {
     EXTENDED
     OTHER
-    STANDAR
+    STANDARD
 }
 
-enum Location <<enum>>
-{
+enum Location <<enum>> {
     CONSTRUCTOR
     FIELD
     METHOD
@@ -39,8 +37,8 @@ enum ModuleMode <<enum>>
     API
 }
 
-Taglet - Location
-DocletEnvironnement - ModuleMode
-Doclet -Option
-Option - Kind
+Taglet o-> Location
+DocletEnvironnement o-> ModuleMode
+Doclet *->Option
+Option o-> Kind
 @enduml

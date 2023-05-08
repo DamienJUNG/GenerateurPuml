@@ -1,26 +1,4 @@
 @startuml
-<<<<<<< HEAD
-'https://plantuml.com/sequence-diagram
-hide footbox
-skinparam style strictuml
-
-participant Java2Puml.class as Java2Puml
-participant ToolProvider.class as ToolProvider
-participant "toolProvider : ToolProvider" as toolProvider
-participant FirstDoclet.class as FirstDoclet
-participant "doclet : Doclet" as doclet
-
-[o->Java2Puml : main(args)
-Java2Puml -> ToolProvider ++: findFirst("javadoc").get()
-create toolProvider
-ToolProvider -->> toolProvider : <<Create>> ToolProvider()
-return toolProvider = findFirst("javadoc").get()
-Java2Puml -> toolProvider ++:run(System.out,System.err,args)
-toolProvider -> FirstDoclet ++:
-create doclet
-FirstDoclet -->> doclet : <<Create>> FirstDoclet()
-FirstDoclet -> doclet ++
-=======
 hide footbox
 skinparam style stricuml
 
@@ -42,7 +20,6 @@ create doclet
 firstDoclet -->> doclet : <<create>> doclet()
 firstDoclet -> doclet ++
 doclet -> doclet : run(environement)
->>>>>>> dev
 doclet -> doclet : dumpElement(element)
 return
 return
