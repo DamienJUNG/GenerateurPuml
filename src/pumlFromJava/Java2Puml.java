@@ -10,7 +10,6 @@ public class Java2Puml
         System.out.println(args);
         System.out.println(toolProvider.name());
 
-<<<<<<< HEAD
 /*
     javadoc -private -sourcepath <src> -doclet pumlFromJava.FirstDoclet -docletpath out/production/<projet>
       <package> ... <fichiers>
@@ -21,10 +20,7 @@ public class Java2Puml
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-=======
-        //javadoc -private -sourcepath <src> -doclet pumlFromJava.FirstDoclet -docletpath out/production/<projet> <package> ... <fichiers>
 
         toolProvider.run(System.out, System.err, args);
->>>>>>> 82bebdf22b63770860c1500ff92e0f70fc2ec8dd
     }
 }
