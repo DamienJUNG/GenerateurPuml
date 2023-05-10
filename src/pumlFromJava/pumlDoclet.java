@@ -6,6 +6,7 @@ import jdk.javadoc.doclet.Reporter;
 
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.Modifier;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -117,7 +118,6 @@ public class pumlDoclet implements Doclet{
                 System.out.println(path+" n'existe pas, le fichier apparaîtra dans le répertoire courant");
                 file = new FileWriter("./"+name);
             }
-
             file.write("@startuml\n\n");
             file.write("'Code généré automatiquement ;>\n");
             file.write("skinparam style strictuml\n");
@@ -133,6 +133,9 @@ public class pumlDoclet implements Doclet{
             {
                 if(!Objects.equals(element.getKind().toString(), "PACKAGE") && element.getEnclosingElement()!=null){
                     System.out.println(element.getSimpleName());
+                    for (Element element1 : element.getEnclosedElements()){
+                        System.out.println(element1.getSimpleName()+" : "+element1.getKind());;
+                    }
                     file.write(element.getKind().toString().toLowerCase()+" "+element.getSimpleName().toString()+"\n");
                 }
             }

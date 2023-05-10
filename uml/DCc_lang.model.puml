@@ -1,11 +1,155 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
 
-autonumber
+interface AnnotatedConstruct <<interface>> {
+    + getAnnotation(Class<A> annotationType) : <A extends Annotation> A
+    + getAnnotationMirrors() : List<? extends AnnotationMirror>
+    + getAnnotationsByType(Class<A> annotationType)
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+interface Element <<interface>> extends AnnotatedConstruct {
+    + accept(ElementVisitor<R,P> v,P p) : <R,P> R
+    + asType() : TypeMirror
+    + equals(Object obj) : boolean
+    + getAnnotation(Class<A> annotationType) : <A extends Annotation> A
+    + getAnnotationMirrors() : List<? extends AnnotationMirror>
+    + getAnnotationsByType(Class<A> annotationType) : <A extends Annotation> A[]
+    + getEnclosedElements() : List<? extends Element>
+    + getEnclosingElement() : Element
+    + getKind() : ElementKind
+    + getModifiers() : Set<Modifier>
+    + getSimpleName() : Name
+    + hashCode() : int
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+interface ExecutableElement <<interface>> extends Element, Parameterizable {
+    + asType() : TypeMirror
+    + getDefaultValue() : AnnotationValue
+    + getInclosingElements : Element
+    + getParameters() List<? extends VariableElement>
+    + getReceiverType() : TypeMirror
+    + getReturnType() : TypeMirror
+    + getSimpleName() : Name
+    + getThrownTypes() : List<? extends TypeMirror>
+    + getTypeParameters() : List<? extends TypeMirrorParameterElement>
+    + isDefault() : boolean
+    + isVarArgs() : boolean
+}
+interface ModuleElement <<interface>> extends Element, QualifiedNameable{
+    + asType() : TypeMirror
+    + getDirectives() : List<? extends ModuleElement.Directive>
+    + getEnclosedElements() : List<? extends Element>
+    + getEnclosingElement() : Element
+    + getQualifiedName() : Name
+    + getSimpleName() : Name
+    isUnnamed() : boolean
+    isOpen() : boolean
+}
+
+interface PackageElement <<interface>> extends Element, QualifiedNameable {
+    + asType() : TypeMirror
+    + getEnclosedElements() : List<? extends Element>
+    + getEnclosingElement() : Element
+    + getQualifiedName() : Name
+    + getSimpleName() : Name
+    isUnnamed() : boolean
+}
+interface Parameterizable <<interface>> extends Element{
+    getTypeParameters() : List<? extends TypeParameterElement>
+}
+interface QualifiedNameable <<interface>> extends Element {
+    getQualifiedName() : Name
+}
+interface RecordComponentElement <<interface>> extends Element {
+    + getAccessor() : ExecutableElement
+    + getEnclosingElement() : Element
+    + getSimpleName() : Name
+}
+
+interface TypeElement <<interface>> extends Element, Parameterizable, QualifiedNameable {
+    + asType() : TypeMirror
+    + getEnclosedElements() : List<? extends Element>
+    + getEnclosingElement() : Element
+    + getQualifiedName() : Name
+    + getSimpleName() : Name
+    + getInterfaces() : List<? extends TypeMirror>
+    + getNestingKind() : NestingKind
+    + getPermittedSubclasses() : List<? extends TypeMirror>
+    + getRecordComponents() : List<? extends RecordComponentElement>
+    + getSuperclass() : TypeMirror
+    + getTypeParameters() : List<? extends TypeParameterElement>
+}
+interface TypeParameterElement <<interface>> extends Element {
+    + asType() : TypeMirror
+    + getBounds() : List<? extends TypeMirror>
+    + getEnclosingElement() : Element
+    + getGenericElement() : Element
+}
+
+interface VariableElement <<interface>> extends Element {
+    + asType() : TypeMirror
+    + getConstantValue() : Object
+    + getEnclosingElement() : Element
+    + getSimpleName() : Name
+}
+
+interface TypeMirror <<interface>> extends AnnotatedConstruct {
+    + accept(TypeVisitor<R,P> v, P p) : <R,P> R
+    + equals(Object obj) : boolean
+    + getAnnotation(Class<A> annotationType) : <A extends Annotation> A
+    + getAnnotationMirrors() : <A extends Annotation A[]>
+    + getKind() : TypeKind
+    + hashCode() : int
+    + toString() : String
+}
+
+interface ArrayType <<interface>> extends ReferenceType {
+    + getComponentType() : TypeMirror
+}
+
+interface DeclaredType <<interface>> extends ReferenceType {
+    + asElement() : Element
+    + getEnclosingType() : TypeMirror
+    + getTypeArguments() : List<? extends TypeMirror>
+}
+
+interface ErrorType <<interface>> extends DeclaredType
+
+interface ExecutableType <<interface>> extends TypeMirror {
+    + getParameterTypes() : List<? extends TypeMirror>
+    + getReceiverType() : TypeMirror
+    + getReturnType() : TypeMirror
+    + getThrownTypes() : List<? extends TypeMirror>
+    + getTypeVariables() : List<? extends TypeVariable>
+}
+interface IntersectionType <<interface>> extends TypeMirror {
+    + getBounds() : List<? extends TypeMirror>
+}
+interface NoType <<interface>> extends TypeMirror
+
+interface NullType <<interface>> extends ReferenceType
+interface PrimitiveType <<interface>> extends TypeMirror
+interface WildcardType <<interface>> extends TypeMirror {
+    + getExtendsBound() : TypeMirror
+    + getSuperBound() : TypeMirror
+}
+
+interface UnionType <<interface>> extends TypeMirror {
+    + getAlternatives() : List<? extends TypeMirror>
+}
+
+interface TypeVariable <<interface>> extends ReferenceType {
+    + asElement() : Element
+    + getLowerBound() : TypeMirror
+    + getUpperBound() : TypeMirror
+}
+
+interface ReferenceType <<interface>> extends TypeMirror
+
+
+
 @enduml
