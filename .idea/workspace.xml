@@ -7,27 +7,10 @@
     <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exemples/western.puml" beforeDir="false" afterPath="$PROJECT_DIR$/exemples/western.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDiagram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDiagram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/FirstDoclet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/pumlFromJava/FirstDoclet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/pumlFromJava/Java2Puml.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Boisson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Brigand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/CasDeTestStandard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Cowboy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Dame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Genre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Histoire2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Histoire4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/HorsLaLoi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Narrateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Nommable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Personnage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Ripou.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21_projet/western/Substantif.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rapports/Rapport.md" beforeDir="false" afterPath="$PROJECT_DIR$/rapports/Rapport.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/FirstDoclet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/pumlDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlDiagram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

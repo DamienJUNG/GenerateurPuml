@@ -7,12 +7,14 @@ import jdk.javadoc.doclet.Reporter;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.swing.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class pumlDoclet implements Doclet{
+public class pumlDoclet implements Doclet {
     private String path = "./";
+
     private String name="";
     @Override
     public void init(Locale locale, Reporter reporter) {  }
@@ -26,6 +28,7 @@ public class pumlDoclet implements Doclet{
     public Set<? extends Option> getSupportedOptions() {
         Set<Option> options = new HashSet<>();
         options.add(new Option() {
+
             @Override
             public int getArgumentCount() {
                 return 1;
@@ -117,8 +120,17 @@ public class pumlDoclet implements Doclet{
             String code = "";
             for (Element element :environment.getSpecifiedElements()) {
                 code+=element.getKind().toString().toLowerCase()+" "+element.getSimpleName()+" {\n\n";
+
                 for (Element element1:element.getEnclosedElements()) {
-                    code+= element1.getKind().toString().toLowerCase() + " " + element1.getSimpleName() + " {\n";
+                    code+= element1.getKind().toString().toLowerCase() + " " + element1.getSimpleName();
+                    if(element1.getKind() == ElementKind.INTERFACE){
+                        code += " <<interface>> ";
+                    }
+                    if(element1.getKind() == ElementKind.ENUM){
+                        code += " <<enum>> ";
+                    }
+                    code += "{\n";
+
                     for(Element element2: element1.getEnclosedElements()) {
                         if(element2.getKind() == ElementKind.FIELD || element2.getKind() == ElementKind.ENUM_CONSTANT) {
                             code += "\t" + element2.getSimpleName() + "\n";
@@ -129,7 +141,6 @@ public class pumlDoclet implements Doclet{
                 code += "}";
             }
             code += "\n@enduml";
-
            diagram.generatePuml(name,path,code);
         } catch (IOException e) {
             throw new RuntimeException(e);

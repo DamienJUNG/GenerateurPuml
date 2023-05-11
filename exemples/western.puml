@@ -11,50 +11,50 @@ skinparam classborderthickness 2
 
 package western {
 
-class Boisson {
+class Boisson{
 	substantif
 }
-class Brigand {
+class Brigand{
 	estLibre
 	look
 	prime
 	geolier
 	sesDames
 }
-class Cowboy {
+class Cowboy{
 	replique
 	recompense
 	vilains
 }
-class Dame {
+class Dame{
 	estlibre
 	geolier
 }
-enum Genre {
+enum Genre <<enum>> {
 	FEMININ
 	MASCULIN
 }
-class Histoire1 {
+class Histoire1{
 }
-class Histoire3 {
+class Histoire3{
 }
-class Histoire4 {
+class Histoire4{
 }
-class HistoireTest {
+class HistoireTest{
 }
-interface HorsLaLoi {
+interface HorsLaLoi <<interface>> {
 }
-class Narrateur {
+class Narrateur{
 }
-class Personnage {
+class Personnage{
 	BOISSON_PAR_DEFAUT
 	nom
 	boisson
 }
-class Ripou {
+class Ripou{
 	brigand
 }
-class Substantif {
+class Substantif{
 	nom
 	genre
 }
