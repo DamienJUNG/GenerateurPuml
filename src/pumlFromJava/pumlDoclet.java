@@ -6,7 +6,7 @@ import jdk.javadoc.doclet.Reporter;
 
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
+import javax.lang.model.element.ElementKind;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -109,45 +109,31 @@ public class pumlDoclet implements Doclet{
     @Override
     public boolean run(DocletEnvironment environment) {
         try {
-            if (name.equals("")){name=environment.getSpecifiedElements().toArray()[0]+".puml";}
-            FileWriter file;
-            try{
-                file = new FileWriter(path+"/"+name);
+            if (name.equals("")) {
+                name=environment.getSpecifiedElements().toArray()[0]+".puml";
             }
-            catch(IOException e) {
-                System.out.println(path+" n'existe pas, le fichier apparaîtra dans le répertoire courant");
-                file = new FileWriter("./"+name);
-            }
-            file.write("@startuml\n\n");
-            file.write("'Code généré automatiquement ;>\n");
-            file.write("skinparam style strictuml\n");
-            file.write("hide empty members\n");
-            file.write("skinparam classAttributeIconSize 0\n");
-            file.write("skinparam classFontStyle Bold\n");
-            file.write("skinparam classbackgroundColor LightGoldenRodYellow\n");
-            file.write("skinparam classbordercolor red\n");
-            file.write("skinparam classattribute none\n");
-            file.write("skinparam classborderthickness 2\n\n");
-            pumlDiagram diagram = new pumlDiagram(environment.getIncludedElements());
-            for (Element element : diagram.getElements())
-            {
-                if(!Objects.equals(element.getKind().toString(), "PACKAGE") && element.getEnclosingElement()!=null){
-                    System.out.println(element.getSimpleName());
-                    for (Element element1 : element.getEnclosedElements()){
-                        System.out.println(element1.getSimpleName()+" : "+element1.getKind());;
+
+            PumlDiagram diagram = new PumlDiagram();
+            String code = "";
+            for (Element element :environment.getSpecifiedElements()) {
+                code+=element.getKind().toString().toLowerCase()+" "+element.getSimpleName()+" {\n\n";
+                for (Element element1:element.getEnclosedElements()) {
+                    code+= element1.getKind().toString().toLowerCase() + " " + element1.getSimpleName() + " {\n";
+                    for(Element element2: element1.getEnclosedElements()) {
+                        if(element2.getKind() == ElementKind.FIELD || element2.getKind() == ElementKind.ENUM_CONSTANT) {
+                            code += "\t" + element2.getSimpleName() + "\n";
+                        }
                     }
-                    file.write(element.getKind().toString().toLowerCase()+" "+element.getSimpleName().toString()+"\n");
+                    code += "}\n";
                 }
+                code += "}";
             }
-            file.write("\n@enduml");
-            file.close();
+            code += "\n@enduml";
+
+           diagram.generatePuml(name,path,code);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return true;
-    }
-
-    private void dumpElement(Element element)
-    {
     }
 }

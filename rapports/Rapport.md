@@ -18,3 +18,16 @@ Ce dernier utilisera de lui-même la commande javadoc avec les arguments suivant
 -private -sourcepath ./src -doclet pumlFromJava.pumlDoclet -docletpath /home/jungdamien/Documents/sae/P21/p21Projet/out/production/p21_projet western -d exemples
 ```
 Il est également possible d'utiliser l'argument -out pour spécifier le nom du document.
+
+
+
+## Semaine 2
+
+### Travail fait
+
+Damien a fait le DCc de Java Language API et Gaël a fait le DCa et DCc du package pumlFromJava ainsi que la production 
+d'un DCa sans relation.
+
+
+
+## Semaine 3

@@ -1,5 +1,4 @@
 @startuml
-
 'Code généré automatiquement ;>
 skinparam style strictuml
 hide empty members
@@ -10,19 +9,54 @@ skinparam classbordercolor red
 skinparam classattribute none
 skinparam classborderthickness 2
 
-class Dame
-class Personnage
-interface HorsLaLoi
-class Boisson
-class Cowboy
-class Substantif
-enum Genre
-class Ripou
-class Brigand
-class Histoire1
-class Histoire3
-class Histoire4
-class Narrateur
-class HistoireTest
+package western {
 
+class Boisson {
+	substantif
+}
+class Brigand {
+	estLibre
+	look
+	prime
+	geolier
+	sesDames
+}
+class Cowboy {
+	replique
+	recompense
+	vilains
+}
+class Dame {
+	estlibre
+	geolier
+}
+enum Genre {
+	FEMININ
+	MASCULIN
+}
+class Histoire1 {
+}
+class Histoire3 {
+}
+class Histoire4 {
+}
+class HistoireTest {
+}
+interface HorsLaLoi {
+}
+class Narrateur {
+}
+class Personnage {
+	BOISSON_PAR_DEFAUT
+	nom
+	boisson
+}
+class Ripou {
+	brigand
+}
+class Substantif {
+	nom
+	genre
+}
+}
 @enduml
