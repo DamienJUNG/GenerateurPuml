@@ -141,7 +141,7 @@ public class pumlDoclet implements Doclet {
                 code += "}";
             }
             code += "\n@enduml";
-           diagram.generatePuml(name,path,code);
+            diagram.generatePuml(name,path,code);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

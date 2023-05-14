@@ -1,0 +1,22 @@
+@startuml
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+
+package pumlFromJava {
+
+class PumlDiagram
+
+class pumlDoclet {
+    path
+    name
+}
+
+class Java2Puml
+
+}
+
+pumlDoclet -u- PumlDiagram
+pumlDoclet - Java2Puml
+@enduml

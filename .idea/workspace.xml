@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/uml/DCa_pumlFromJava.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uml/DCc_pumlFromJava.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exemples/western.puml" beforeDir="false" afterPath="$PROJECT_DIR$/exemples/western.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/FirstDoclet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" afterDir="false" />
     </list>
@@ -22,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="UML Sequence" />
-        <option value="UML Class" />
         <option value="Class" />
+        <option value="UML Class" />
       </list>
     </option>
   </component>

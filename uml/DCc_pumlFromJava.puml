@@ -1,0 +1,30 @@
+@startuml
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+
+package pumlFromJava {
+
+class PumlDiagram{
+    + PumlDiagram()
+    + generatePuml(fileName: String, path: String, code: String)
+}
+
+class Java2Puml {
+    + {static}main(agrs: String[])
+}
+
+class pumlDoclet {
+    - path: String
+    - name: String
+    + init(locale: Locale, reporter: Reporter) {redefines Doclet::init}
+    + getName(): String {redefines Doclet::getName}
+    + getSupportedOptions(): set<? extends Option> {redefines Doclet::getSupportedOptions}
+    + getSupportedSourceVersion() : SourceVersion {redefines Doclet::getSupportedSourceVersion}
+    + run(environment: DocletEnvironment): boolean {redefines Doclet::run}
+}
+pumlDoclet -> PumlDiagram : "Créé"
+Java2Puml -u-> pumlDoclet : "Créé"
+}
+@enduml
