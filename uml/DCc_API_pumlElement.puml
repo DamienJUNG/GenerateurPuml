@@ -6,77 +6,122 @@ hide empty members
 skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 
-interface pumlElement <<interface>>{
+interface PumlElement <<interface>>{
     + getPumlCode() : String
     + getSimpleName() : String
 }
 
-class pumlPackage {
+class PumlPackage {
+    - element : Element
+    - elements : pumlElement[]
     + <<Create>> pumlPackage(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
     + getKind() : String
+    + getElements() : String
 }
 
-class pumlClass {
+class PumlClass {
+    - element : Element
+    - attributs : pumlAttribut[]
+    - elements : pumlMethod[]
     + <<Create>> pumlClass(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
+    + getKind() : String
     + getAccessLevel() : String
-    + isAbstract() : boolean
-'System.out.println(element.getModifiers().contains(Modifier.ABSTRACT));
+    + getElements() : String
+    - getAttributs() : String
+    - getMethods() : String
 }
 
-class pumlEnum {
+class PumlEnum {
+    - element : Element
+    - attributs : pumlEnumAttribut[]
+    - elements : pumlMethod[]
     + <<Create>> pumlEnum(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
     + getAccessLevel() : String
 }
 
-class pumlEnumAttribut {
+class PumlEnumAttribut {
     + <<Create>> pumlEnumAttribut(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
 }
 
-class pumlInterface {
+class PumlInterface {
+    - element : Element
+    - elements : pumlMethod[]
     + <<Create>> pumlInterface(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
     + getAccessLevel() : String
 }
 
-class pumlMethod {
+class PumlMethod {
+    - element : Element
+    - parameters : pumlParameter[]
     + <<Create>> pumlMethod(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
     + getAccessLevel() : String
-    + isAbstract() : boolean
+    + getOthersModifiers() : String
+    + getAttributs() : String
+}
+
+class PumlConstructor {
+    - element : Element
+    - parameters : pumlParameter[]
+    + <<Create>> pumlMethod(element : Element)
+    + getPumlCode() : String
+    + getSimpleName() : String
+    + getAccessLevel() : String
+    + getOthersModifiers() : String
+    + getAttributs() : String
 }
 
 
-class pumlAttribut {
+class PumlAttribut {
     + <<Create>> pumlAttribut(element : Element)
     + getPumlCode() : String
-    + getAccessLevel() : String
+    + getSimpleName() : String
     + getType() : String
-    + getName() : String
+    + getAccessLevel() : String
+    + getOthersModifiers() : String
 }
 
-class pumlParameter {
+class PumlParameter {
     + <<Create>> pumlParameter(element : Element)
     + getPumlCode() : String
+    + getSimpleName() : String
     + getType() : String
-    + getName() : String
 }
 
-class pumlDiagram {
+class PumlDiagram {
     + <<Create>> pumlDiagram()
     + generatePuml(fileName : String, path : String, code : String)
 }
 
-pumlPackage ..l|> pumlElement
-pumlClass ..d|> pumlElement
-pumlEnum ..d|> pumlElement
-pumlInterface ..d|> pumlElement
-pumlMethod ..r|> pumlElement
-pumlAttribut ..u|> pumlElement
-pumlEnumAttribut ..u|> pumlElement
-pumlParameter ..u|> pumlElement
+PumlPackage ..d|> PumlElement
+PumlClass ..d|> PumlElement
+PumlEnum ..d|> PumlElement
+PumlInterface ..d|> PumlElement
+PumlMethod ..|> PumlElement
+PumlConstructor ..l|> PumlMethod
+PumlAttribut ..u|> PumlElement
+PumlEnumAttribut ..u|> PumlElement
+PumlParameter ..u|> PumlElement
+
+PumlPackage *-> PumlClass
+PumlPackage *-> PumlEnum
+PumlPackage *-> PumlInterface
+PumlClass *-> PumlMethod
+PumlEnum *-> PumlMethod
+PumlInterface *-> PumlMethod
+PumlClass *-> PumlAttribut
+PumlEnum *-> PumlEnumAttribut
+PumlMethod *-> PumlParameter
 
 @enduml

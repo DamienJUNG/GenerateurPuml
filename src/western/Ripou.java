@@ -1,5 +1,7 @@
 package western;
 
+import western.Test.Boisson;
+
 import java.util.ArrayList;
 
 public class Ripou extends Cowboy implements HorsLaLoi{

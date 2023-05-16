@@ -1,8 +1,10 @@
 package western;
 
+import western.Test.Boisson;
+
 import java.util.ArrayList;
 
-public class Brigand extends Personnage implements HorsLaLoi{
+public class Brigand extends Personnage implements HorsLaLoi {
     private boolean estLibre;
     private final String look;
     private int prime=300;

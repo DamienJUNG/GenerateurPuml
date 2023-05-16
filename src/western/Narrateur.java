@@ -1,12 +1,14 @@
 package western;
 
+import western.Test.Boisson;
+
 public class Narrateur extends Personnage{
     public Narrateur(String nom){
         super(nom);
     }
     public void boire(Boisson boisson){
         String deLaBoisson = boisson.getNomAvecArticlePartitif();
-        if (boisson == Personnage.BOISSON_PAR_DEFAUT)
+        if (boisson == BOISSON_PAR_DEFAUT)
             dire(String.format("Ah ! boire %s ! GLOUPS !", deLaBoisson));
         else{
             throw new RuntimeException("Le narrateur ne supporte que l'eau...");

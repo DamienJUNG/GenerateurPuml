@@ -1,5 +1,5 @@
 package western;//  @ Project : Western
-//  @ File Name : western.Histoire3.java
+//  @ File Name : western.Genre.Histoire3.java
 //  @ Date : 02/02/2010
 //  @ Author : P. Divoux
 //  @ Date : 31/12/2022
@@ -7,7 +7,9 @@ package western;//  @ Project : Western
 //
 //
 
-//import western2.western.Narrateur;
+//import western2.western.Genre.Narrateur;
+
+import western.Test.Boisson;
 
 public class Histoire3
 {

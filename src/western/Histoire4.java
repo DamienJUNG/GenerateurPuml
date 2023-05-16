@@ -5,7 +5,9 @@ package western;//  @ Project : Western
 //
 //
 
-//import western2.western.Narrateur;
+//import western2.western.Genre.Narrateur;
+
+import western.Test.Boisson;
 
 public class Histoire4
 {

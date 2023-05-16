@@ -1,9 +1,11 @@
 package western;
 
+import western.Test.Boisson;
+
 public class Dame extends Personnage{
     boolean estlibre;
     private HorsLaLoi geolier;
-    public Dame(String nom,Boisson boisson){
+    public Dame(String nom, Boisson boisson){
         super(nom,boisson);
         this.estlibre=true;
     }

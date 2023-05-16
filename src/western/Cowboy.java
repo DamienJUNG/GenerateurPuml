@@ -1,5 +1,7 @@
 package western;
 
+import western.Test.Boisson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Cowboy extends Personnage{
     protected String replique = "I’m a poor lonesome cowboy !";
     protected int recompense;
     private final List<HorsLaLoi> vilains = new ArrayList<>();
-    public Cowboy(String nom,Boisson boisson,String replique){
+    public Cowboy(String nom, Boisson boisson, String replique){
         super(nom,boisson);
         this.replique = replique;
         this.recompense=0;

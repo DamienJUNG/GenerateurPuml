@@ -1,11 +1,13 @@
 package western;//  @ Project : Western
-//  @ File Name : western.Histoire1.java
+//  @ File Name : western.Genre.Histoire1.java
 //  @ Date : 02/02/2010
 //  @ Author : P. Divoux
 //  @ Date : 31/12/2021
 //  @ Author : R. Schneider
 //
 //
+
+import western.Test.Boisson;
 
 public class Histoire1
 {
