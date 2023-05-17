@@ -1,7 +1,5 @@
 package western;
 
-import western.Test.Boisson;
-
 import java.util.ArrayList;
 
 public class Brigand extends Personnage implements HorsLaLoi {

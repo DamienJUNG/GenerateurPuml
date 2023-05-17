@@ -1,6 +1,5 @@
 package pumlFromJava;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
 import java.util.ArrayList;
 
 public class PumlInterface implements PumlElement {
@@ -14,8 +13,12 @@ public class PumlInterface implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
+    public String getDccCode() {
         return getKind()+" "+getSimpleName()+" <<interface>> "+getElements();
+    }
+    @Override
+    public String getDcaCode() {
+       return getKind()+" "+getSimpleName()+" <<interface>> {}";
     }
 
     @Override
@@ -25,31 +28,17 @@ public class PumlInterface implements PumlElement {
     public String getKind() {
         return element.getKind().toString().toLowerCase();
     }
-    public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PRIVATE)){
-            return "-";
-        }
-        else if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
-        }
-        else{
-            return "#";
-        }
-    }
 
     public String getElements(){
-        return "{\n"+getMethods()+"\n}";
+        return "{\n"+getMethods()+"}";
     }
 
     private String getMethods() {
-        String methodsCode;
-        methodsCode = "";
+        StringBuilder methodsCode;
+        methodsCode = new StringBuilder();
         for (PumlMethod method:methods) {
-            methodsCode+=method.getPumlCode()+"\n";
+            methodsCode.append("\t").append(method.getDccCode()).append("\n");
         }
-        return methodsCode;
+        return methodsCode.toString();
     }
 }

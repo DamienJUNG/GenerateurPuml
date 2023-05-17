@@ -1,7 +1,5 @@
 package western;
 
-import western.Test.Boisson;
-
 public abstract class Personnage
 {
     protected static Boisson BOISSON_PAR_DEFAUT = new Boisson("eau", Genre.FEMININ);

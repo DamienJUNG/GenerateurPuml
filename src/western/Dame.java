@@ -1,7 +1,5 @@
 package western;
 
-import western.Test.Boisson;
-
 public class Dame extends Personnage{
     boolean estlibre;
     private HorsLaLoi geolier;

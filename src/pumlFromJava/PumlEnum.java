@@ -1,8 +1,6 @@
 package pumlFromJava;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.util.Elements;
 import java.util.ArrayList;
 
 public class PumlEnum implements PumlElement {
@@ -12,18 +10,24 @@ public class PumlEnum implements PumlElement {
     public PumlEnum(Element element){
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {
-            if(element.getKind()== ElementKind.METHOD){
-                methods.add(new PumlMethod(thing));
-            }
-            else {
+            if(thing.getKind()==ElementKind.ENUM_CONSTANT){
+                System.out.println(element.getSimpleName());
                 attributs.add(new PumlEnumAttribut(thing));
+            }
+            else{
+                methods.add(new PumlMethod(thing));
             }
         }
     }
 
     @Override
-    public String getPumlCode() {
-        return getKind()+" "+getSimpleName()+" <<enum>>"+getElements();
+    public String getDccCode() {
+        return getKind()+" "+getSimpleName()+" <<enum>> {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}";
+    }
+
+    @Override
+    public String getDcaCode() {
+        return getKind()+" "+getSimpleName()+" <<enum>> {\n"+ getDcaAttributs()+"}";
     }
 
     @Override
@@ -33,42 +37,28 @@ public class PumlEnum implements PumlElement {
     public String getKind() {
         return element.getKind().toString().toLowerCase();
     }
-    public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PRIVATE)){
-            return "-";
-        }
-        else if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
-        }
-        else{
-            return "#";
-        }
-    }
 
 
 
-    public String getMethods() {
-        String methodsCode="";
+    public String getDccMethods() {
+        StringBuilder methodsCode= new StringBuilder();
         for (PumlMethod method:methods) {
-            methodsCode+="\t"+method.getPumlCode()+"\n";
+            methodsCode.append("\t").append(method.getDccCode()).append("\n");
         }
-        methodsCode+="\n";
-        return methodsCode;
+        methodsCode.append("\n");
+        return methodsCode.toString();
     }
 
-    public String getAttributs(){
-        String AttributCode="";
+    public String getDccAttributs(){
+        StringBuilder AttributCode= new StringBuilder();
         for (PumlEnumAttribut attribut:attributs) {
-            AttributCode+="\t"+attribut.getPumlCode()+"\n";
+            AttributCode.append("\t").append(attribut.getDccCode()).append("\n");
         }
-        AttributCode+="\n";
-        return AttributCode;
+        AttributCode.append("\n");
+        return AttributCode.toString();
+    }
+     public String getDcaAttributs(){
+        return getDccAttributs();
     }
 
-    public String getElements() {
-        return "{\n"+getAttributs()+"\n"+getMethods()+"\n}";
-    }
 }

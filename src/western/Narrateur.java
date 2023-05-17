@@ -1,7 +1,5 @@
 package western;
 
-import western.Test.Boisson;
-
 public class Narrateur extends Personnage{
     public Narrateur(String nom){
         super(nom);

@@ -2,7 +2,8 @@ package pumlFromJava;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
+import javax.lang.model.element.TypeElement;
+import javax.lang.model.type.TypeMirror;
 import java.util.ArrayList;
 
 public class PumlClass implements PumlElement {
@@ -27,8 +28,13 @@ public class PumlClass implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
-        return getKind()+" "+getSimpleName()+" "+getElements();
+    public String getDccCode() {
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}";
+    }
+
+    @Override
+    public String getDcaCode() {
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDcaAttributs()+"}";
     }
 
     @Override
@@ -38,40 +44,46 @@ public class PumlClass implements PumlElement {
     public String getKind() {
         return element.getKind().toString().toLowerCase();
     }
-    public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PRIVATE)){
-            return "-";
-        }
-        else if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
-        }
-        else{
-            return "#";
-        }
-    }
 
-    public String getElements(){
-        return "{\n"+getAttributs()+"\n"+getMethods()+"\n}";
-    }
 
-    private String getAttributs(){
-        String attributsCode;
-        attributsCode = "";
+    private String getDccAttributs(){
+        StringBuilder attributsCode;
+        attributsCode = new StringBuilder();
         for (PumlAttribut attribut:attributs) {
-            attributsCode+=attribut.getPumlCode()+"\n";
+            attributsCode.append(attribut.getDccCode()).append("\n");
         }
-        return attributsCode;
+        return attributsCode.toString();
+    }
+    private String getDcaAttributs(){
+        StringBuilder attributsCode;
+        attributsCode = new StringBuilder();
+        for (PumlAttribut attribut:attributs) {
+            attributsCode.append("\t").append(attribut.getDcaCode()).append("\n");
+        }
+        return attributsCode.toString();
     }
 
-    private String getMethods() {
-        String methodsCode;
-        methodsCode = "";
+    private String getDccMethods() {
+        StringBuilder methodsCode;
+        methodsCode = new StringBuilder();
         for (PumlMethod method:methods) {
-            methodsCode+=method.getPumlCode()+"\n";
+            methodsCode.append("\t").append(method.getDccCode()).append("\n");
         }
-        return methodsCode;
+        return methodsCode.toString();
+    }
+    public String getSuperClass(){
+        TypeElement typeElement = (TypeElement) element;
+        if (typeElement.getSuperclass()!=null && !typeElement.getSuperclass().toString().equals("java.lang.Object")){
+            return " extends "+typeElement.getSuperclass().toString();
+        }
+        return "";
+    }
+
+    public String getInterfaces(){
+        TypeElement typeElement = (TypeElement) element;
+        if (!typeElement.getInterfaces().isEmpty()){
+            return " implements "+typeElement.getInterfaces().toString();
+        }
+        return "";
     }
 }

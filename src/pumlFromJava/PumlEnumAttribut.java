@@ -8,8 +8,13 @@ public class PumlEnumAttribut implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
+    public String getDccCode() {
         return getSimpleName();
+    }
+
+    @Override
+    public String getDcaCode() {
+        return getDccCode();
     }
 
     @Override

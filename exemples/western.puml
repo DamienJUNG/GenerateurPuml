@@ -11,181 +11,52 @@ skinparam classattribute none
 skinparam classborderthickness 2
 
 package western{
-interface horslaloi <<interface>> {
-+ kidnapper(western.Dame)void : 
-+ seFaireCapturer(western.Cowboy)void : 
-+ getPrime()int : 
-+ getSesDames()java.util.ArrayList<western.Dame> : 
-+ getPseudo()java.lang.String : 
-+ repondre(western.Cowboy)void : 
-
-}
-class Substantif {
-- nom : java.lang.String 
-- genre : western.Genre 
-
-+ <<Create>> <init>(java.lang.String,western.Genre)void
-+ getNom()java.lang.String : 
-+ getGenre()western.Genre : 
-+ toString()java.lang.String : 
-+ isVowel(char)boolean : 
-+ startsWithVowel(java.lang.String)boolean : 
-+ getArticleIndefini()java.lang.String : 
-+ avecArticleIndefini()java.lang.String : 
-+ getArticleDefini(western.Genre)java.lang.String : 
-+ getArticleDefini()java.lang.String : 
-+ avecArticleDefini()java.lang.String : 
-+ faireElision(java.lang.String)java.lang.String : 
-+ elision()boolean : 
-+ getArticlePartitif()java.lang.String : 
-+ avecArticlePartitif()java.lang.String : 
-+ avecElision(java.lang.String)java.lang.String : 
-+ avecPreposition(java.lang.String)java.lang.String : 
-
-}
-enum Genre <<enum>>{
-
-
-	VALUES
-	VALUEOF
-	<INIT>
+enum Genre <<enum>> {
 	FEMININ
 	MASCULIN
 
-
+}
+interface horslaloi <<interface>> {}
+class Substantif {
+	nom
+	genre
 }
 class Personnage {
-~ BOISSON_PAR_DEFAUT : western.Test.Boisson {static}
-~ nom : java.lang.String 
-~ boisson : western.Test.Boisson 
-
-+ <<Create>> <init>(java.lang.String)void
-+ getPseudo()java.lang.String : 
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson)void
-+ dire(java.lang.String)void : 
-+ sePresenter()void : 
-+ boire(western.Test.Boisson)void : 
-+ boire()void : 
-+ getNom()java.lang.String : 
-+ getBoisson()western.Test.Boisson : 
-
+	BOISSON_PAR_DEFAUT
+	nom
+	boisson
 }
-class Cowboy {
-~ replique : java.lang.String 
-~ recompense : int 
-- vilains : java.util.List<western.HorsLaLoi> 
-
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson,java.lang.String)void
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson)void
-+ <<Create>> <init>(java.lang.String)void
-+ getVilains()java.lang.String : 
-+ setReplique(java.lang.String)void : 
-+ getPseudo()java.lang.String : 
-+ sePresenter()void : 
-+ direReplique()void : 
-+ tirerSur(western.HorsLaLoi)void : 
-+ capturer(western.HorsLaLoi)void : 
-
-}
-class Histoire3 {
-
-+ <<Create>> <init>()void
-+ main(java.lang.String[])void : 
-
-}
-class Ripou {
-# brigand : western.Brigand 
-
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson,java.lang.String)void
-+ <<Create>> <init>(java.lang.String,java.lang.String)void
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson)void
-+ <<Create>> <init>(java.lang.String)void
-+ kidnapper(western.Dame)void : 
-+ getSesDames()java.util.ArrayList<western.Dame> : 
-+ seFaireCapturer(western.Cowboy)void : 
-+ getPseudo()java.lang.String : 
-+ repondre(western.Cowboy)void : 
-+ sePresenter()void : 
-+ capturer(western.HorsLaLoi)void : 
-+ getPrime()int : 
-
-}
-class Brigand {
-- estLibre : boolean 
-- look : java.lang.String 
-- prime : int 
-- geolier : western.Cowboy 
-- sesDames : java.util.ArrayList<western.Dame> 
-
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson,java.lang.String)void
-+ <<Create>> <init>(java.lang.String,java.lang.String)void
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson)void
-+ <<Create>> <init>(java.lang.String)void
-+ getPrime()int : 
-+ kidnapper(western.Dame)void : 
-+ getEstLibre()boolean : 
-+ getGeolier()western.Cowboy : 
-+ getSesDames()java.util.ArrayList<western.Dame> : 
-+ seFaireCapturer(western.Cowboy)void : 
-+ getPseudo()java.lang.String : 
-+ repondre(western.Cowboy)void : 
-+ sePresenter()void : 
-
-}
-class HistoireTest {
-
-+ <<Create>> <init>()void
-+ main(java.lang.String[])void : 
-
+class Boisson {
+	substantif
 }
 class Histoire1 {
-
-+ <<Create>> <init>()void
-+ main(java.lang.String[])void : 
-
 }
 class Histoire4 {
-
-+ <<Create>> <init>()void
-+ main(java.lang.String[])void : 
-
 }
-class Dame {
-# estlibre : boolean 
-- geolier : western.HorsLaLoi 
-
-+ <<Create>> <init>(java.lang.String,western.Test.Boisson)void
-+ <<Create>> <init>(java.lang.String)void
-+ getGeolier()western.HorsLaLoi : 
-+ seFaitEnlever(western.HorsLaLoi)void : 
-+ seFaitSauver(western.Cowboy)void : 
-+ getPseudo()java.lang.String : 
-+ sePresenter()void : 
-
+class Cowboy extends western.Personnage {
+	replique
+	recompense
+	vilains
 }
-class Narrateur {
-
-+ <<Create>> <init>(java.lang.String)void
-+ boire(western.Test.Boisson)void : 
-+ sePresenter()void : 
-+ getPseudo()java.lang.String : 
-+ dire(java.lang.String)void : 
-
+class HistoireTest {
 }
+class Histoire3 {
 }
-
-package western.Test{
-class Boisson {
-- substantif : western.Substantif 
-
-+ <<Create>> <init>(java.lang.String,western.Genre)void
-+ getNom()java.lang.String : 
-+ getGenre()western.Genre : 
-+ getNomAvecArticleIndefini()java.lang.String : 
-+ getNomAvecArticlePartitif()java.lang.String : 
-+ getNomAvecArticleDefini()java.lang.String : 
-+ getNomAvecPreposition(java.lang.String)java.lang.String : 
-
+class Brigand extends western.Personnage implements western.HorsLaLoi {
+	estLibre
+	look
+	prime
+	geolier
+	sesDames
+}
+class Ripou extends western.Cowboy implements western.HorsLaLoi {
+	brigand
+}
+class Narrateur extends western.Personnage {
+}
+class Dame extends western.Personnage {
+	estlibre
+	geolier
 }
 }
 

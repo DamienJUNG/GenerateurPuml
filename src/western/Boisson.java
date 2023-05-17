@@ -1,4 +1,4 @@
-package western.Test;
+package western;
 
 import western.Genre;
 import western.Substantif;

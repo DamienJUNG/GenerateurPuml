@@ -1,7 +1,5 @@
 package western;
 
-import western.Test.Boisson;
-
 public class HistoireTest {
     public static void main(String[] args) {
         Brigand brigand = new Brigand("Robert");

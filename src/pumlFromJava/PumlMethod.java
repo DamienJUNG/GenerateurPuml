@@ -11,8 +11,13 @@ public class PumlMethod implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
+    public String getDccCode() {
         return getAccessLevel()+" "+getSimpleName()+getAttributs()+" : "+getType();
+    }
+
+    @Override
+    public String getDcaCode() {
+        return null;
     }
 
     @Override

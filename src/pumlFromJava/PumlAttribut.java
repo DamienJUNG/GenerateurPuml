@@ -10,8 +10,13 @@ public class PumlAttribut implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
+    public String getDccCode() {
         return getAccessLevel()+" "+getSimpleName()+" : "+getType()+" "+getOthersModifiers();
+    }
+
+    @Override
+    public String getDcaCode() {
+        return getSimpleName();
     }
 
     @Override

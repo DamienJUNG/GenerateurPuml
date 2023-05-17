@@ -7,15 +7,13 @@ import jdk.javadoc.doclet.Reporter;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.TypeMirror;
 import java.io.IOException;
-import java.lang.annotation.ElementType;
 import java.util.*;
 
 public class PumlDoclet implements Doclet{
     private String path = "./";
     private String name="";
+    private boolean isDcc = true;
     @Override
     public void init(Locale locale, Reporter reporter) {  }
 
@@ -130,7 +128,7 @@ public class PumlDoclet implements Doclet{
 
             @Override
             public boolean process(String option, List<String> arguments) {
-                path+=arguments.get(0);
+                isDcc = false;
                 return true;
             }
         });
@@ -147,17 +145,13 @@ public class PumlDoclet implements Doclet{
         if (name.equals("")){name=environment.getSpecifiedElements().toArray()[0]+".puml";}
             PumlDiagram diagram = new PumlDiagram();
         try {
-            String code = "";
+            String code;
             System.out.println(environment.getIncludedElements());
-            for (Element element:environment.getIncludedElements()) {
-                System.out.println("test : "+element.getKind());
-                if(element.getKind()==ElementKind.MODULE){
-                    for (Element thing:element.getEnclosedElements()) {
-                        PumlPackage pack = new PumlPackage(thing);
-                        System.out.println(thing.getSimpleName());
-                        code += pack.getPumlCode()+"\n";
-                    }
-                }
+            if (isDcc){
+                code = generateDcc(environment);
+            }
+            else {
+                code = generateDca(environment);
             }
             diagram.generatePuml(name, path, code);
         }
@@ -165,5 +159,30 @@ public class PumlDoclet implements Doclet{
             System.out.println(e.getMessage());
         }
         return true;
+    }
+
+    public String generateDcc(DocletEnvironment environment){
+        StringBuilder code = new StringBuilder();
+        for (Element element:environment.getIncludedElements()) {
+            if(element.getKind()==ElementKind.MODULE){
+                for (Element thing:element.getEnclosedElements()) {
+                PumlPackage pack = new PumlPackage(thing);
+                code.append(pack.getDccCode()).append("\n");
+                }
+            }
+        }
+        return code.toString();
+    }
+    public String generateDca(DocletEnvironment environment){
+        StringBuilder code = new StringBuilder();
+        for (Element element:environment.getIncludedElements()) {
+            if(element.getKind()==ElementKind.MODULE){
+                for (Element thing:element.getEnclosedElements()) {
+                PumlPackage pack = new PumlPackage(thing);
+                code.append(pack.getDcaCode()).append("\n");
+                }
+            }
+        }
+        return code.toString();
     }
 }

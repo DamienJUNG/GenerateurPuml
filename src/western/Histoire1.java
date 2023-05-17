@@ -7,8 +7,6 @@ package western;//  @ Project : Western
 //
 //
 
-import western.Test.Boisson;
-
 public class Histoire1
 {
     public static void main(String[] args)

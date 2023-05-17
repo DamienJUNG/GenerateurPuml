@@ -7,8 +7,6 @@ package western;//  @ Project : Western
 
 //import western2.western.Genre.Narrateur;
 
-import western.Test.Boisson;
-
 public class Histoire4
 {
     public static void main(String[] args)

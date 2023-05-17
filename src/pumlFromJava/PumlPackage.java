@@ -11,7 +11,6 @@ public class PumlPackage implements PumlElement {
 
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {
-            System.out.println(thing.getSimpleName()+" : "+thing.getKind());
             if(thing.getKind()==ElementKind.CLASS){
                 elements.add(new PumlClass(thing));
             }
@@ -28,9 +27,15 @@ public class PumlPackage implements PumlElement {
     }
 
     @Override
-    public String getPumlCode() {
-        return getKind()+" "+getSimpleName()+getElements();
+    public String getDccCode() {
+        return getKind()+" "+getSimpleName()+ getDccElements();
     }
+
+    @Override
+    public String getDcaCode() {
+        return getKind()+" "+getSimpleName()+ getDcaElements();
+    }
+
     public String getKind(){
         return element.getKind().toString().toLowerCase();
     }
@@ -39,11 +44,20 @@ public class PumlPackage implements PumlElement {
     public String getSimpleName() {
         return element.asType().toString();
     }
-    public String getElements(){
+    public String getDccElements(){
         StringBuilder elementsCode;
         elementsCode = new StringBuilder("{\n");
         for (PumlElement thing:elements) {
-            elementsCode.append(thing.getPumlCode()).append("\n");
+            elementsCode.append(thing.getDccCode()).append("\n");
+        }
+        elementsCode.append("}\n");
+        return elementsCode.toString();
+    }
+    public String getDcaElements(){
+        StringBuilder elementsCode;
+        elementsCode = new StringBuilder("{\n");
+        for (PumlElement thing:elements) {
+            elementsCode.append(thing.getDcaCode()).append("\n");
         }
         elementsCode.append("}\n");
         return elementsCode.toString();
