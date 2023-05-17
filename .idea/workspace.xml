@@ -5,23 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6c7c019-be72-4f4c-ae7c-82694196174f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlAttribut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlEnumAttribut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlPackage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uml/DCc_API_pumlElement.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.attach_pid7057" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.attach_pid10732" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/pumlDoclet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/pumlDoclet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/DCc_lang.model.puml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/DCc_lang.model.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exemples/western.puml" beforeDir="false" afterPath="$PROJECT_DIR$/exemples/western.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/western_s1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/western_s1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/western_s2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/western_s2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/western_s3.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/western_s3.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/western_s4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/western_s4.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlAttribut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlAttribut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlConstructor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlConstructor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlDoclet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlEnumAttribut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlEnumAttribut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlMethod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlMethod.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlPackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlPackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/pumlFromJava/PumlParameter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Brigand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Brigand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Cowboy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Cowboy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Dame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Dame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Histoire4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/HistoireTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/HistoireTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Narrateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Narrateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Personnage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Personnage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Ripou.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/p21Projet/western/Ripou.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/p21Projet/western/Test/Boisson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlAttribut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlAttribut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlDoclet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlDoclet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlEnumAttribut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlEnumAttribut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pumlFromJava/PumlPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pumlFromJava/PumlParameter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Brigand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Brigand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Cowboy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Cowboy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Dame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Dame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Histoire1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Histoire1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Histoire3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Histoire3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Histoire4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Histoire4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/HistoireTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/HistoireTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Narrateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Narrateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Personnage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Ripou.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Ripou.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/western/Test/Boisson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/western/Boisson.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +124,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="pumlFromJava.Java2Puml" />
       <module name="p21Projet" />
-      <option name="PROGRAM_PARAMETERS" value="-private -sourcepath ./src -doclet pumlFromJava.pumlDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western -d exemples" />
+      <option name="PROGRAM_PARAMETERS" value="-private -sourcepath ./src -doclet pumlFromJava.PumlDoclet -docletpath $PROJECT_DIR$/out/production/p21_projet western -d exemples --dca" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pumlFromJava.*" />
