@@ -4,7 +4,6 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
-import javax.lang.model.type.TypeMirror;
 import java.util.ArrayList;
 
 public class PumlClass implements PumlElement {
@@ -36,12 +35,12 @@ public class PumlClass implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}\n"+getRelations()+"\n";
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}\n"+ getDccRelations()+"\n";
     }
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDcaAttributs()+"}";
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
     }
 
     @Override
@@ -94,11 +93,19 @@ public class PumlClass implements PumlElement {
         return "";
     }
 
-    public String getRelations(){
+    public String getDccRelations(){
         StringBuilder relationsCode;
         relationsCode = new StringBuilder();
         for (PumlRelation relation:relations) {
             relationsCode.append("\t").append(relation.getDccCode()).append("\n");
+        }
+        return relationsCode.toString();
+    }
+    public String getDcaRelations(){
+        StringBuilder relationsCode;
+        relationsCode = new StringBuilder();
+        for (PumlRelation relation:relations) {
+            relationsCode.append("\t").append(relation.getDcaCode()).append("\n");
         }
         return relationsCode.toString();
     }

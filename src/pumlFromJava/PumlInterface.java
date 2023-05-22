@@ -1,6 +1,7 @@
 package pumlFromJava;
 import javax.lang.model.element.Element;
 import java.util.ArrayList;
+import javax.lang.model.element.TypeElement;
 
 public class PumlInterface implements PumlElement {
     private final Element element;
@@ -14,11 +15,11 @@ public class PumlInterface implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+" <<interface>> "+getElements();
+        return getKind()+" "+getSimpleName()+getSuperClass()+" <<interface>> {\n"+getMethods()+"}\n";
     }
     @Override
     public String getDcaCode() {
-       return getKind()+" "+getSimpleName()+" <<interface>> {}";
+       return getKind()+" "+getSimpleName()+getSuperClass()+" <<interface>> {}\n";
     }
 
     @Override
@@ -29,9 +30,6 @@ public class PumlInterface implements PumlElement {
         return element.getKind().toString().toLowerCase();
     }
 
-    public String getElements(){
-        return "{\n"+getMethods()+"}";
-    }
 
     private String getMethods() {
         StringBuilder methodsCode;
@@ -40,5 +38,12 @@ public class PumlInterface implements PumlElement {
             methodsCode.append("\t").append(method.getDccCode()).append("\n");
         }
         return methodsCode.toString();
+    }
+    public String getSuperClass(){
+        TypeElement typeElement = (TypeElement) element;
+        if (typeElement.getSuperclass()!=null && !typeElement.getSuperclass().toString().equals("none")){
+            return " extends "+typeElement.getSuperclass().toString();
+        }
+        return "";
     }
 }

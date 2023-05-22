@@ -1,0 +1,99 @@
+@startuml
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+
+interface Doclet <<interface>> {
+    + init(locale : Locale, reporter : Reprorter)
+    + getName() : String
+    + getSupportedOptions() : Set<? extends Doclet.Option>
+    + getSupportedSourceVersion() : SourceVersion
+    + run(environment : DocletEnvironment) : boolean
+}
+interface Reporter <<interface>> {
+    + print(kind: Diagnostic.Kind,message: String)
+    + print(kind: Diagnostic.Kind, path DocTreePath, message: String)
+    + print(kind: Diagnostic.Kind, path: DocTreePath, start: int, pos: int, end: int, message: String)
+    + print(kind: Diagnostic.Kind, element: Element, message: String)
+    + print(kind: Diagnostic.Kind, file: FileObject, start: int, pos: int, end: int, message: String)
+    + getStandardWriter(): PrintWriter
+    + getDiagnosticWriter(): PrintWriter
+}
+
+interface Option <<interface>>{
+    + getArgumentCount() : int
+    + getDescription() : String
+    + getKind() : Doclet.Option.Kind
+    + getNames() : List<String>
+    + getParameters() : String
+    + process(option: String, arguments: List<String>): boolean
+}
+
+interface DocletEnvironnement <<interface>>{
+    + getSpecifiedElements(): Set<? extends Element>
+    + getIncludedElements(): Set<? extends Element>
+    + getDocTrees(): DocTreess
+    + getElementUtils(): Elements
+    + getTypeUtils(): Types
+    + isIncluded(e: Element): boolean
+    + isSelected(e: Element): boolean
+    + getJavaFileManager(): JavaFileManager
+    + getSourceVersion(): SourceVersion
+    + getModuleMode(): DocletEnvironment.ModuleMode
+    + getFileKind(type: TypeElement): JavaFileObject.Kind
+}
+
+interface Taglet <<interface>>{
+    + getAllowedLocations() : Set<Taglet.Location>
+    + isInlineTag() : boolean
+    + isBlockTag() : boolean
+    + getName() : String
+    + init(env : DocletEnvironment,doclet: Doclet)
+    + toString(tags : List<? extends DocTree>, element : Element): String
+}
+
+class StandardDoclet implements Doclet {
+    + <<create>> StandardDoclet()
+    + init(locale :Locale, reporter: Reporter)
+    + getName(): String
+    + getSupportedOptions() :
+    + getSupportedSourceVersion(): SourceVersion
+    + run(docEnv: DocletEnvironment): Boolean
+    + getLocale(): Locale
+    + getReporter(): Reporter
+}
+enum Kind <<enum>>
+{
+    EXTENDED
+    OTHER
+    STANDARD
+    + {static}values(): Doclet.Option.Kind[]
+    + {static}valueOf(name: String) : Doclet.Option.Kind
+}
+
+enum Location <<enum>> {
+    CONSTRUCTOR
+    FIELD
+    METHOD
+    MODULE
+    OVERVIEW
+    PACKAGE
+    TYPE
+    + {static}values():
+    + {static}valueOf(name: String)
+}
+
+enum ModuleMode <<enum>>
+{
+    ALL
+    API
+    + {static}values(): DocletEnvironment.ModuleMode[]
+    + {static}valueOf(name: String) : DocletEnvironment.ModuleMode
+}
+
+Taglet o-> Location
+DocletEnvironnement o-> ModuleMode
+Doclet *->Option
+Option o-> Kind
+@enduml

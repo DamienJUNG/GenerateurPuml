@@ -1,0 +1,27 @@
+@startuml
+hide footbox
+skinparam style stricuml
+
+participant Java2Puml.class as java2P
+participant ToolProvider.class as toolProv
+participant "toolProvider : ToolProvider" as toolProvider
+participant FirstDoclet.class as firstDoclet
+participant "doclet : Doclet" as doclet
+
+[o->java2P : main(args)
+java2P -> toolProv ++ : findFirst("javadoc").get()
+create toolProvider
+toolProv -->> toolProvider : <<create>> ToolProvider()
+return toolProvider = findFirst().get()
+
+java2P -> toolProvider ++ : run(System.out, System.err, args)
+toolProvider -> firstDoclet ++
+create doclet
+firstDoclet -->> doclet : <<create>> doclet()
+firstDoclet -> doclet ++
+doclet -> doclet : run(environement)
+doclet -> doclet : dumpElement(element)
+return
+return
+return
+@enduml

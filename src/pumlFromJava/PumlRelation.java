@@ -13,16 +13,32 @@ public class PumlRelation implements PumlElement{
     }
     @Override
     public String getDccCode() {
-        System.out.println(element.getSimpleName()+" : "+element.asType()+" "+element.asType().getKind().isPrimitive());
         if (!element.asType().toString().contains("<")){
             return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"\" "+getType();
         }
-        return "";
+        else if(element.asType().toString().contains("enum")){
+            return "";
+        }
+        else {
+            int start = getType().indexOf("<")+1;
+            int end = getType().indexOf(">");
+            return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"[*]"+"\" "+getType().substring(start, end);
+        }
     }
 
     @Override
     public String getDcaCode() {
-        return "";
+        if (element.asType().toString().contains("enum")){
+            return "";
+        }
+        else if(!element.asType().toString().contains("<")){
+            return getSuperClass()+" - "+getType();
+        }
+        else {
+            int start = getType().indexOf("<")+1;
+            int end = getType().indexOf(">");
+            return getSuperClass()+" -> "+getType().substring(start, end);
+        }
     }
     public String getAccessLevel() {
         if(element.getModifiers().contains(Modifier.PUBLIC)){

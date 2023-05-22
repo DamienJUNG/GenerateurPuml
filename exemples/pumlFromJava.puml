@@ -1,0 +1,144 @@
+@startuml
+
+'Code généré automatiquement ;>
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classbackgroundColor LightGoldenRodYellow
+skinparam classbordercolor red
+skinparam classattribute none
+skinparam classborderthickness 2
+
+package pumlFromJava{
+class PumlDiagram {
+
+	+ <<Create>> <init>()
+	+ generatePuml(java.lang.String,java.lang.String,java.lang.String)
+}
+
+
+interface PumlElement <<interface>> {
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+}
+
+class PumlAttribut implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getType() : java.lang.String
+	+ getAccessLevel() : java.lang.String
+	+ getOthersModifiers() : java.lang.String
+}
+
+
+class PumlMethod implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getType() : java.lang.String
+	+ getAccessLevel() : java.lang.String
+	+ getAttributs() : java.lang.String
+	+ getOthersModifiers() : java.lang.String
+}
+
+
+class PumlEnumAttribut implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+}
+
+
+class PumlConstructor extends pumlFromJava.PumlMethod {
+
+	+ getDccCode() : java.lang.String
+}
+
+
+class PumlPackage implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getKind() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getDccElements() : java.lang.String
+	+ getDcaElements() : java.lang.String
+}
+	PumlPackage o-> "-elements[*]" pumlFromJava.PumlElement
+
+
+class PumlInterface implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getKind() : java.lang.String
+	- getMethods() : java.lang.String
+	+ getSuperClass() : java.lang.String
+}
+	PumlInterface o-> "-methods[*]" pumlFromJava.PumlMethod
+
+
+class PumlClass implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getKind() : java.lang.String
+	- getDccAttributs() : java.lang.String
+	- getDcaAttributs() : java.lang.String
+	- getDccMethods() : java.lang.String
+	+ getSuperClass() : java.lang.String
+	+ getInterfaces() : java.lang.String
+	+ getDccRelations() : java.lang.String
+	+ getDcaRelations() : java.lang.String
+}
+	PumlClass o-> "-attributs[*]" pumlFromJava.PumlAttribut
+	PumlClass o-> "-methods[*]" pumlFromJava.PumlMethod
+	PumlClass o-> "-relations[*]" pumlFromJava.PumlRelation
+
+
+class PumlEnum implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getSimpleName() : java.lang.String
+	+ getKind() : java.lang.String
+	+ getDccMethods() : java.lang.String
+	+ getDccAttributs() : java.lang.String
+	+ getDcaAttributs() : java.lang.String
+	+ getSuperClass() : java.lang.String
+	+ getInterfaces() : java.lang.String
+}
+	PumlEnum o-> "-methods[*]" pumlFromJava.PumlMethod
+	PumlEnum o-> "-attributs[*]" pumlFromJava.PumlEnumAttribut
+
+
+class Java2Puml {
+
+	+ <<Create>> <init>()
+	+ main(java.lang.String[])
+}
+
+
+class PumlRelation implements pumlFromJava.PumlElement {
+
+	+ getDccCode() : java.lang.String
+	+ getDcaCode() : java.lang.String
+	+ getAccessLevel() : java.lang.String
+	+ getType() : java.lang.String
+	+ getSuperClass() : java.lang.String
+	+ getSimpleName() : java.lang.String
+}
+
+
+}
+
+
+@enduml
