@@ -51,8 +51,11 @@ public class PumlRelation implements PumlElement{
             return "-";
         }
     }
-
     public String getType() {
+        if (element.asType().toString().contains(".")){
+            int index = element.asType().toString().lastIndexOf(".")+1;
+            return element.asType().toString().substring(index);
+        }
         return element.asType().toString();
     }
     public String getSuperClass() {

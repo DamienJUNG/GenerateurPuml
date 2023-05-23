@@ -1,3 +1,5 @@
 package western;
 
-public enum Genre { FEMININ, MASCULIN }
+public enum Genre {
+    FEMININ, MASCULIN
+}

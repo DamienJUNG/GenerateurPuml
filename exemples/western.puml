@@ -11,16 +11,6 @@ skinparam classattribute none
 skinparam classborderthickness 2
 
 package western{
-enum Genre <<enum>> {
-	FEMININ
-	MASCULIN
-
-
-	+ values() : western.Genre[]
-	+ valueOf(java.lang.String) : western.Genre
-	- <init>()
-
-}
 class Boisson {
 
 	+ <<Create>> Boisson(java.lang.String,western.Genre)
@@ -31,7 +21,7 @@ class Boisson {
 	+ getNomAvecArticleDefini() : java.lang.String
 	+ getNomAvecPreposition(java.lang.String) : java.lang.String
 }
-	Boisson o-> "-substantif" western.Substantif
+	Boisson o-> "-substantif" Substantif
 
 
 class Substantif {
@@ -55,7 +45,7 @@ class Substantif {
 	+ avecElision(java.lang.String) : java.lang.String
 	+ avecPreposition(java.lang.String) : java.lang.String
 }
-	Substantif o-> "-genre" western.Genre
+	Substantif o-> "-genre" Genre
 
 
 class Histoire1 {
@@ -68,6 +58,47 @@ class Histoire1 {
 class Histoire4 {
 
 	+ <<Create>> Histoire4()
+	+ main(java.lang.String[])
+}
+
+
+interface HorsLaLoi <<interface>> {
+	+ kidnapper(western.Dame)
+	+ seFaireCapturer(western.Cowboy)
+	+ getPrime() : int
+	+ getSesDames() : java.util.ArrayList<western.Dame>
+	+ getPseudo() : java.lang.String
+	+ repondre(western.Cowboy)
+}
+
+class Histoire3 {
+
+	+ <<Create>> Histoire3()
+	+ main(java.lang.String[])
+}
+
+
+class Ripou extends western.Cowboy implements western.HorsLaLoi {
+
+	+ <<Create>> Ripou(java.lang.String,western.Boisson,java.lang.String)
+	+ <<Create>> Ripou(java.lang.String,java.lang.String)
+	+ <<Create>> Ripou(java.lang.String,western.Boisson)
+	+ <<Create>> Ripou(java.lang.String)
+	+ kidnapper(western.Dame)
+	+ getSesDames() : java.util.ArrayList<western.Dame>
+	+ seFaireCapturer(western.Cowboy)
+	+ getPseudo() : java.lang.String
+	+ repondre(western.Cowboy)
+	+ sePresenter()
+	+ capturer(western.HorsLaLoi)
+	+ getPrime() : int
+}
+	Ripou o-> "-brigand" Brigand
+
+
+class HistoireTest {
+
+	+ <<Create>> HistoireTest()
 	+ main(java.lang.String[])
 }
 
@@ -85,8 +116,8 @@ class Personnage {
 	+ getNom() : java.lang.String
 	+ getBoisson() : western.Boisson
 }
-	Personnage o-> "~BOISSON_PAR_DEFAUT" western.Boisson
-	Personnage o-> "~boisson" western.Boisson
+	Personnage o-> "~BOISSON_PAR_DEFAUT" Boisson
+	Personnage o-> "~boisson" Boisson
 
 
 class Narrateur extends western.Personnage {
@@ -118,18 +149,9 @@ class Brigand extends western.Personnage implements western.HorsLaLoi {
 	+ repondre(western.Cowboy)
 	+ sePresenter()
 }
-	Brigand o-> "-geolier" western.Cowboy
-	Brigand o-> "-sesDames[*]" western.Dame
+	Brigand o-> "-geolier" Cowboy
+	Brigand o-> "-sesDames[*]" Dame
 
-
-interface HorsLaLoi <<interface>> {
-	+ kidnapper(western.Dame)
-	+ seFaireCapturer(western.Cowboy)
-	+ getPrime() : int
-	+ getSesDames() : java.util.ArrayList<western.Dame>
-	+ getPseudo() : java.lang.String
-	+ repondre(western.Cowboy)
-}
 
 class Cowboy extends western.Personnage {
 	~ replique : java.lang.String 
@@ -146,7 +168,7 @@ class Cowboy extends western.Personnage {
 	+ tirerSur(western.HorsLaLoi)
 	+ capturer(western.HorsLaLoi)
 }
-	Cowboy o-> "-vilains[*]" western.HorsLaLoi
+	Cowboy o-> "-vilains[*]" HorsLaLoi
 
 
 class Dame extends western.Personnage {
@@ -160,41 +182,19 @@ class Dame extends western.Personnage {
 	+ getPseudo() : java.lang.String
 	+ sePresenter()
 }
-	Dame o-> "-geolier" western.HorsLaLoi
+	Dame o-> "-geolier" HorsLaLoi
 
 
-class Histoire3 {
+enum Genre <<enum>> {
+	FEMININ
+	MASCULIN
 
-	+ <<Create>> Histoire3()
-	+ main(java.lang.String[])
+
+	+ values() : western.Genre[]
+	+ valueOf(java.lang.String) : western.Genre
+	- <init>()
+
 }
-
-
-class Ripou extends western.Cowboy implements western.HorsLaLoi {
-
-	+ <<Create>> Ripou(java.lang.String,western.Boisson,java.lang.String)
-	+ <<Create>> Ripou(java.lang.String,java.lang.String)
-	+ <<Create>> Ripou(java.lang.String,western.Boisson)
-	+ <<Create>> Ripou(java.lang.String)
-	+ kidnapper(western.Dame)
-	+ getSesDames() : java.util.ArrayList<western.Dame>
-	+ seFaireCapturer(western.Cowboy)
-	+ getPseudo() : java.lang.String
-	+ repondre(western.Cowboy)
-	+ sePresenter()
-	+ capturer(western.HorsLaLoi)
-	+ getPrime() : int
-}
-	Ripou o-> "-brigand" western.Brigand
-
-
-class HistoireTest {
-
-	+ <<Create>> HistoireTest()
-	+ main(java.lang.String[])
-}
-
-
 }
 
 
