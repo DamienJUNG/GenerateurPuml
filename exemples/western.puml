@@ -15,61 +15,185 @@ enum Genre <<enum>> {
 	FEMININ
 	MASCULIN
 
+
+	+ values() : western.Genre[]
+	+ valueOf(java.lang.String) : western.Genre
+	- <init>()
+
 }
 class Boisson {
+
+	+ <<Create>> Boisson(java.lang.String,western.Genre)
+	+ getNom() : java.lang.String
+	+ getGenre() : western.Genre
+	+ getNomAvecArticleIndefini() : java.lang.String
+	+ getNomAvecArticlePartitif() : java.lang.String
+	+ getNomAvecArticleDefini() : java.lang.String
+	+ getNomAvecPreposition(java.lang.String) : java.lang.String
 }
-	Boisson - western.Substantif
+	Boisson o-> "-substantif" western.Substantif
+
 
 class Substantif {
-	nom
+	- nom : java.lang.String 
+
+	+ <<Create>> Substantif(java.lang.String,western.Genre)
+	+ getNom() : java.lang.String
+	+ getGenre() : western.Genre
+	+ toString() : java.lang.String
+	+ isVowel(char) : boolean
+	+ startsWithVowel(java.lang.String) : boolean
+	+ getArticleIndefini() : java.lang.String
+	+ avecArticleIndefini() : java.lang.String
+	+ getArticleDefini(western.Genre) : java.lang.String
+	+ getArticleDefini() : java.lang.String
+	+ avecArticleDefini() : java.lang.String
+	+ faireElision(java.lang.String) : java.lang.String
+	+ elision() : boolean
+	+ getArticlePartitif() : java.lang.String
+	+ avecArticlePartitif() : java.lang.String
+	+ avecElision(java.lang.String) : java.lang.String
+	+ avecPreposition(java.lang.String) : java.lang.String
 }
-	Substantif - western.Genre
+	Substantif o-> "-genre" western.Genre
+
 
 class Histoire1 {
+
+	+ <<Create>> Histoire1()
+	+ main(java.lang.String[])
 }
+
 
 class Histoire4 {
+
+	+ <<Create>> Histoire4()
+	+ main(java.lang.String[])
 }
+
 
 class Personnage {
-	nom
+	~ nom : java.lang.String 
+
+	+ <<Create>> Personnage(java.lang.String)
+	+ getPseudo() : java.lang.String
+	+ <<Create>> Personnage(java.lang.String,western.Boisson)
+	+ dire(java.lang.String)
+	+ sePresenter()
+	+ boire(western.Boisson)
+	+ boire()
+	+ getNom() : java.lang.String
+	+ getBoisson() : western.Boisson
 }
-	
-	Personnage - western.Boisson
+	Personnage o-> "~BOISSON_PAR_DEFAUT" western.Boisson
+	Personnage o-> "~boisson" western.Boisson
+
 
 class Narrateur extends western.Personnage {
+
+	+ <<Create>> Narrateur(java.lang.String)
+	+ boire(western.Boisson)
+	+ sePresenter()
+	+ getPseudo() : java.lang.String
+	+ dire(java.lang.String)
 }
+
 
 class Brigand extends western.Personnage implements western.HorsLaLoi {
-	estLibre
-	look
-	prime
-}
-	Brigand - western.Cowboy
-	Brigand -> western.Dame
+	- estLibre : boolean 
+	- look : java.lang.String 
+	- prime : int 
 
-interface HorsLaLoi <<interface>> {}
+	+ <<Create>> Brigand(java.lang.String,western.Boisson,java.lang.String)
+	+ <<Create>> Brigand(java.lang.String,java.lang.String)
+	+ <<Create>> Brigand(java.lang.String,western.Boisson)
+	+ <<Create>> Brigand(java.lang.String)
+	+ getPrime() : int
+	+ kidnapper(western.Dame)
+	+ getEstLibre() : boolean
+	+ getGeolier() : western.Cowboy
+	+ getSesDames() : java.util.ArrayList<western.Dame>
+	+ seFaireCapturer(western.Cowboy)
+	+ getPseudo() : java.lang.String
+	+ repondre(western.Cowboy)
+	+ sePresenter()
+}
+	Brigand o-> "-geolier" western.Cowboy
+	Brigand o-> "-sesDames[*]" western.Dame
+
+
+interface HorsLaLoi <<interface>> {
+	+ kidnapper(western.Dame)
+	+ seFaireCapturer(western.Cowboy)
+	+ getPrime() : int
+	+ getSesDames() : java.util.ArrayList<western.Dame>
+	+ getPseudo() : java.lang.String
+	+ repondre(western.Cowboy)
+}
 
 class Cowboy extends western.Personnage {
-	replique
-	recompense
+	~ replique : java.lang.String 
+	~ recompense : int 
+
+	+ <<Create>> Cowboy(java.lang.String,western.Boisson,java.lang.String)
+	+ <<Create>> Cowboy(java.lang.String,western.Boisson)
+	+ <<Create>> Cowboy(java.lang.String)
+	+ getVilains() : java.lang.String
+	+ setReplique(java.lang.String)
+	+ getPseudo() : java.lang.String
+	+ sePresenter()
+	+ direReplique()
+	+ tirerSur(western.HorsLaLoi)
+	+ capturer(western.HorsLaLoi)
 }
-	Cowboy -> western.HorsLaLoi
+	Cowboy o-> "-vilains[*]" western.HorsLaLoi
+
 
 class Dame extends western.Personnage {
-	estlibre
+	- estlibre : boolean 
+
+	+ <<Create>> Dame(java.lang.String,western.Boisson)
+	+ <<Create>> Dame(java.lang.String)
+	+ getGeolier() : western.HorsLaLoi
+	+ seFaitEnlever(western.HorsLaLoi)
+	+ seFaitSauver(western.Cowboy)
+	+ getPseudo() : java.lang.String
+	+ sePresenter()
 }
-	Dame - western.HorsLaLoi
+	Dame o-> "-geolier" western.HorsLaLoi
+
 
 class Histoire3 {
+
+	+ <<Create>> Histoire3()
+	+ main(java.lang.String[])
 }
+
 
 class Ripou extends western.Cowboy implements western.HorsLaLoi {
+
+	+ <<Create>> Ripou(java.lang.String,western.Boisson,java.lang.String)
+	+ <<Create>> Ripou(java.lang.String,java.lang.String)
+	+ <<Create>> Ripou(java.lang.String,western.Boisson)
+	+ <<Create>> Ripou(java.lang.String)
+	+ kidnapper(western.Dame)
+	+ getSesDames() : java.util.ArrayList<western.Dame>
+	+ seFaireCapturer(western.Cowboy)
+	+ getPseudo() : java.lang.String
+	+ repondre(western.Cowboy)
+	+ sePresenter()
+	+ capturer(western.HorsLaLoi)
+	+ getPrime() : int
 }
-	Ripou - western.Brigand
+	Ripou o-> "-brigand" western.Brigand
+
 
 class HistoireTest {
+
+	+ <<Create>> HistoireTest()
+	+ main(java.lang.String[])
 }
+
 
 }
 

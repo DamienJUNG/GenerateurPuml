@@ -7,7 +7,7 @@ import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
 public class PumlRelation implements PumlElement{
-    private Element element;
+    private final Element element;
     public PumlRelation(Element element) {
         this.element = element;
     }

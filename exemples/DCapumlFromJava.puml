@@ -1,0 +1,73 @@
+@startuml
+
+'Code généré automatiquement ;>
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classbackgroundColor LightGoldenRodYellow
+skinparam classbordercolor red
+skinparam classattribute none
+skinparam classborderthickness 2
+
+package pumlFromJava{
+class PumlDiagram {
+}
+
+interface PumlElement <<interface>> {}
+
+class PumlAttribut implements pumlFromJava.PumlElement {
+}
+	PumlAttribut - javax.lang.model.element.Element
+
+class PumlMethod implements pumlFromJava.PumlElement {
+}
+	PumlMethod - javax.lang.model.element.Element
+
+class PumlEnumAttribut implements pumlFromJava.PumlElement {
+}
+	PumlEnumAttribut - javax.lang.model.element.Element
+
+class PumlDoclet implements jdk.javadoc.doclet.Doclet {
+	path
+	name
+	isDcc
+}
+
+class PumlConstructor extends pumlFromJava.PumlMethod {
+}
+
+class PumlPackage implements pumlFromJava.PumlElement {
+}
+	PumlPackage - javax.lang.model.element.Element
+	PumlPackage -> pumlFromJava.PumlElement
+
+class PumlInterface implements pumlFromJava.PumlElement {
+}
+	PumlInterface - javax.lang.model.element.Element
+	PumlInterface -> pumlFromJava.PumlMethod
+
+class PumlEnum implements pumlFromJava.PumlElement {
+}
+	PumlEnum - javax.lang.model.element.Element
+	PumlEnum -> pumlFromJava.PumlMethod
+	PumlEnum -> pumlFromJava.PumlEnumAttribut
+
+class Java2Puml {
+}
+
+class PumlRelation implements pumlFromJava.PumlElement {
+}
+	PumlRelation - javax.lang.model.element.Element
+
+class PumlClass implements pumlFromJava.PumlElement {
+}
+	PumlClass - javax.lang.model.element.Element
+	PumlClass -> pumlFromJava.PumlAttribut
+	PumlClass -> pumlFromJava.PumlMethod
+	PumlClass -> pumlFromJava.PumlRelation
+
+}
+
+
+@enduml

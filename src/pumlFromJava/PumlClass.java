@@ -56,7 +56,7 @@ public class PumlClass implements PumlElement {
         StringBuilder attributsCode;
         attributsCode = new StringBuilder();
         for (PumlAttribut attribut:attributs) {
-            attributsCode.append(attribut.getDccCode()).append("\n");
+            attributsCode.append("\t").append(attribut.getDccCode()).append("\n");
         }
         return attributsCode.toString();
     }

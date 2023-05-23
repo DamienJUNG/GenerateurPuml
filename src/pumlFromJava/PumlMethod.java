@@ -8,7 +8,7 @@ import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 
 public class PumlMethod implements PumlElement {
-    private Element element;
+    private final Element element;
     public PumlMethod(Element element){
         this.element = element;
     }
@@ -21,6 +21,10 @@ public class PumlMethod implements PumlElement {
     @Override
     public String getDcaCode() {
         return null;
+    }
+        public String getEnclosingElement(){
+        int index = element.getEnclosingElement().toString().lastIndexOf(".")+1;
+        return element.getEnclosingElement().toString().substring(index);
     }
 
     @Override

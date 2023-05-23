@@ -8,6 +8,6 @@ public class PumlConstructor extends PumlMethod {
     }
     @Override
     public String getDccCode() {
-        return super.getAccessLevel()+" <<Create>> "+super.getSimpleName()+super.getAttributs();
+        return super.getAccessLevel()+" <<Create>> "+super.getEnclosingElement()+super.getAttributs();
     }
 }
