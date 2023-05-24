@@ -6,7 +6,6 @@ import javax.lang.model.element.TypeElement;
 
 public class PumlEnum implements PumlElement {
     private final Element element;
-    private final ArrayList<PumlMethod> methods = new ArrayList<>();
     private final ArrayList<PumlEnumAttribut> attributs = new ArrayList<>();
     public PumlEnum(Element element){
         this.element = element;
@@ -14,15 +13,12 @@ public class PumlEnum implements PumlElement {
             if(thing.getKind()==ElementKind.ENUM_CONSTANT){
                 attributs.add(new PumlEnumAttribut(thing));
             }
-            else{
-                methods.add(new PumlMethod(thing));
-            }
         }
     }
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" <<enum>> {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}";
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" <<enum>> {\n"+ getDccAttributs()+"\n"+"}";
     }
 
     @Override
@@ -36,17 +32,6 @@ public class PumlEnum implements PumlElement {
     }
     public String getKind() {
         return element.getKind().toString().toLowerCase();
-    }
-
-
-
-    public String getDccMethods() {
-        StringBuilder methodsCode= new StringBuilder();
-        for (PumlMethod method:methods) {
-            methodsCode.append("\t").append(method.getDccCode()).append("\n");
-        }
-        methodsCode.append("\n");
-        return methodsCode.toString();
     }
 
     public String getDccAttributs(){

@@ -12,8 +12,9 @@ import java.util.*;
 
 public class PumlDoclet implements Doclet{
     private String path = "./";
-    private String name="";
+    private List<Object> options;
     private boolean isDcc = true;
+    DocletEnvironment docletEnvironment;
     @Override
     public void init(Locale locale, Reporter reporter) {  }
 
@@ -59,45 +60,7 @@ public class PumlDoclet implements Doclet{
                 return true;
             }
         });
-        options.add(new Option() {
-            @Override
-            public int getArgumentCount() {
-                return 1;
-            }
-
-            @Override
-            public String getDescription() {
-                return "Permet de donner un nom au puml produit";
-            }
-
-            @Override
-            public Kind getKind() {
-                return Kind.EXTENDED;
-            }
-
-            @Override
-            public List<String> getNames() {
-                List<String> list = new ArrayList<>();
-                list.add("-out");
-                return list;
-            }
-
-            @Override
-            public String getParameters() {
-                return "-out <p1>";
-            }
-
-            @Override
-            public boolean process(String option, List<String> arguments) {
-                if(arguments.get(0).contains(".puml")){
-                 name = arguments.get(0);
-                }
-                else {
-                    name = arguments.get(0)+".puml";
-                }
-                return true;
-            }
-        });
+        options.add(new PumlOptionOUT());
         options.add(new Option() {
             @Override
             public int getArgumentCount() {
@@ -132,6 +95,7 @@ public class PumlDoclet implements Doclet{
                 return true;
             }
         });
+        this.options = Arrays.stream(options.toArray()).toList();
         return options;
     }
 
@@ -142,7 +106,7 @@ public class PumlDoclet implements Doclet{
 
     @Override
     public boolean run(DocletEnvironment environment) {
-        if (name.equals("")){name=environment.getSpecifiedElements().toArray()[0]+".puml";}
+        docletEnvironment = environment;
             PumlDiagram diagram = new PumlDiagram();
         try {
             String code;
@@ -152,6 +116,14 @@ public class PumlDoclet implements Doclet{
             else {
                 code = generateDca(environment);
             }
+            String name;
+            if (((PumlOptionOUT)options.get(1)).getName()!=null){
+                name = ((PumlOptionOUT)options.get(1)).getName();
+            }
+            else {
+                name = environment.getSpecifiedElements().toArray()[0].toString();
+            }
+
             diagram.generatePuml(name, path, code);
         }
         catch (IOException e){

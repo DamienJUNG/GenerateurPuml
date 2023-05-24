@@ -15,7 +15,7 @@ public class PumlMethod implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getAccessLevel()+" "+getSimpleName()+getAttributs()+getType();
+        return getAccessLevel()+" "+getSimpleName()+getAttributs()+getType()+getOthersModifiers();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class PumlMethod implements PumlElement {
             return "+";
         }
         else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
+            return "#";
         }
         else{
             return "-";
@@ -54,16 +54,15 @@ public class PumlMethod implements PumlElement {
     }
     public String getAttributs(){
         StringBuilder str = new StringBuilder(element.asType().toString());
-        System.out.println(element.getSimpleName()+" "+str.subSequence(0,str.indexOf(")")+1).toString());
         return str.subSequence(0,str.indexOf(")")+1).toString();
     }
     public String getOthersModifiers(){
         String modifiers = "";
         if(element.getModifiers().contains(Modifier.ABSTRACT)){
-            modifiers+="{abstract}";
+            modifiers+=" {abstract}";
         }
         if(element.getModifiers().contains(Modifier.STATIC)){
-            modifiers+="{static}";
+            modifiers+=" {static}";
         }
         return modifiers;
     }

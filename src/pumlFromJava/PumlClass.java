@@ -2,6 +2,7 @@ package pumlFromJava;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class PumlClass implements PumlElement {
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
+        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+getOthersModifiers()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PumlClass implements PumlElement {
         return element.getSimpleName().toString();
     }
     public String getKind() {
-        return element.getKind().toString().toLowerCase();
+        return getOthersModifiers()+element.getKind().toString().toLowerCase();
     }
 
 
@@ -108,5 +109,15 @@ public class PumlClass implements PumlElement {
             relationsCode.append("\t").append(relation.getDcaCode()).append("\n");
         }
         return relationsCode.toString();
+    }
+    public String getOthersModifiers(){
+        String modifiers = "";
+        if(element.getModifiers().contains(Modifier.ABSTRACT)){
+            modifiers+="abstract ";
+        }
+        if(element.getModifiers().contains(Modifier.STATIC)){
+            modifiers+="static ";
+        }
+        return modifiers;
     }
 }

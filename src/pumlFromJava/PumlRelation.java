@@ -1,6 +1,7 @@
 package pumlFromJava;
 
 import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
@@ -14,16 +15,19 @@ public class PumlRelation implements PumlElement{
     @Override
     public String getDccCode() {
         if (!element.asType().toString().contains("<")){
-            return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"\" "+getType();
-        }
-        else if(element.asType().toString().contains("enum")){
-            return "";
+            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType();
         }
         else {
             int start = getType().indexOf("<")+1;
             int end = getType().indexOf(">");
-            return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"[*]"+"\" "+getType().substring(start, end);
+            return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"[]"+"\" "+getType().substring(start, end);
         }
+    }
+    public String getMultipicity(){
+        if(getType().contains("<")){
+            return "0 .. *";
+        }
+        return "1";
     }
 
     @Override
@@ -42,13 +46,13 @@ public class PumlRelation implements PumlElement{
     }
     public String getAccessLevel() {
         if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
+            return " +";
         }
         else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
+            return " #";
         }
         else{
-            return "-";
+            return " -";
         }
     }
     public String getType() {

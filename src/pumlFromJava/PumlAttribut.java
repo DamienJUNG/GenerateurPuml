@@ -24,8 +24,11 @@ public class PumlAttribut implements PumlElement {
         return element.getSimpleName().toString();
     }
 
-    public String getType(){
-        int index = element.asType().toString().lastIndexOf(".");
+    public String getType() {
+        if (element.asType().toString().contains(".")){
+            int index = element.asType().toString().lastIndexOf(".")+1;
+            return element.asType().toString().substring(index);
+        }
         return element.asType().toString();
     }
     public String getAccessLevel() {
@@ -33,7 +36,7 @@ public class PumlAttribut implements PumlElement {
             return "+";
         }
         else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "~";
+            return "#";
         }
         else{
             return "-";
@@ -42,7 +45,7 @@ public class PumlAttribut implements PumlElement {
     public String getOthersModifiers(){
         String modifiers = "";
         if(element.getModifiers().contains(Modifier.STATIC)){
-            modifiers+="{static}";
+            modifiers+=" {static}";
         }
         return modifiers;
     }

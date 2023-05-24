@@ -12,7 +12,7 @@ Pour exécuter le programme, il suffit d'appuyer sur le bouton run.
 Ce dernier utilisera de lui-même la commande javadoc avec les arguments suivants :
 
 ```
--private -sourcepath ./src -doclet PumlFromJava.pumlDoclet -docletpath /home/jungdamien/Documents/sae/P21/p21Projet/out/production/p21_projet western -d exemples
+-private -sourcepath ./src -doclet pumlFromJava.PumlDoclet -docletpath /home/jungdamien/Documents/sae/P21/p21Projet/out/production/p21_projet western -d exemples
 ```
 
 
