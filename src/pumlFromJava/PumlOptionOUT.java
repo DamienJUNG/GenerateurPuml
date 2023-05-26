@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PumlOptionOUT implements Doclet.Option {
-    String name;
+    private String name;
     public PumlOptionOUT(){
     }
                 @Override

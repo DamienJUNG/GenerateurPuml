@@ -1,17 +1,21 @@
 package pumlFromJava;
 
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.Element;
+import javax.lang.model.type.TypeKind;
 
 public class PumlAttribut implements PumlElement {
     private final Element element;
+    private final PumlType type;
     public PumlAttribut(Element element){
         this.element = element;
+        type = new PumlType(element.asType());
     }
 
     @Override
     public String getDccCode() {
-        return getAccessLevel()+" "+getSimpleName()+" : "+getType()+" "+getOthersModifiers();
+        return getAccessLevel()+" "+getSimpleName()+getType()+" "+getOthersModifiers();
     }
 
     @Override
@@ -24,12 +28,8 @@ public class PumlAttribut implements PumlElement {
         return element.getSimpleName().toString();
     }
 
-    public String getType() {
-        if (element.asType().toString().contains(".")){
-            int index = element.asType().toString().lastIndexOf(".")+1;
-            return element.asType().toString().substring(index);
-        }
-        return element.asType().toString();
+    public String getType(){
+        return type.getDccCode();
     }
     public String getAccessLevel() {
         if(element.getModifiers().contains(Modifier.PUBLIC)){

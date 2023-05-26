@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class PumlDoclet implements Doclet{
-    private String path = "./";
-    private List<Object> options;
+    private PumlOptionPATH path;
+    private PumlOptionOUT out;
     private boolean isDcc = true;
     DocletEnvironment docletEnvironment;
     @Override
@@ -26,41 +26,10 @@ public class PumlDoclet implements Doclet{
     @Override
     public Set<? extends Option> getSupportedOptions() {
         Set<Option> options = new HashSet<>();
-        options.add(new Option() {
-            @Override
-            public int getArgumentCount() {
-                return 1;
-            }
-
-            @Override
-            public String getDescription() {
-                return "Permet de sélectionner le répertoire de sortie";
-            }
-
-            @Override
-            public Kind getKind() {
-                return Kind.EXTENDED;
-            }
-
-            @Override
-            public List<String> getNames() {
-                List<String> list = new ArrayList<>();
-                list.add("-d");
-                return list;
-            }
-
-            @Override
-            public String getParameters() {
-                return "-d <p1>";
-            }
-
-            @Override
-            public boolean process(String option, List<String> arguments) {
-                path+=arguments.get(0);
-                return true;
-            }
-        });
-        options.add(new PumlOptionOUT());
+        path = new PumlOptionPATH();
+        out = new PumlOptionOUT();
+        options.add(out);
+        options.add(path);
         options.add(new Option() {
             @Override
             public int getArgumentCount() {
@@ -95,7 +64,6 @@ public class PumlDoclet implements Doclet{
                 return true;
             }
         });
-        this.options = Arrays.stream(options.toArray()).toList();
         return options;
     }
 
@@ -117,14 +85,13 @@ public class PumlDoclet implements Doclet{
                 code = generateDca(environment);
             }
             String name;
-            if (((PumlOptionOUT)options.get(1)).getName()!=null){
-                name = ((PumlOptionOUT)options.get(1)).getName();
+            if (out.getName()!=null){
+                name = (out.getName());
             }
             else {
-                name = environment.getSpecifiedElements().toArray()[0].toString();
+                name = environment.getSpecifiedElements().toArray()[0].toString()+".puml";
             }
-
-            diagram.generatePuml(name, path, code);
+            diagram.generatePuml(name, path.getPath(), code);
         }
         catch (IOException e){
             System.out.println(e.getMessage());

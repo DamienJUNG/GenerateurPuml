@@ -20,11 +20,11 @@ public class PumlRelation implements PumlElement{
         else {
             int start = getType().indexOf("<")+1;
             int end = getType().indexOf(">");
-            return getSuperClass()+" o-> \""+getAccessLevel()+getSimpleName()+"[]"+"\" "+getType().substring(start, end);
+            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"[]"+"\" "+getType().substring(start, end);
         }
     }
     public String getMultipicity(){
-        if(getType().contains("<")){
+        if(element.asType().toString().contains("<")){
             return "0 .. *";
         }
         return "1";

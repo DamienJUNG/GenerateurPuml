@@ -1,21 +1,21 @@
 package pumlFromJava;
 
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.TypeElement;
-import java.lang.annotation.ElementType;
-import java.util.ArrayList;
+import javax.lang.model.element.*;
+import javax.lang.model.type.TypeKind;
 
 public class PumlMethod implements PumlElement {
+    private final PumlType type;
     private final Element element;
     public PumlMethod(Element element){
+
         this.element = element;
+        ExecutableElement executableElement = (ExecutableElement) element;
+        this.type = new PumlType(executableElement.getReturnType());
     }
 
     @Override
     public String getDccCode() {
-        return getAccessLevel()+" "+getSimpleName()+getAttributs()+getType()+getOthersModifiers();
+        return getAccessLevel()+" "+getSimpleName()+ getParameters()+getType()+getOthersModifiers();
     }
 
     @Override
@@ -33,12 +33,7 @@ public class PumlMethod implements PumlElement {
     }
 
     public String getType(){
-        StringBuilder str = new StringBuilder(element.asType().toString());
-        String type = str.subSequence(str.indexOf(")")+1,str.length()).toString();
-        if(!type.equals("void")){
-            return " : "+type;
-        }
-        return "";
+        return type.getDccCode();
     }
 
     public String getAccessLevel() {
@@ -52,10 +47,61 @@ public class PumlMethod implements PumlElement {
             return "-";
         }
     }
-    public String getAttributs(){
-        StringBuilder str = new StringBuilder(element.asType().toString());
-        return str.subSequence(0,str.indexOf(")")+1).toString();
+    public String getParameters(){
+
+        String revoi = "(";
+        ExecutableElement executableElement = (ExecutableElement) element;
+
+        if(executableElement.getParameters().size() == 0) {
+            return "()";
+        }
+
+        int i = executableElement.getParameters().size();
+        for (VariableElement parameter:executableElement.getParameters()) {
+            i--;
+            String type = "";
+
+            int index = 0;
+            //System.out.println(element.getSimpleName()+" "+parameter.getSimpleName());
+            if(parameter.asType().toString().contains(".")) {
+                index = parameter.asType().toString().lastIndexOf(".") + 1;
+            }
+            //
+            if(parameter.asType().getKind() == TypeKind.INT || parameter.asType().getKind() == TypeKind.BYTE || parameter.asType().getKind() == TypeKind.SHORT || parameter.asType().getKind() == TypeKind.LONG)
+            {
+                 type += "Integer";
+            }
+            /*
+            if (parameter.asType().getKind() == TypeKind.DECLARED){
+                element = ((DeclaredType) parameter.asType()).asElement();
+            }*/
+            else if(parameter.asType().getKind() == TypeKind.FLOAT || parameter.asType().getKind() == TypeKind.DOUBLE)
+            {
+                type += "Real";
+            }
+
+            else if(parameter.asType().getKind() == TypeKind.BOOLEAN)
+            {
+                type += "Boolean";
+            }
+
+            else {
+                type = parameter.asType().toString().substring(index);
+            }
+
+            revoi += parameter.getSimpleName().toString() +" : "+ type;
+
+            if(i != 0) {
+                revoi += ", ";
+            }
+        }
+        revoi += ")";
+
+        return revoi;
+        /*StringBuilder str = new StringBuilder(element.asType().toString());
+        return str.subSequence(0,str.indexOf(")")+1).toString();*/
     }
+
     public String getOthersModifiers(){
         String modifiers = "";
         if(element.getModifiers().contains(Modifier.ABSTRACT)){
