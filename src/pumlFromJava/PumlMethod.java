@@ -17,7 +17,7 @@ public class PumlMethod implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getAccessLevel()+" "+getSimpleName()+ getParameters()+getType()+getOthersModifiers();
+        return getAccessLevel()+" "+getSimpleName()+ getParameters()+getType()+getOthersModifiers()+getAnotation();
     }
 
     @Override
@@ -105,6 +105,19 @@ public class PumlMethod implements PumlElement {
             modifiers+=" {static}";
         }
         return modifiers;
+    }
+    public String getAnotation() {
+        int index = element.getAnnotationMirrors().toString().lastIndexOf(".")+1;
+
+        for(AnnotationMirror annotationMirror : element.getAnnotationMirrors())
+        {
+            if(element.getAnnotationMirrors().toString().substring(index).equals(annotationMirror.getAnnotationType().asElement().getSimpleName().toString()))
+            {
+                return " {redefines "+"::"+getSimpleName()+"}";
+            }
+        }
+
+        return "";
     }
 }
 
