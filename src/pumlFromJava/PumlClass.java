@@ -36,17 +36,20 @@ public class PumlClass implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}\n"+ getDccRelations()+"\n";
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDccAttributs()+"\n"+ getDccMethods()+"}\n"+ getDccRelations()+"\n";
     }
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+getOthersModifiers()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+getInterfaces()+getOthersModifiers()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
     }
 
     @Override
     public String getSimpleName() {
         return element.getSimpleName().toString();
+    }
+    public String getEnclosingElement(){
+        return element.getEnclosingElement().toString();
     }
     public String getKind() {
         return getOthersModifiers()+element.getKind().toString().toLowerCase();

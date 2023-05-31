@@ -15,13 +15,15 @@ public class PumlInterface implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+" <<interface>> {\n"+getMethods()+"}\n";
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+" <<interface>> {\n"+getMethods()+"}\n";
     }
     @Override
     public String getDcaCode() {
-       return getKind()+" "+getSimpleName()+getSuperClass()+" <<interface>> {}\n";
+       return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+" <<interface>> {}\n";
     }
-
+    public String getEnclosingElement(){
+        return element.getEnclosingElement().toString();
+    }
     @Override
     public String getSimpleName() {
         return element.getSimpleName().toString();

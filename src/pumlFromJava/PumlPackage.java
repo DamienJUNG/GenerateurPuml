@@ -28,12 +28,12 @@ public class PumlPackage implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+ getDccElements();
+        return getDccElements();
     }
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getSimpleName()+ getDcaElements();
+        return getDcaElements();
     }
 
     public String getKind(){
@@ -45,21 +45,17 @@ public class PumlPackage implements PumlElement {
         return element.asType().toString();
     }
     public String getDccElements(){
-        StringBuilder elementsCode;
-        elementsCode = new StringBuilder("{\n");
+        StringBuilder elementsCode=new StringBuilder("\n");
         for (PumlElement thing:elements) {
             elementsCode.append(thing.getDccCode()).append("\n");
         }
-        elementsCode.append("}\n");
         return elementsCode.toString();
     }
     public String getDcaElements(){
-        StringBuilder elementsCode;
-        elementsCode = new StringBuilder("{\n");
+        StringBuilder elementsCode = new StringBuilder("\n");
         for (PumlElement thing:elements) {
             elementsCode.append(thing.getDcaCode()).append("\n");
         }
-        elementsCode.append("}\n");
         return elementsCode.toString();
     }
 }

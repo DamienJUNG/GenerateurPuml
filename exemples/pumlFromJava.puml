@@ -10,28 +10,28 @@ skinparam classbordercolor red
 skinparam classattribute none
 skinparam classborderthickness 2
 
-package pumlFromJava{
-class Java2Puml {
+
+class pumlFromJava.Java2Puml {
 
 	+ <<Create>> Java2Puml()
 	+ main(args : String[]) {static}
 }
 
 
-class PumlDiagram {
+class pumlFromJava.PumlDiagram {
 
 	+ <<Create>> PumlDiagram()
 	+ generatePuml(fileName : String, path : String, code : String)
 }
 
 
-interface PumlElement <<interface>> {
+interface pumlFromJava.PumlElement <<interface>> {
 	+ getDccCode() : String {abstract}
 	+ getDcaCode() : String {abstract}
 	+ getSimpleName() : String {abstract}
 }
 
-class PumlEnumAttribut implements pumlFromJava.PumlElement {
+class pumlFromJava.PumlEnumAttribut implements pumlFromJava.PumlElement {
 
 	+ <<Create>> PumlEnumAttribut(element : Element)
 	+ getDccCode() : String {redefines ::getDccCode}
@@ -41,35 +41,7 @@ class PumlEnumAttribut implements pumlFromJava.PumlElement {
 	PumlEnumAttribut o-> "1\n -element" Element
 
 
-class PumlInterface implements pumlFromJava.PumlElement {
-
-	+ <<Create>> PumlInterface(element : Element)
-	+ getDccCode() : String {redefines ::getDccCode}
-	+ getDcaCode() : String {redefines ::getDcaCode}
-	+ getSimpleName() : String {redefines ::getSimpleName}
-	+ getKind() : String
-	- getMethods() : String
-	+ getSuperClass() : String
-}
-	PumlInterface o-> "1\n -element" Element
-	PumlInterface o-> "0 .. *\n -methods[]" PumlMethod
-
-
-class PumlPackage implements pumlFromJava.PumlElement {
-
-	+ <<Create>> PumlPackage(element : Element)
-	+ getDccCode() : String {redefines ::getDccCode}
-	+ getDcaCode() : String {redefines ::getDcaCode}
-	+ getKind() : String
-	+ getSimpleName() : String {redefines ::getSimpleName}
-	+ getDccElements() : String
-	+ getDcaElements() : String
-}
-	PumlPackage o-> "1\n -element" Element
-	PumlPackage o-> "0 .. *\n -elements[]" PumlElement
-
-
-class PumlOptionOUT implements jdk.javadoc.doclet.Doclet.Option {
+class pumlFromJava.PumlOptionOUT implements jdk.javadoc.doclet.Doclet.Option {
 	- name : String 
 
 	+ <<Create>> PumlOptionOUT()
@@ -83,7 +55,7 @@ class PumlOptionOUT implements jdk.javadoc.doclet.Doclet.Option {
 }
 
 
-class PumlOptionPATH implements jdk.javadoc.doclet.Doclet.Option {
+class pumlFromJava.PumlOptionPATH implements jdk.javadoc.doclet.Doclet.Option {
 	- path : String 
 
 	+ <<Create>> PumlOptionPATH()
@@ -97,7 +69,7 @@ class PumlOptionPATH implements jdk.javadoc.doclet.Doclet.Option {
 }
 
 
-class PumlDoclet implements jdk.javadoc.doclet.Doclet {
+class pumlFromJava.PumlDoclet implements jdk.javadoc.doclet.Doclet {
 	- isDcc : Boolean 
 
 	+ <<Create>> PumlDoclet()
@@ -114,76 +86,24 @@ class PumlDoclet implements jdk.javadoc.doclet.Doclet {
 	PumlDoclet o-> "1\n -docletEnvironment" DocletEnvironment
 
 
-class PumlEnum implements pumlFromJava.PumlElement {
-
-	+ <<Create>> PumlEnum(element : Element)
-	+ getDccCode() : String {redefines ::getDccCode}
-	+ getDcaCode() : String {redefines ::getDcaCode}
-	+ getSimpleName() : String {redefines ::getSimpleName}
-	+ getKind() : String
-	+ getDccAttributs() : String
-	+ getDcaAttributs() : String
-	+ getSuperClass() : String
-	+ getInterfaces() : String
-}
-	PumlEnum o-> "1\n -element" Element
-	PumlEnum o-> "0 .. *\n -attributs[]" PumlEnumAttribut
-
-
-class PumlConstructor extends pumlFromJava.PumlMethod {
+class pumlFromJava.PumlConstructor extends pumlFromJava.PumlMethod {
 
 	+ <<Create>> PumlConstructor(element : Element)
 	+ getDccCode() : String {redefines ::getDccCode}
 }
 
 
-class PumlRelation implements pumlFromJava.PumlElement {
-
-	+ <<Create>> PumlRelation(element : Element)
-	+ getDccCode() : String {redefines ::getDccCode}
-	+ getMultipicity() : String
-	+ getDcaCode() : String {redefines ::getDcaCode}
-	+ getAccessLevel() : String
-	+ getType() : String
-	+ getSuperClass() : String
-	+ getSimpleName() : String {redefines ::getSimpleName}
-}
-	PumlRelation o-> "1\n -element" Element
-
-
-class PumlClass implements pumlFromJava.PumlElement {
-
-	+ <<Create>> PumlClass(element : Element)
-	+ getDccCode() : String {redefines ::getDccCode}
-	+ getDcaCode() : String {redefines ::getDcaCode}
-	+ getSimpleName() : String {redefines ::getSimpleName}
-	+ getKind() : String
-	- getDccAttributs() : String
-	- getDcaAttributs() : String
-	- getDccMethods() : String
-	+ getSuperClass() : String
-	+ getInterfaces() : String
-	+ getDccRelations() : String
-	+ getDcaRelations() : String
-	+ getOthersModifiers() : String
-}
-	PumlClass o-> "1\n -element" Element
-	PumlClass o-> "0 .. *\n -attributs[]" PumlAttribut
-	PumlClass o-> "0 .. *\n -methods[]" PumlMethod
-	PumlClass o-> "0 .. *\n -relations[]" PumlRelation
-
-
-class PumlAccessLevel implements pumlFromJava.PumlElement {
+class pumlFromJava.PumlAccessLevel implements pumlFromJava.PumlElement {
 
 	+ <<Create>> PumlAccessLevel(modifiers : Modifier>)
 	+ getDccCode() : String {redefines ::getDccCode}
 	+ getDcaCode() : String {redefines ::getDcaCode}
 	+ getSimpleName() : String {redefines ::getSimpleName}
 }
-	PumlAccessLevel o-> "0 .. *\n -modifiers[]" Modifier
+	PumlAccessLevel o-> "0 .. *\n -modifiers" Modifier
 
 
-class PumlAttribut implements pumlFromJava.PumlElement {
+class pumlFromJava.PumlAttribut implements pumlFromJava.PumlElement {
 
 	+ <<Create>> PumlAttribut(element : Element)
 	+ getDccCode() : String {redefines ::getDccCode}
@@ -198,7 +118,7 @@ class PumlAttribut implements pumlFromJava.PumlElement {
 	PumlAttribut o-> "1\n -accessLevel" PumlAccessLevel
 
 
-class PumlType implements pumlFromJava.PumlElement {
+class pumlFromJava.PumlType implements pumlFromJava.PumlElement {
 
 	+ <<Create>> PumlType(type : TypeMirror)
 	+ getDccCode() : String {redefines ::getDccCode}
@@ -208,7 +128,7 @@ class PumlType implements pumlFromJava.PumlElement {
 	PumlType o-> "1\n -type" TypeMirror
 
 
-class PumlMethod implements pumlFromJava.PumlElement {
+class pumlFromJava.PumlMethod implements pumlFromJava.PumlElement {
 
 	+ <<Create>> PumlMethod(element : Element)
 	+ getDccCode() : String {redefines ::getDccCode}
@@ -226,7 +146,89 @@ class PumlMethod implements pumlFromJava.PumlElement {
 	PumlMethod o-> "1\n -accessLevel" PumlAccessLevel
 
 
+class pumlFromJava.PumlRelation implements pumlFromJava.PumlElement {
+
+	+ <<Create>> PumlRelation(element : Element)
+	+ getDccCode() : String {redefines ::getDccCode}
+	+ getMultipicity() : String
+	+ getDcaCode() : String {redefines ::getDcaCode}
+	+ getAccessLevel() : String
+	+ getType() : String
+	+ getSuperClass() : String
+	+ getSimpleName() : String {redefines ::getSimpleName}
 }
+	PumlRelation o-> "1\n -element" Element
+
+
+class pumlFromJava.PumlPackage implements pumlFromJava.PumlElement {
+
+	+ <<Create>> PumlPackage(element : Element)
+	+ getDccCode() : String {redefines ::getDccCode}
+	+ getDcaCode() : String {redefines ::getDcaCode}
+	+ getKind() : String
+	+ getSimpleName() : String {redefines ::getSimpleName}
+	+ getDccElements() : String
+	+ getDcaElements() : String
+}
+	PumlPackage o-> "1\n -element" Element
+	PumlPackage o-> "0 .. *\n -elements" PumlElement
+
+
+class pumlFromJava.PumlEnum implements pumlFromJava.PumlElement {
+
+	+ <<Create>> PumlEnum(element : Element)
+	+ getDccCode() : String {redefines ::getDccCode}
+	+ getDcaCode() : String {redefines ::getDcaCode}
+	+ getEnclosingElement() : String
+	+ getSimpleName() : String {redefines ::getSimpleName}
+	+ getKind() : String
+	+ getDccAttributs() : String
+	+ getDcaAttributs() : String
+	+ getSuperClass() : String
+	+ getInterfaces() : String
+}
+	PumlEnum o-> "1\n -element" Element
+	PumlEnum o-> "0 .. *\n -attributs" PumlEnumAttribut
+
+
+class pumlFromJava.PumlClass implements pumlFromJava.PumlElement {
+
+	+ <<Create>> PumlClass(element : Element)
+	+ getDccCode() : String {redefines ::getDccCode}
+	+ getDcaCode() : String {redefines ::getDcaCode}
+	+ getSimpleName() : String {redefines ::getSimpleName}
+	+ getEnclosingElement() : String
+	+ getKind() : String
+	- getDccAttributs() : String
+	- getDcaAttributs() : String
+	- getDccMethods() : String
+	+ getSuperClass() : String
+	+ getInterfaces() : String
+	+ getDccRelations() : String
+	+ getDcaRelations() : String
+	+ getOthersModifiers() : String
+}
+	PumlClass o-> "1\n -element" Element
+	PumlClass o-> "0 .. *\n -attributs" PumlAttribut
+	PumlClass o-> "0 .. *\n -methods" PumlMethod
+	PumlClass o-> "0 .. *\n -relations" PumlRelation
+
+
+class pumlFromJava.PumlInterface implements pumlFromJava.PumlElement {
+
+	+ <<Create>> PumlInterface(element : Element)
+	+ getDccCode() : String {redefines ::getDccCode}
+	+ getDcaCode() : String {redefines ::getDcaCode}
+	+ getEnclosingElement() : String
+	+ getSimpleName() : String {redefines ::getSimpleName}
+	+ getKind() : String
+	- getMethods() : String
+	+ getSuperClass() : String
+}
+	PumlInterface o-> "1\n -element" Element
+	PumlInterface o-> "0 .. *\n -methods" PumlMethod
+
+
 
 
 @enduml

@@ -18,14 +18,16 @@ public class PumlEnum implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+getInterfaces()+" <<enum>> {\n"+ getDccAttributs()+"\n"+"}";
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+getInterfaces()+" <<enum>> {\n"+ getDccAttributs()+"\n"+"}";
     }
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getSimpleName()+getSuperClass()+" <<enum>> {\n"+ getDcaAttributs()+"}";
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+" <<enum>> {\n"+ getDcaAttributs()+"}";
     }
-
+    public String getEnclosingElement(){
+        return element.getEnclosingElement().toString();
+    }
     @Override
     public String getSimpleName() {
         return element.getSimpleName().toString();

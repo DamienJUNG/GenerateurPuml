@@ -20,7 +20,7 @@ public class PumlRelation implements PumlElement{
         else {
             int start = getType().indexOf("<")+1;
             int end = getType().indexOf(">");
-            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"[]"+"\" "+getType().substring(start, end);
+            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType().substring(start, end);
         }
     }
     public String getMultipicity(){
