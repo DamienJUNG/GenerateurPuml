@@ -8,8 +8,11 @@ import javax.lang.model.type.TypeKind;
 public class PumlAttribut implements PumlElement {
     private final Element element;
     private final PumlType type;
+    PumlAccessLevel accessLevel;
+
     public PumlAttribut(Element element){
         this.element = element;
+        accessLevel = new PumlAccessLevel(element.getModifiers());
         type = new PumlType(element.asType());
     }
 
@@ -32,15 +35,7 @@ public class PumlAttribut implements PumlElement {
         return type.getDccCode();
     }
     public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "#";
-        }
-        else{
-            return "-";
-        }
+        return accessLevel.getDccCode();
     }
     public String getOthersModifiers(){
         String modifiers = "";

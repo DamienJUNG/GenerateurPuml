@@ -6,10 +6,12 @@ import javax.lang.model.type.TypeKind;
 public class PumlMethod implements PumlElement {
     private final PumlType type;
     private final Element element;
+    private final PumlAccessLevel accessLevel;
     public PumlMethod(Element element){
 
         this.element = element;
         ExecutableElement executableElement = (ExecutableElement) element;
+        accessLevel = new PumlAccessLevel(element.getModifiers());
         this.type = new PumlType(executableElement.getReturnType());
     }
 
@@ -37,17 +39,9 @@ public class PumlMethod implements PumlElement {
     }
 
     public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return "+";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return "#";
-        }
-        else{
-            return "-";
-        }
+        return accessLevel.getDccCode();
     }
-    public String getParameters(){
+    public String getParameters() {
 
         String revoi = "(";
         ExecutableElement executableElement = (ExecutableElement) element;

@@ -15,7 +15,7 @@ interface HorsLaLoi <<interface>> {
 	+ kidnapper(dame : Dame) {abstract}
 	+ seFaireCapturer(cowboy : Cowboy) {abstract}
 	+ getPrime() : Integer {abstract}
-	+ getSesDames() : Dame {abstract}
+	+ getSesDames() : Dame[*] {abstract}
 	+ getPseudo() : String {abstract}
 	+ repondre(cowboy : Cowboy) {abstract}
 }
@@ -49,24 +49,6 @@ abstract class Personnage {
 }
 	Personnage o-> "1\n #BOISSON_PAR_DEFAUT" Boisson
 	Personnage o-> "1\n #boisson" Boisson
-
-
-class Cowboy extends western.Personnage {
-	# replique : String 
-	# recompense : Integer 
-
-	+ <<Create>> Cowboy(nom : String, boisson : Boisson, replique : String)
-	+ <<Create>> Cowboy(nom : String, boisson : Boisson)
-	+ <<Create>> Cowboy(nom : String)
-	+ getVilains() : String
-	+ setReplique(replique : String)
-	+ getPseudo() : String
-	+ sePresenter()
-	+ direReplique()
-	+ tirerSur(vilain : HorsLaLoi)
-	+ capturer(vilain : HorsLaLoi)
-}
-	Cowboy o-> "0 .. *\n -vilains[]" HorsLaLoi
 
 
 class Boisson {
@@ -106,12 +88,6 @@ class Substantif {
 	Substantif o-> "1\n -genre" Genre
 
 
-enum Genre <<enum>> {
-	FEMININ
-	MASCULIN
-
-
-}
 class Histoire3 {
 
 	+ <<Create>> Histoire3()
@@ -150,7 +126,7 @@ class Ripou extends western.Cowboy implements western.HorsLaLoi {
 	+ <<Create>> Ripou(nom : String, boisson : Boisson)
 	+ <<Create>> Ripou(nom : String)
 	+ kidnapper(dame : Dame)
-	+ getSesDames() : Dame
+	+ getSesDames() : Dame[*]
 	+ seFaireCapturer(cowboy : Cowboy)
 	+ getPseudo() : String
 	+ repondre(cowboy : Cowboy)
@@ -174,7 +150,7 @@ class Brigand extends western.Personnage implements western.HorsLaLoi {
 	+ kidnapper(dame : Dame)
 	+ getEstLibre() : Boolean
 	+ getGeolier() : Cowboy
-	+ getSesDames() : Dame
+	+ getSesDames() : Dame[*]
 	+ seFaireCapturer(cowboy : Cowboy)
 	+ getPseudo() : String
 	+ repondre(cowboy : Cowboy)
@@ -189,6 +165,33 @@ class Histoire1 {
 	+ <<Create>> Histoire1()
 	+ main(args : String[]) {static}
 }
+
+
+enum Genre <<enum>> {
+	FEMININ
+	MASCULIN
+
+
+}
+class Cowboy extends western.Personnage {
+	# replique : String 
+	# recompense : Integer 
+
+	+ <<Create>> Cowboy(nom : String, boisson : Boisson, replique : String)
+	+ <<Create>> Cowboy(nom : String, boisson : Boisson)
+	+ <<Create>> Cowboy(nom : String)
+	+ getVilains() : String
+	+ setReplique(replique : String)
+	+ tkt() : Dame[*][*]
+	+ oups() : Boolean[*][*][*]
+	+ encore() : Boolean[*][*]
+	+ getPseudo() : String
+	+ sePresenter()
+	+ direReplique()
+	+ tirerSur(vilain : HorsLaLoi)
+	+ capturer(vilain : HorsLaLoi)
+}
+	Cowboy o-> "0 .. *\n -vilains[]" HorsLaLoi
 
 
 }
