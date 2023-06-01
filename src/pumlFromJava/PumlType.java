@@ -18,13 +18,13 @@ public class PumlType implements PumlElement{
     public String getDccCode() {
         switch (type.getKind()){
             case INT,BYTE,SHORT,LONG-> {
-                return " : Integer";
+                return " Integer";
             }
             case FLOAT,DOUBLE -> {
-                return " : Real";
+                return " Real";
             }
             case BOOLEAN -> {
-                return " : Boolean";
+                return " Boolean";
             }
             case VOID -> {
                 return "";
@@ -35,7 +35,6 @@ public class PumlType implements PumlElement{
             }
             case DECLARED -> {
                 DeclaredType declaredType = (DeclaredType) type;
-                System.out.println(getSimpleName()+" - "+declaredType.getTypeArguments());
                 if (declaredType.getTypeArguments().size()>0){
                     int taille = declaredType.getTypeArguments().size()-1;
                     PumlType innerType = new PumlType(declaredType.getTypeArguments().get(taille));
@@ -44,14 +43,16 @@ public class PumlType implements PumlElement{
                     }
                     return innerType.getDccCode();
                 }
+                else if(!type.toString().equals("java.lang.String")){
+                    return declaredType.asElement().asType().toString();
+                }
                 else {
-                    int start = declaredType.asElement().asType().toString().lastIndexOf(".")+1;
-                    return " : "+declaredType.asElement().asType().toString().substring(start);
+                    return "String";
                 }
             }
             default -> {
             int index = type.toString().lastIndexOf(".")+1;
-            return " : "+type.toString().substring(index);
+            return type.toString().substring(index);
             }
         }
 
@@ -65,5 +66,8 @@ public class PumlType implements PumlElement{
     @Override
     public String getSimpleName() {
         return type.toString();
+    }
+    public String getLongName(){
+        return getDccCode().replace("[*]", "");
     }
 }

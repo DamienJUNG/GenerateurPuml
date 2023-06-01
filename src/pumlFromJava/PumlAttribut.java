@@ -32,7 +32,7 @@ public class PumlAttribut implements PumlElement {
     }
 
     public String getType(){
-        return type.getDccCode();
+        return " : "+type.getDccCode();
     }
     public String getAccessLevel() {
         return accessLevel.getDccCode();

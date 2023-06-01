@@ -41,7 +41,7 @@ public class PumlClass implements PumlElement {
 
     @Override
     public String getDcaCode() {
-        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+getInterfaces()+getOthersModifiers()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+getInterfaces()+" {\n"+ getDcaAttributs()+"}\n"+ getDcaRelations();
     }
 
     @Override

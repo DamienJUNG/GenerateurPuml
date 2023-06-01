@@ -13,7 +13,7 @@ import java.util.*;
 public class PumlDoclet implements Doclet{
     private PumlOptionPATH path;
     private PumlOptionOUT out;
-    private boolean isDcc = true;
+    private PumlOptionDCC dcc;
     DocletEnvironment docletEnvironment;
     @Override
     public void init(Locale locale, Reporter reporter) {  }
@@ -28,42 +28,10 @@ public class PumlDoclet implements Doclet{
         Set<Option> options = new HashSet<>();
         path = new PumlOptionPATH();
         out = new PumlOptionOUT();
+        dcc = new  PumlOptionDCC();
         options.add(out);
         options.add(path);
-        options.add(new Option() {
-            @Override
-            public int getArgumentCount() {
-                return 0;
-            }
-
-            @Override
-            public String getDescription() {
-                return "Demande au programme de générer un DCa";
-            }
-
-            @Override
-            public Kind getKind() {
-                return Kind.EXTENDED;
-            }
-
-            @Override
-            public List<String> getNames() {
-                List<String> list = new ArrayList<>();
-                list.add("--dca");
-                return list;
-            }
-
-            @Override
-            public String getParameters() {
-                return "--dca";
-            }
-
-            @Override
-            public boolean process(String option, List<String> arguments) {
-                isDcc = false;
-                return true;
-            }
-        });
+        options.add(dcc);
         return options;
     }
 
@@ -78,7 +46,7 @@ public class PumlDoclet implements Doclet{
             PumlDiagram diagram = new PumlDiagram();
         try {
             String code;
-            if (isDcc){
+            if (dcc.isDcc()){
                 code = generateDcc(environment);
             }
             else {

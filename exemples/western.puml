@@ -10,191 +10,67 @@ skinparam classbordercolor red
 skinparam classattribute none
 skinparam classborderthickness 2
 
-package western{
-interface HorsLaLoi <<interface>> {
-	+ kidnapper(dame : Dame) {abstract}
-	+ seFaireCapturer(cowboy : Cowboy) {abstract}
-	+ getPrime() : Integer {abstract}
-	+ getSesDames() : Dame[*] {abstract}
-	+ getPseudo() : String {abstract}
-	+ repondre(cowboy : Cowboy) {abstract}
+
+interface western.HorsLaLoi <<interface>> {}
+
+class western.Dame extends western.Personnage {
+	estlibre
+}
+	Dame - western.HorsLaLoi
+
+abstract class western.Personnage {
+	nom
+}
+	Personnage - western.Boisson
+	Personnage - western.Boisson
+
+class western.Boisson {
+}
+	Boisson - western.Substantif
+
+class western.Substantif {
+	nom
+}
+	Substantif - western.Genre
+
+class western.Histoire3 {
 }
 
-class Dame extends western.Personnage {
-	- estlibre : Boolean 
-
-	+ <<Create>> Dame(nom : String, boisson : Boisson)
-	+ <<Create>> Dame(nom : String)
-	+ getGeolier() : HorsLaLoi
-	+ seFaitEnlever(vilain : HorsLaLoi)
-	+ seFaitSauver(cowboy : Cowboy)
-	+ getPseudo() : String
-	+ sePresenter()
-}
-	Dame o-> "1\n -geolier" HorsLaLoi
-
-
-abstract class Personnage {
-	# nom : String 
-
-	+ <<Create>> Personnage(nom : String)
-	+ getPseudo() : String {abstract}
-	+ <<Create>> Personnage(nom : String, boisson : Boisson)
-	+ dire(texte : String)
-	+ sePresenter()
-	+ boire(boisson : Boisson)
-	+ boire()
-	+ getNom() : String
-	+ getBoisson() : Boisson
-}
-	Personnage o-> "1\n #BOISSON_PAR_DEFAUT" Boisson
-	Personnage o-> "1\n #boisson" Boisson
-
-
-class Boisson {
-
-	+ <<Create>> Boisson(nom : String, genre : Genre)
-	+ getNom() : String
-	+ getGenre() : Genre
-	+ getNomAvecArticleIndefini() : String
-	+ getNomAvecArticlePartitif() : String
-	+ getNomAvecArticleDefini() : String
-	+ getNomAvecPreposition(preposition : String) : String
-}
-	Boisson o-> "1\n -substantif" Substantif
-
-
-class Substantif {
-	- nom : String 
-
-	+ <<Create>> Substantif(nom : String, genre : Genre)
-	+ getNom() : String
-	+ getGenre() : Genre
-	+ toString() : String
-	+ isVowel(c : char) : Boolean {static}
-	+ startsWithVowel(s : String) : Boolean {static}
-	+ getArticleIndefini() : String
-	+ avecArticleIndefini() : String
-	+ getArticleDefini(genre : Genre) : String {static}
-	+ getArticleDefini() : String
-	+ avecArticleDefini() : String
-	+ faireElision(article : String) : String {static}
-	+ elision() : Boolean
-	+ getArticlePartitif() : String
-	+ avecArticlePartitif() : String
-	+ avecElision(article : String) : String
-	+ avecPreposition(preposition : String) : String
-}
-	Substantif o-> "1\n -genre" Genre
-
-
-class Histoire3 {
-
-	+ <<Create>> Histoire3()
-	+ main(args : String[]) {static}
+class western.Histoire4 {
 }
 
-
-class Histoire4 {
-
-	+ <<Create>> Histoire4()
-	+ main(args : String[]) {static}
+class western.HistoireTest {
 }
 
-
-class HistoireTest {
-
-	+ <<Create>> HistoireTest()
-	+ main(args : String[]) {static}
+class western.Narrateur extends western.Personnage {
 }
 
+class western.Ripou extends western.Cowboy implements western.HorsLaLoi {
+}
+	Ripou - western.Brigand
 
-class Narrateur extends western.Personnage {
+class western.Brigand extends western.Personnage implements western.HorsLaLoi {
+	estLibre
+	look
+	prime
+}
+	Brigand - western.Cowboy
+	Brigand - western.Dame
 
-	+ <<Create>> Narrateur(nom : String)
-	+ boire(boisson : Boisson)
-	+ sePresenter()
-	+ getPseudo() : String
-	+ dire(texte : String)
+class western.Histoire1 {
 }
 
-
-class Ripou extends western.Cowboy implements western.HorsLaLoi {
-
-	+ <<Create>> Ripou(nom : String, boisson : Boisson, look : String)
-	+ <<Create>> Ripou(nom : String, look : String)
-	+ <<Create>> Ripou(nom : String, boisson : Boisson)
-	+ <<Create>> Ripou(nom : String)
-	+ kidnapper(dame : Dame)
-	+ getSesDames() : Dame[*]
-	+ seFaireCapturer(cowboy : Cowboy)
-	+ getPseudo() : String
-	+ repondre(cowboy : Cowboy)
-	+ sePresenter()
-	+ capturer(vilain : HorsLaLoi)
-	+ getPrime() : Integer
-}
-	Ripou o-> "1\n -brigand" Brigand
-
-
-class Brigand extends western.Personnage implements western.HorsLaLoi {
-	- estLibre : Boolean 
-	- look : String 
-	- prime : Integer 
-
-	+ <<Create>> Brigand(nom : String, boisson : Boisson, look : String)
-	+ <<Create>> Brigand(nom : String, look : String)
-	+ <<Create>> Brigand(nom : String, boisson : Boisson)
-	+ <<Create>> Brigand(nom : String)
-	+ getPrime() : Integer
-	+ kidnapper(dame : Dame)
-	+ getEstLibre() : Boolean
-	+ getGeolier() : Cowboy
-	+ getSesDames() : Dame[*]
-	+ seFaireCapturer(cowboy : Cowboy)
-	+ getPseudo() : String
-	+ repondre(cowboy : Cowboy)
-	+ sePresenter()
-}
-	Brigand o-> "1\n -geolier" Cowboy
-	Brigand o-> "0 .. *\n -sesDames[]" Dame
-
-
-class Histoire1 {
-
-	+ <<Create>> Histoire1()
-	+ main(args : String[]) {static}
-}
-
-
-enum Genre <<enum>> {
+enum western.Genre <<enum>> {
 	FEMININ
 	MASCULIN
 
-
 }
-class Cowboy extends western.Personnage {
-	# replique : String 
-	# recompense : Integer 
-
-	+ <<Create>> Cowboy(nom : String, boisson : Boisson, replique : String)
-	+ <<Create>> Cowboy(nom : String, boisson : Boisson)
-	+ <<Create>> Cowboy(nom : String)
-	+ getVilains() : String
-	+ setReplique(replique : String)
-	+ tkt() : Dame[*][*]
-	+ oups() : Boolean[*][*][*]
-	+ encore() : Boolean[*][*]
-	+ getPseudo() : String
-	+ sePresenter()
-	+ direReplique()
-	+ tirerSur(vilain : HorsLaLoi)
-	+ capturer(vilain : HorsLaLoi)
+class western.Cowboy extends western.Personnage {
+	replique
+	recompense
 }
-	Cowboy o-> "0 .. *\n -vilains[]" HorsLaLoi
+	Cowboy - western.HorsLaLoi
 
-
-}
 
 
 @enduml

@@ -11,8 +11,8 @@ public class PumlMethod implements PumlElement {
 
         this.element = element;
         ExecutableElement executableElement = (ExecutableElement) element;
-        accessLevel = new PumlAccessLevel(element.getModifiers());
         this.type = new PumlType(executableElement.getReturnType());
+        accessLevel = new PumlAccessLevel(element.getModifiers());
     }
 
     @Override
@@ -35,7 +35,10 @@ public class PumlMethod implements PumlElement {
     }
 
     public String getType(){
-        return type.getDccCode();
+        if (type.getDccCode().equals("")){
+            return "";
+        }
+        return " : "+type.getDccCode();
     }
 
     public String getAccessLevel() {
@@ -43,12 +46,12 @@ public class PumlMethod implements PumlElement {
     }
     public String getParameters() {
 
-        String revoi = "(";
         ExecutableElement executableElement = (ExecutableElement) element;
-
         if(executableElement.getParameters().size() == 0) {
             return "()";
         }
+        String renvoi = "(";
+
 
         int i = executableElement.getParameters().size();
         for (VariableElement parameter:executableElement.getParameters()) {
@@ -65,10 +68,6 @@ public class PumlMethod implements PumlElement {
             {
                  type += "Integer";
             }
-            /*
-            if (parameter.asType().getKind() == TypeKind.DECLARED){
-                element = ((DeclaredType) parameter.asType()).asElement();
-            }*/
             else if(parameter.asType().getKind() == TypeKind.FLOAT || parameter.asType().getKind() == TypeKind.DOUBLE)
             {
                 type += "Real";
@@ -83,17 +82,15 @@ public class PumlMethod implements PumlElement {
                 type = parameter.asType().toString().substring(index);
             }
 
-            revoi += parameter.getSimpleName().toString() +" : "+ type;
+            renvoi += parameter.getSimpleName().toString() +" : "+ type;
 
             if(i != 0) {
-                revoi += ", ";
+                renvoi += ", ";
             }
         }
-        revoi += ")";
+        renvoi += ")";
 
-        return revoi;
-        /*StringBuilder str = new StringBuilder(element.asType().toString());
-        return str.subSequence(0,str.indexOf(")")+1).toString();*/
+        return renvoi;
     }
 
     public String getOthersModifiers(){

@@ -1,27 +1,19 @@
 package pumlFromJava;
 
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.*;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
 public class PumlRelation implements PumlElement{
     private final Element element;
+    private final PumlType type;
     public PumlRelation(Element element) {
         this.element = element;
+        this.type = new PumlType(element.asType());
     }
     @Override
     public String getDccCode() {
-        if (!element.asType().toString().contains("<")){
-            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType();
-        }
-        else {
-            int start = getType().indexOf("<")+1;
-            int end = getType().indexOf(">");
-            return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType().substring(start, end);
-        }
+        return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType();
     }
     public String getMultipicity(){
         if(element.asType().toString().contains("<")){
@@ -32,17 +24,7 @@ public class PumlRelation implements PumlElement{
 
     @Override
     public String getDcaCode() {
-        if (element.asType().toString().contains("enum")){
-            return "";
-        }
-        else if(!element.asType().toString().contains("<")){
-            return getSuperClass()+" - "+getType();
-        }
-        else {
-            int start = getType().indexOf("<")+1;
-            int end = getType().indexOf(">");
-            return getSuperClass()+" -> "+getType().substring(start, end);
-        }
+        return getSuperClass()+" - "+getType();
     }
     public String getAccessLevel() {
         if(element.getModifiers().contains(Modifier.PUBLIC)){
@@ -56,11 +38,7 @@ public class PumlRelation implements PumlElement{
         }
     }
     public String getType() {
-        if (element.asType().toString().contains(".")){
-            int index = element.asType().toString().lastIndexOf(".")+1;
-            return element.asType().toString().substring(index);
-        }
-        return element.asType().toString();
+        return type.getLongName();
     }
     public String getSuperClass() {
         return element.getEnclosingElement().getSimpleName().toString();
