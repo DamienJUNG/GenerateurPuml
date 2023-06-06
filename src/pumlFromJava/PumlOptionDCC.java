@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PumlOptionDCC implements Doclet.Option{
     public PumlOptionDCC(){}
-    boolean isDcc;
+    boolean isDcc=true;
     @Override
     public int getArgumentCount() {
         return 0;

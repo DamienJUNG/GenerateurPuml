@@ -6,8 +6,23 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PumlClass implements PumlElement {
+    static ArrayList<String> primitiveObjects = new ArrayList<>();
+    static {
+        primitiveObjects.add("java.lang.String");
+        primitiveObjects.add("java.lang.Integer");
+        primitiveObjects.add("java.lang.Boolean");
+        primitiveObjects.add("java.lang.Character");
+        primitiveObjects.add("java.lang.Double");
+        primitiveObjects.add("java.lang.Float");
+        primitiveObjects.add("java.lang.Byte");
+        primitiveObjects.add("java.lang.Long");
+        primitiveObjects.add("java.lang.Short");
+        primitiveObjects.add("int");
+        primitiveObjects.add("long");
+    }
     private final Element element;
     private final ArrayList<PumlAttribut> attributs = new ArrayList<>();
     private final ArrayList<PumlMethod> methods = new ArrayList<>();
@@ -15,8 +30,15 @@ public class PumlClass implements PumlElement {
     public PumlClass(Element element){
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {
+            boolean isPrimitive = false;
             if(thing.getKind()== ElementKind.FIELD){
-                if (thing.asType().getKind()!=TypeKind.DECLARED || thing.asType().toString().equals("java.lang.String")){
+                for (String str:PumlClass.primitiveObjects) {
+                    if(thing.asType().toString().contains(str)){
+                        isPrimitive = true;
+                    }
+                }
+                System.out.println(thing.getSimpleName()+" - "+thing.asType().toString()+" - "+isPrimitive+" - "+thing.asType().getKind().isPrimitive());
+                if (thing.asType().getKind().isPrimitive() || isPrimitive){
                     attributs.add(new PumlAttribut(thing));
                 }
                 else {

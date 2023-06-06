@@ -1,7 +1,9 @@
 package pumlFromJava;
 
 import javax.lang.model.element.*;
+import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.TypeKind;
+import javax.lang.model.type.TypeMirror;
 
 public class PumlMethod implements PumlElement {
     private final PumlType type;
@@ -17,7 +19,7 @@ public class PumlMethod implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getAccessLevel()+" "+getSimpleName()+ getParameters()+getType()+getOthersModifiers()+getAnotation();
+        return getAccessLevel()+" "+getSimpleName()+ getParameters()+getType()+getOthersModifiers()+ getAnnotation();
     }
 
     @Override
@@ -101,16 +103,49 @@ public class PumlMethod implements PumlElement {
         if(element.getModifiers().contains(Modifier.STATIC)){
             modifiers+=" {static}";
         }
+        if(element.getModifiers().contains(Modifier.FINAL)){
+            modifiers+=" {ReadOnly}";
+        }
         return modifiers;
     }
-    public String getAnotation() {
-        int index = element.getAnnotationMirrors().toString().lastIndexOf(".")+1;
-
+    public String getAnnotation() {
         for(AnnotationMirror annotationMirror : element.getAnnotationMirrors())
         {
-            if(element.getAnnotationMirrors().toString().substring(index).equals(annotationMirror.getAnnotationType().asElement().getSimpleName().toString()))
+            if(annotationMirror.getAnnotationType().asElement().getSimpleName().toString().equals("Override"))
             {
-                return " {redefines "+"::"+getSimpleName()+"}";
+                String superThing="";
+                /*boolean redefines = false;
+                while(!redefines){
+                      TypeElement superElement = (TypeElement) ((DeclaredType) element.getEnclosingElement().asType()).asElement();
+                      for(TypeMirror typeMirror : superElement.getInterfaces()){
+                          TypeElement superInterface = ((TypeElement)(((DeclaredType)typeMirror).asElement()));
+                          while (!superInterface.getInterfaces().isEmpty()){
+                              for (Element element:superInterface.getEnclosedElements()) {
+                                  if(element.getSimpleName().toString().equals(getSimpleName())){
+                                  superThing = element.getEnclosingElement().toString();
+                                  redefines=true;
+                                  }
+                              }
+                          }
+                      }
+                      while (!redefines){
+                          for (Element element : ((DeclaredType)(superElement.getSuperclass())).asElement().getEnclosedElements()){
+                              if(element.getSimpleName().toString().equals(getSimpleName())){
+                                  superThing = element.getEnclosingElement().toString();
+                                  redefines=true;
+                              }
+             <             }
+                          if(!superElement.getSuperclass().toString().equals("java.lang.Object")){
+                              System.out.println(getSimpleName()+" "+superElement.getEnclosingElement());
+                              superElement = (TypeElement) ((DeclaredType) superElement.getEnclosingElement().asType()).asElement();
+                          }
+                          else {
+                              superThing="java.lang.Object";
+                              redefines=true;
+                          }
+                      }
+                }*/
+                return " {redefines "+superThing+"::"+getSimpleName()+"}";
             }
         }
 

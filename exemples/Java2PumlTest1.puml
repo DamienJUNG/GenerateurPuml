@@ -1,0 +1,116 @@
+@startuml
+
+'Code généré automatiquement ;>
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classbackgroundColor LightGoldenRodYellow
+skinparam classbordercolor red
+skinparam classattribute none
+skinparam classborderthickness 2
+
+
+class Java2PumlTest1.Java2PumlTest1 {
+
+	+ <<Create>> Java2PumlTest1()
+}
+
+
+class Java2PumlTest1.A {
+	- anInt :  Integer 
+	# aShort :  Integer 
+	- aLong :  Integer 
+	+ aByte :  Integer 
+	- aFloat :  Real 
+	# aDouble :  Real  {static}
+	- aChar : char  {static}
+	+ aBoolean :  Boolean  {static}
+
+	- <<Create>> A()
+	- anIntFunction(anIntParam : Integer) :  Integer
+	# aShortFunction(aShortParam : Integer) :  Integer
+	- aLongFunction(aLongParam : Integer) :  Integer
+	+ aByteFunction(aByteParam : Integer) :  Integer
+	- aFloatFunction(aFloatParam : Real) :  Real {static}
+	# aDoubleFunction(aDoubleParam : Real) :  Real {static}
+	- aCharFunction(aCharParam : char) : char {static}
+	+ aBooleanFunction(aBooleanParam : Boolean) :  Boolean {static}
+}
+
+
+abstract class Java2PumlTest1.B {
+	- anInteger : java.lang.Integer 
+	# aShort : java.lang.Short 
+	- aLong : java.lang.Long 
+	+ aByte : java.lang.Byte 
+	- aFloat : java.lang.Float 
+	# aDouble : java.lang.Double  {static}
+	- aCharacter : java.lang.Character  {static}
+	+ aBoolean : java.lang.Boolean  {static}
+
+	- <<Create>> B()
+	- anIntFunction(anIntParam : Integer) : java.lang.Integer
+	# aShortFunction(aShortParam : Short) : java.lang.Short
+	- aLongFunction(aLongParam : Long) : java.lang.Long
+	+ aByteFunction(aByteParam : Byte) : java.lang.Byte
+	- aFloatFunction(aFloatParam : Float) : java.lang.Float
+	# aDoubleFunction(aDoubleParam : Double) : java.lang.Double {abstract}
+	- aCharacterFunction(aCharacterParam : Character) : java.lang.Character {static}
+	+ aBooleanFunction(aBooleanParam : Boolean) : java.lang.Boolean {static}
+}
+
+
+class Java2PumlTest1.C {
+	- anIntArray :  Integer[*] 
+	# aShortArray : java.lang.Short[*] 
+	- anArrayOfLongArray :  Integer[*][*] 
+	+ anArrayOfByteArray : java.lang.Byte[*][*] 
+	- aFloatList : java.lang.Float[*] 
+	# aListOfDoubleList : java.lang.Double[*][*]  {static}
+	- aSetOfCharacter : java.lang.Character[*]  {static}
+	+ aSetOfBooleanList : java.lang.Boolean[*][*]  {static}
+
+	- <<Create>> C()
+	- anIntArrayFunction(anIntArrayParam : int[]) :  Integer[*]
+	# aShortArrayFunction(aShortArrayParam : Short[]) : java.lang.Short[*]
+	- aLong3DArrayFunction(someLongs : long[][][][]) :  Integer[*][*][*]
+	+ aByte5DArrayFunction(someBytes : Byte[][][][][][]) : java.lang.Byte[*][*][*][*][*]
+	- aFloatListFunction(aFloatListParam : Float>) : java.lang.Float[*]
+	# aListOfDoubleListFunction(someDoubles : Double>>>) : java.lang.Double[*][*]
+	- aCharacterSetFunction(aCharacterSetParam : Character>) : java.lang.Character[*]
+	+ aSetOfBooleanListFunction(someBooleans : Boolean[][]>[]>>) : java.lang.Boolean[*][*]
+}
+
+
+abstract class Java2PumlTest1.D {
+
+	- <<Create>> D()
+	- aFunction(a0 : A, a1 : A[], a2 : A[][], a3 : A[][][]) : Java2PumlTest1.A
+	- bFunction(b0 : B, b1 : B>[], b2 : B>[]>[], b3 : B>[]>[]>[]) : Java2PumlTest1.B[*]
+	# cFunction(c0 : C, c1 : C[]>, c2 : C[]>[]>, c3 : C[]>[]>[]>) : Java2PumlTest1.C[*] {abstract}
+	+ dFunction(d0 : D, d1 : D>, d2 : D>, d3 : D>, d4 : D>) : Java2PumlTest1.D[*] {static}
+}
+	D o-> "1\n -a" Java2PumlTest1.A
+	D o-> "1\n -bs" Java2PumlTest1.B
+	D o-> "0 .. *\n #cs" Java2PumlTest1.C
+	D o-> "0 .. *\n +ds" Java2PumlTest1.D
+
+
+abstract class Java2PumlTest1.E {
+	- mapOfInt : java.lang.Integer[*] 
+	- mapOfDoubleArray : java.lang.Double[*][*] 
+	# mapOfA : Java2PumlTest1.A[*] 
+	+ mapOfArrayOfA : Java2PumlTest1.A[*][*] 
+
+	- <<Create>> E()
+	- mapOfIntFunction(a0 : Integer>, a1 : Integer[]>, a2 : Integer[][]>, a3 : Integer[][][]>) : java.lang.Integer[*]
+	- mapOfDoubleArrayFunction(a0 : Double[]>, a1 : Double>>, a2 : Double[]>>, a3 : Double[]>>>) : java.lang.Double[*][*] {abstract}
+	# mapOfAFunction(a0 : A>, a1 : A>>, a2 : A>[]>, a3 : A>>) : Java2PumlTest1.A[*]
+	+ mapOfArrayOfAFunction(a0 : A[]>, a1 : A[]>>, a2 : A[]>[]>, a3 : A[]>>) : Java2PumlTest1.A[*][*] {static}
+}
+
+
+
+
+@enduml
