@@ -3,10 +3,7 @@ package pumlFromJava;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.ArrayType;
-import javax.lang.model.type.DeclaredType;
-import javax.lang.model.type.TypeKind;
-import javax.lang.model.type.TypeMirror;
+import javax.lang.model.type.*;
 import java.util.ArrayList;
 
 public class PumlType implements PumlElement{
@@ -70,6 +67,11 @@ public class PumlType implements PumlElement{
                     return "String";
                 }
             }
+            case EXECUTABLE -> {
+                ExecutableType executableType = (ExecutableType)type;
+                PumlType pumlType = new PumlType(executableType.getReturnType());
+                return pumlType.getDccCode();
+            }
             default -> {
             int index = type.toString().lastIndexOf(".")+1;
             return type.toString().substring(index);
@@ -100,7 +102,6 @@ public class PumlType implements PumlElement{
             if (declaredType.getTypeArguments().size()>0){
                 int taille = declaredType.getTypeArguments().size()-1;
                 PumlType innerType = new PumlType(declaredType.getTypeArguments().get(taille));
-                System.out.println("ici !! "+innerType.getSimpleName());
                 return innerType.isPrimitive();
             }
         }
