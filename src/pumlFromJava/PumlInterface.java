@@ -15,7 +15,7 @@ public class PumlInterface implements PumlElement {
 
     @Override
     public String getDccCode() {
-        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+" <<interface>> {\n"+getMethods()+"}\n";
+        return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+" <<interface>> "+getSuperClass()+" {\n"+getMethods()+"}\n";
     }
     @Override
     public String getDcaCode() {
@@ -43,8 +43,8 @@ public class PumlInterface implements PumlElement {
     }
     public String getSuperClass(){
         TypeElement typeElement = (TypeElement) element;
-        if (typeElement.getSuperclass()!=null && !typeElement.getSuperclass().toString().equals("none")){
-            return " extends "+typeElement.getSuperclass().toString();
+        if (typeElement.getInterfaces().size()>0){
+            return " extends "+typeElement.getInterfaces().toString();
         }
         return "";
     }

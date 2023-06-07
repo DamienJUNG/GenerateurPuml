@@ -19,7 +19,6 @@ public class PumlClass implements PumlElement {
             boolean isPrimitive = false;
             if(thing.getKind()== ElementKind.FIELD){
                 PumlType type = new PumlType(thing.asType());
-                System.out.println(thing.asType().getKind()+" "+type.getDccCode()+" "+type.isPrimitive());
                 if (thing.asType().getKind().isPrimitive() || type.isPrimitive()){
                     attributs.add(new PumlAttribut(thing));
                 }

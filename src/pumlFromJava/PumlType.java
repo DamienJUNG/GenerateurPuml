@@ -87,7 +87,14 @@ public class PumlType implements PumlElement{
 
     @Override
     public String getSimpleName() {
-        return type.toString();
+        if (getDccCode().contains(".")){
+            String type = getDccCode();
+            int index = type.lastIndexOf(".")+1;
+            return type.substring(index);
+        }
+        else {
+            return getDccCode();
+        }
     }
     public String getLongName(){
         return getDccCode().replace("[*]", "");

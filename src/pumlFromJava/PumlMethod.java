@@ -2,7 +2,6 @@ package pumlFromJava;
 
 import javax.lang.model.element.*;
 import javax.lang.model.type.DeclaredType;
-import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
 public class PumlMethod implements PumlElement {
@@ -49,50 +48,21 @@ public class PumlMethod implements PumlElement {
     public String getParameters() {
 
         ExecutableElement executableElement = (ExecutableElement) element;
-        if(executableElement.getParameters().size() == 0) {
-            return "()";
-        }
-        String renvoi = "(";
 
+        StringBuilder parameters = new StringBuilder("(");
 
-        int i = executableElement.getParameters().size();
-        for (VariableElement parameter:executableElement.getParameters()) {
-            i--;
-            String type = "";
-
-            int index = 0;
-            //System.out.println(element.getSimpleName()+" "+parameter.getSimpleName());
-            if(parameter.asType().toString().contains(".")) {
-                index = parameter.asType().toString().lastIndexOf(".") + 1;
+        for(int i=0;i<executableElement.getParameters().size();i++){
+            VariableElement variableElement = executableElement.getParameters().get(i);
+            PumlType pumlType = new PumlType(variableElement.asType());
+            if (executableElement.getParameters().size()-1==i){
+                parameters.append(variableElement.getSimpleName()).append(" : ").append(pumlType.getSimpleName());
             }
-            //
-            if(parameter.asType().getKind() == TypeKind.INT || parameter.asType().getKind() == TypeKind.BYTE || parameter.asType().getKind() == TypeKind.SHORT || parameter.asType().getKind() == TypeKind.LONG)
-            {
-                 type += "Integer";
-            }
-            else if(parameter.asType().getKind() == TypeKind.FLOAT || parameter.asType().getKind() == TypeKind.DOUBLE)
-            {
-                type += "Real";
-            }
-
-            else if(parameter.asType().getKind() == TypeKind.BOOLEAN)
-            {
-                type += "Boolean";
-            }
-
             else {
-                type = parameter.asType().toString().substring(index);
-            }
-
-            renvoi += parameter.getSimpleName().toString() +" : "+ type;
-
-            if(i != 0) {
-                renvoi += ", ";
+                parameters.append(variableElement.getSimpleName()).append(" : ").append(pumlType.getSimpleName()).append(", ");
             }
         }
-        renvoi += ")";
-
-        return renvoi;
+        parameters.append(")");
+        return parameters.toString();
     }
 
     public String getOthersModifiers(){
@@ -114,42 +84,49 @@ public class PumlMethod implements PumlElement {
             if(annotationMirror.getAnnotationType().asElement().getSimpleName().toString().equals("Override"))
             {
                 String superThing="";
-                /*boolean redefines = false;
-                while(!redefines){
-                      TypeElement superElement = (TypeElement) ((DeclaredType) element.getEnclosingElement().asType()).asElement();
-                      for(TypeMirror typeMirror : superElement.getInterfaces()){
-                          TypeElement superInterface = ((TypeElement)(((DeclaredType)typeMirror).asElement()));
-                          while (!superInterface.getInterfaces().isEmpty()){
-                              for (Element element:superInterface.getEnclosedElements()) {
-                                  if(element.getSimpleName().toString().equals(getSimpleName())){
-                                  superThing = element.getEnclosingElement().toString();
-                                  redefines=true;
-                                  }
-                              }
-                          }
-                      }
-                      while (!redefines){
-                          for (Element element : ((DeclaredType)(superElement.getSuperclass())).asElement().getEnclosedElements()){
-                              if(element.getSimpleName().toString().equals(getSimpleName())){
-                                  superThing = element.getEnclosingElement().toString();
-                                  redefines=true;
-                              }
-             <             }
-                          if(!superElement.getSuperclass().toString().equals("java.lang.Object")){
-                              System.out.println(getSimpleName()+" "+superElement.getEnclosingElement());
-                              superElement = (TypeElement) ((DeclaredType) superElement.getEnclosingElement().asType()).asElement();
-                          }
-                          else {
-                              superThing="java.lang.Object";
-                              redefines=true;
-                          }
-                      }
-                }*/
+                TypeElement typeElement = (TypeElement) ((DeclaredType) element.getEnclosingElement().asType()).asElement();
+                for (int i=0;i<typeElement.getInterfaces().size() && superThing.equals("");i++) {
+                    superThing = checkInterfaces(typeElement.getInterfaces().get(i));
+                }
+                if (superThing.equals("")){
+                    superThing = checkSuperClasses(typeElement.getSuperclass());
+                }
                 return " {redefines "+superThing+"::"+getSimpleName()+"}";
             }
         }
 
         return "";
+    }
+
+    private String checkSuperClasses(TypeMirror typeMirror){
+        String superClass = "";
+        TypeElement classElement = (TypeElement)((DeclaredType)typeMirror).asElement();
+        for(int i=0;i<classElement.getEnclosedElements().size() && superClass.equals("");i++){
+            if(getSimpleName().contentEquals(classElement.getEnclosedElements().get(i).getSimpleName())){
+                superClass = classElement.getSimpleName().toString();
+            }
+        }
+        for(int i=0;i<classElement.getInterfaces().size() && superClass.equals("");i++){
+            superClass = checkInterfaces(classElement.getInterfaces().get(i));
+        }
+        if (superClass.equals("")){
+            superClass = checkSuperClasses(classElement.getSuperclass());
+        }
+        return superClass;
+    }
+
+    private String checkInterfaces(TypeMirror typeMirror){
+        String superInterface = "";
+        TypeElement interfaceElement = (TypeElement)((DeclaredType)typeMirror).asElement();
+        for(int i=0;i<interfaceElement.getEnclosedElements().size() && superInterface.equals("");i++){
+            if(getSimpleName().contentEquals(interfaceElement.getEnclosedElements().get(i).getSimpleName())){
+                superInterface = interfaceElement.getSimpleName().toString();
+            }
+        }
+        for (int i=0;i<interfaceElement.getInterfaces().size() && superInterface.equals("");i++){
+            superInterface = checkInterfaces(interfaceElement.getInterfaces().get(i));
+        }
+        return superInterface;
     }
 }
 
