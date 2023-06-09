@@ -1,0 +1,99 @@
+@startuml
+
+'Code généré automatiquement ;>
+skinparam style strictuml
+hide empty members
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classbackgroundColor LightGoldenRodYellow
+skinparam classbordercolor red
+skinparam classattribute none
+skinparam classborderthickness 2
+
+
+class pumlFromJava.Java2Puml {
+}
+
+class pumlFromJava.PumlDiagram {
+}
+
+interface pumlFromJava.PumlElement <<interface>>  {}
+
+class pumlFromJava.PumlEnumAttribut implements pumlFromJava.PumlElement {
+}
+	PumlEnumAttribut -- javax.lang.model.element.Element
+
+class pumlFromJava.PumlInterface implements pumlFromJava.PumlElement {
+}
+	PumlInterface -- javax.lang.model.element.Element
+	PumlInterface -- pumlFromJava.PumlMethod
+
+class pumlFromJava.PumlPackage implements pumlFromJava.PumlElement {
+}
+	PumlPackage -- javax.lang.model.element.Element
+	PumlPackage -- pumlFromJava.PumlElement
+
+class pumlFromJava.PumlConstructor extends pumlFromJava.PumlMethod {
+}
+
+class pumlFromJava.PumlDoclet implements jdk.javadoc.doclet.Doclet {
+}
+	PumlDoclet -- pumlFromJava.PumlOptionPATH
+	PumlDoclet -- pumlFromJava.PumlOptionOUT
+	PumlDoclet -- pumlFromJava.PumlOptionDCC
+
+class pumlFromJava.PumlOptionPATH implements jdk.javadoc.doclet.Doclet.Option {
+	path
+}
+
+class pumlFromJava.PumlOptionOUT implements jdk.javadoc.doclet.Doclet.Option {
+	name
+}
+
+class pumlFromJava.PumlOptionDCC implements jdk.javadoc.doclet.Doclet.Option {
+	isDcc
+}
+
+class pumlFromJava.PumlEnum implements pumlFromJava.PumlElement {
+}
+	PumlEnum -- javax.lang.model.element.Element
+	PumlEnum -- pumlFromJava.PumlEnumAttribut
+
+class pumlFromJava.PumlClass implements pumlFromJava.PumlElement {
+}
+	PumlClass -- javax.lang.model.element.Element
+	PumlClass -- pumlFromJava.PumlAttribut
+	PumlClass -- pumlFromJava.PumlMethod
+	PumlClass -- pumlFromJava.PumlRelation
+	PumlClass -- pumlFromJava.PumlModifier
+
+class pumlFromJava.PumlMethod implements pumlFromJava.PumlElement {
+}
+	PumlMethod -- pumlFromJava.PumlType
+	PumlMethod -- javax.lang.model.element.Element
+	PumlMethod -- pumlFromJava.PumlModifier
+
+class pumlFromJava.PumlAttribut implements pumlFromJava.PumlElement {
+}
+	PumlAttribut -- javax.lang.model.element.Element
+	PumlAttribut -- pumlFromJava.PumlType
+	PumlAttribut -- pumlFromJava.PumlModifier
+
+class pumlFromJava.PumlRelation implements pumlFromJava.PumlElement {
+}
+	PumlRelation -- javax.lang.model.element.Element
+	PumlRelation -- pumlFromJava.PumlType
+	PumlRelation -- pumlFromJava.PumlModifier
+
+class pumlFromJava.PumlModifier implements pumlFromJava.PumlElement {
+}
+	PumlModifier -- javax.lang.model.element.Modifier
+
+class pumlFromJava.PumlType implements pumlFromJava.PumlElement {
+	primitiveObjects
+}
+	PumlType -- javax.lang.model.type.TypeMirror
+
+
+
+@enduml
