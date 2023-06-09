@@ -5,6 +5,7 @@ import jdk.javadoc.doclet.Doclet;
 import java.util.ArrayList;
 import java.util.List;
 
+//Cette classe est une option pour doclet, celle-ci permet demander la génération d'un dca au lieu d'un dcc par défaut
 public class PumlOptionDCC implements Doclet.Option{
     public PumlOptionDCC(){}
     boolean isDcc=true;

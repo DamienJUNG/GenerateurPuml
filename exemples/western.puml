@@ -11,7 +11,7 @@ skinparam classattribute none
 skinparam classborderthickness 2
 
 
-interface western.HorsLaLoi <<interface>> {
+interface western.HorsLaLoi <<interface>>  {
 	+ kidnapper(dame : Dame) {abstract}
 	+ seFaireCapturer(cowboy : Cowboy) {abstract}
 	+ getPrime() : Integer {abstract}
@@ -61,8 +61,8 @@ class western.Cowboy extends western.Personnage {
 	+ getVilains() : String
 	+ setReplique(replique : String)
 	+ tkt() : western.Dame[*]
-	+ oups() : java.lang.Boolean[*]
-	+ encore() : java.lang.Boolean[*]
+	+ oups() : Boolean[*]
+	+ encore() : Boolean[*]
 	+ getPseudo() : String
 	+ sePresenter()
 	+ direReplique()
@@ -97,7 +97,7 @@ class western.Substantif {
 	+ <<Create>> Substantif(nom : String, genre : Genre)
 	+ getNom() : String
 	+ getGenre() : western.Genre
-	+ toString() : String {redefines ::toString}
+	+ toString() : String {redefines Object::toString}
 	+ isVowel(c : String) : Boolean {static}
 	+ startsWithVowel(s : String) : Boolean {static}
 	+ getArticleIndefini() : String

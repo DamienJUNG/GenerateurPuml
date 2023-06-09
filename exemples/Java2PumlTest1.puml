@@ -40,46 +40,46 @@ class Java2PumlTest1.A {
 
 
 abstract class Java2PumlTest1.B {
-	- anInteger : java.lang.Integer 
-	# aShort : java.lang.Short 
-	- aLong : java.lang.Long 
-	+ aByte : java.lang.Byte 
-	- aFloat : java.lang.Float 
-	# aDouble : java.lang.Double  {static}
-	- aCharacter : java.lang.Character  {static}
-	+ aBoolean : java.lang.Boolean  {static}
+	- anInteger : Integer 
+	# aShort : Integer 
+	- aLong : Integer 
+	+ aByte : Integer 
+	- aFloat : Real 
+	# aDouble : Real  {static}
+	- aCharacter : String  {static}
+	+ aBoolean : Boolean  {static}
 
 	- <<Create>> B()
-	- anIntFunction(anIntParam : Integer) : java.lang.Integer
-	# aShortFunction(aShortParam : Short) : java.lang.Short
-	- aLongFunction(aLongParam : Long) : java.lang.Long
-	+ aByteFunction(aByteParam : Byte) : java.lang.Byte
-	- aFloatFunction(aFloatParam : Float) : java.lang.Float
-	# aDoubleFunction(aDoubleParam : Double) : java.lang.Double {abstract}
-	- aCharacterFunction(aCharacterParam : Character) : java.lang.Character {static}
-	+ aBooleanFunction(aBooleanParam : Boolean) : java.lang.Boolean {static}
+	- anIntFunction(anIntParam : Integer) : Integer
+	# aShortFunction(aShortParam : Integer) : Integer
+	- aLongFunction(aLongParam : Integer) : Integer
+	+ aByteFunction(aByteParam : Integer) : Integer
+	- aFloatFunction(aFloatParam : Real) : Real
+	# aDoubleFunction(aDoubleParam : Real) : Real {abstract}
+	- aCharacterFunction(aCharacterParam : String) : String {static}
+	+ aBooleanFunction(aBooleanParam : Boolean) : Boolean {static}
 }
 
 
 class Java2PumlTest1.C {
 	- anIntArray : Integer[*] 
-	# aShortArray : java.lang.Short[*] 
+	# aShortArray : Integer[*] 
 	- anArrayOfLongArray : Integer[*] 
-	+ anArrayOfByteArray : java.lang.Byte[*] 
-	- aFloatList : java.lang.Float[*] 
-	# aListOfDoubleList : java.lang.Double[*]  {static}
-	- aSetOfCharacter : java.lang.Character[*]  {static}
-	+ aSetOfBooleanList : java.lang.Boolean[*]  {static}
+	+ anArrayOfByteArray : Integer[*] 
+	- aFloatList : Real[*] 
+	# aListOfDoubleList : Real[*]  {static}
+	- aSetOfCharacter : String[*]  {static}
+	+ aSetOfBooleanList : Boolean[*]  {static}
 
 	- <<Create>> C()
 	- anIntArrayFunction(anIntArrayParam : Integer[*]) : Integer[*]
-	# aShortArrayFunction(aShortArrayParam : Short[*]) : java.lang.Short[*]
+	# aShortArrayFunction(aShortArrayParam : Integer[*]) : Integer[*]
 	- aLong3DArrayFunction(someLongs : Integer[*]) : Integer[*]
-	+ aByte5DArrayFunction(someBytes : Byte[*]) : java.lang.Byte[*]
-	- aFloatListFunction(aFloatListParam : Float[*]) : java.lang.Float[*]
-	# aListOfDoubleListFunction(someDoubles : Double[*]) : java.lang.Double[*]
-	- aCharacterSetFunction(aCharacterSetParam : Character[*]) : java.lang.Character[*]
-	+ aSetOfBooleanListFunction(someBooleans : Boolean[*]) : java.lang.Boolean[*]
+	+ aByte5DArrayFunction(someBytes : Integer[*]) : Integer[*]
+	- aFloatListFunction(aFloatListParam : Real[*]) : Real[*]
+	# aListOfDoubleListFunction(someDoubles : Real[*]) : Real[*]
+	- aCharacterSetFunction(aCharacterSetParam : String[*]) : String[*]
+	+ aSetOfBooleanListFunction(someBooleans : Boolean[*]) : Boolean[*]
 }
 
 
@@ -91,24 +91,24 @@ abstract class Java2PumlTest1.D {
 	# cFunction(c0 : C, c1 : C[*], c2 : C[*], c3 : C[*]) : Java2PumlTest1.C[*] {abstract}
 	+ dFunction(d0 : D, d1 : D[*], d2 : D[*], d3 : D[*], d4 : D[*]) : Java2PumlTest1.D[*] {static}
 }
-	D o-> "1\n -a" Java2PumlTest1.A
-	D o-> "1\n -bs" Java2PumlTest1.B
-	D o-> "0 .. *\n #cs" Java2PumlTest1.C
-	D o-> "0 .. *\n +ds" Java2PumlTest1.D
+	D o--> "1\n -a" Java2PumlTest1.A
+	D o--> "1\n -bs" Java2PumlTest1.B
+	D o--> "0 .. *\n #cs" Java2PumlTest1.C
+	D o--> "0 .. *\n +ds" Java2PumlTest1.D
 
 
 abstract class Java2PumlTest1.E {
-	- mapOfInt : java.lang.Integer[*] 
-	- mapOfDoubleArray : java.lang.Double[*] 
+	- mapOfInt : Integer[*] 
+	- mapOfDoubleArray : Real[*] 
 
 	- <<Create>> E()
-	- mapOfIntFunction(a0 : Integer[*], a1 : Integer[*], a2 : Integer[*], a3 : Integer[*]) : java.lang.Integer[*]
-	- mapOfDoubleArrayFunction(a0 : Double[*], a1 : Double[*], a2 : Double[*], a3 : Double[*]) : java.lang.Double[*] {abstract}
+	- mapOfIntFunction(a0 : Integer[*], a1 : Integer[*], a2 : Integer[*], a3 : Integer[*]) : Integer[*]
+	- mapOfDoubleArrayFunction(a0 : Real[*], a1 : Real[*], a2 : Real[*], a3 : Real[*]) : Real[*] {abstract}
 	# mapOfAFunction(a0 : A[*], a1 : A[*], a2 : A[*], a3 : A[*]) : Java2PumlTest1.A[*]
 	+ mapOfArrayOfAFunction(a0 : A[*], a1 : A[*], a2 : A[*], a3 : A[*]) : Java2PumlTest1.A[*] {static}
 }
-	E o-> "0 .. *\n #mapOfA" Java2PumlTest1.A
-	E o-> "0 .. *\n +mapOfArrayOfA" Java2PumlTest1.A
+	E o--> "0 .. *\n #mapOfA" Java2PumlTest1.A
+	E o--> "0 .. *\n +mapOfArrayOfA" Java2PumlTest1.A
 
 
 class Java2PumlTest1.Tkt {

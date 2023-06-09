@@ -8,11 +8,16 @@ import javax.lang.model.type.TypeKind;
 import java.util.ArrayList;
 import java.util.List;
 
+//Cette classe représente... un classe, et en produit son code au format puml
 public class PumlClass implements PumlElement {
     private final Element element;
+    //Comme d'habitude, on conserve l'élément à représenter
     private final ArrayList<PumlAttribut> attributs = new ArrayList<>();
+    //Mais aussi ses PumlAttributs
     private final ArrayList<PumlMethod> methods = new ArrayList<>();
+    //Ses PumlMethod
     private final ArrayList<PumlRelation> relations = new ArrayList<>();
+    //Et ses PumlRelation :>
     public PumlClass(Element element){
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {

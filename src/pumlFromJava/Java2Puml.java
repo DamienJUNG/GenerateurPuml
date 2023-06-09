@@ -2,6 +2,7 @@ package pumlFromJava;
 import java.util.Arrays;
 import java.util.spi.ToolProvider;
 
+//Cette classe permet simplement d'appeler javadoc pour produire le diagramme puml
 public class Java2Puml
 {
 

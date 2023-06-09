@@ -3,9 +3,12 @@ import javax.lang.model.element.Element;
 import java.util.ArrayList;
 import javax.lang.model.element.TypeElement;
 
+//Cette classe représente une interface et en produit le code puml
 public class PumlInterface implements PumlElement {
     private final Element element;
+    //On y stocke l'élément à représenter
     private final ArrayList<PumlMethod> methods = new ArrayList<>();
+    //Mais aussi tous les PumlMethod représentant les méthodes de cette interface
     public PumlInterface(Element element){
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {
@@ -19,7 +22,7 @@ public class PumlInterface implements PumlElement {
     }
     @Override
     public String getDcaCode() {
-       return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+getSuperClass()+" <<interface>> {}\n";
+       return getKind()+" "+getEnclosingElement()+"."+getSimpleName()+" <<interface>> "+getSuperClass()+" {}\n";
     }
     public String getEnclosingElement(){
         return element.getEnclosingElement().toString();

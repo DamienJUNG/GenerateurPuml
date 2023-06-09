@@ -5,10 +5,14 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.Element;
 import javax.lang.model.type.TypeKind;
 
+//Cette classe représente un attribut, et en produit la représentation puml
 public class PumlAttribut implements PumlElement {
     private final Element element;
+    //On y garde l'élement à représenter
     private final PumlType type;
+    //Le type de l'attribut
     PumlAccessLevel accessLevel;
+    //Et son niveau d'accès
 
     public PumlAttribut(Element element){
         this.element = element;

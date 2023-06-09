@@ -10,11 +10,11 @@ import javax.lang.model.element.ElementKind;
 import java.io.IOException;
 import java.util.*;
 
+//La classe Doclet de l'api, c'est elle qui fait le lien entre javadoc et le reste du package
 public class PumlDoclet implements Doclet{
     private PumlOptionPATH path;
     private PumlOptionOUT out;
     private PumlOptionDCC dcc;
-    DocletEnvironment docletEnvironment;
     @Override
     public void init(Locale locale, Reporter reporter) {  }
 
@@ -40,10 +40,11 @@ public class PumlDoclet implements Doclet{
         return SourceVersion.latest();
     }
 
+    /* L'équivalent du "main" du doclet, elle permet ici d'instancier les PumlPackage
+     * nécessaire pour construire le diagramme demandé */
     @Override
     public boolean run(DocletEnvironment environment) {
-        docletEnvironment = environment;
-            PumlDiagram diagram = new PumlDiagram();
+        PumlDiagram diagram = new PumlDiagram();
         try {
             String code;
             if (dcc.isDcc()){
@@ -67,6 +68,7 @@ public class PumlDoclet implements Doclet{
         return true;
     }
 
+    //generateDcc est la méthode qui permet la construction du Dcc
     public String generateDcc(DocletEnvironment environment){
         StringBuilder code = new StringBuilder();
         for (Element element:environment.getIncludedElements()) {
@@ -79,6 +81,7 @@ public class PumlDoclet implements Doclet{
         }
         return code.toString();
     }
+    //generateDca est la méthode qui permet la construction du Dca
     public String generateDca(DocletEnvironment environment){
         StringBuilder code = new StringBuilder();
         for (Element element:environment.getIncludedElements()) {

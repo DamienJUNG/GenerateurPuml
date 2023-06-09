@@ -4,12 +4,15 @@ import javax.lang.model.element.*;
 import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.TypeMirror;
 
+/* Cette classe représente une méthode en puml */
 public class PumlMethod implements PumlElement {
     private final PumlType type;
+    //Elle dispose d'un PumlType pour représenter le type de retour de la méthode
     private final Element element;
+    //Et de l'élément qu'elle doit représenter
     private final PumlAccessLevel accessLevel;
+    //Mais aussi d'un PumlAccessLevel qui représente le niveau d'accès de la méthode
     public PumlMethod(Element element){
-
         this.element = element;
         ExecutableElement executableElement = (ExecutableElement) element;
         this.type = new PumlType(executableElement.getReturnType());
@@ -25,7 +28,7 @@ public class PumlMethod implements PumlElement {
     public String getDcaCode() {
         return null;
     }
-        public String getEnclosingElement(){
+    public String getEnclosingElement(){
         int index = element.getEnclosingElement().toString().lastIndexOf(".")+1;
         return element.getEnclosingElement().toString().substring(index);
     }
@@ -98,6 +101,7 @@ public class PumlMethod implements PumlElement {
         return "";
     }
 
+    //Parcourt les super classe à la recherche de celle qui contient la méthode originelle
     private String checkSuperClasses(TypeMirror typeMirror){
         String superClass = "";
         TypeElement classElement = (TypeElement)((DeclaredType)typeMirror).asElement();
@@ -115,6 +119,7 @@ public class PumlMethod implements PumlElement {
         return superClass;
     }
 
+    //Parcourt les interfaces à la recherche de celle qui contient la méthode originelle
     private String checkInterfaces(TypeMirror typeMirror){
         String superInterface = "";
         TypeElement interfaceElement = (TypeElement)((DeclaredType)typeMirror).asElement();

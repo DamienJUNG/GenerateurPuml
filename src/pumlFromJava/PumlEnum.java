@@ -4,9 +4,12 @@ import javax.lang.model.element.ElementKind;
 import java.util.ArrayList;
 import javax.lang.model.element.TypeElement;
 
+//Cette classe représente une énumération et en produit le représentation en puml
 public class PumlEnum implements PumlElement {
     private final Element element;
+    //On conserve l'élément à représenter
     private final ArrayList<PumlEnumAttribut> attributs = new ArrayList<>();
+    //Ainsi que les PumlEnumAttribut représentant les constantes de l'énumération
     public PumlEnum(Element element){
         this.element = element;
         for (Element thing:element.getEnclosedElements()) {

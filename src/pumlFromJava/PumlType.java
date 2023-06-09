@@ -6,8 +6,13 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.*;
 import java.util.ArrayList;
 
+/* Cette classe représente un type en plantuml.
+ * Elle permet de renvoyer la représentation d'un type standardisé
+ * ou un type personnalisé en plantuml */
 public class PumlType implements PumlElement{
     static ArrayList<String> primitiveObjects = new ArrayList<>();
+    /* Liste qui représente les types primitifs
+     * considérés comme non-primitifs par l'api java.lang.model */
     static {
         primitiveObjects.add("java.lang.String");
         primitiveObjects.add("java.lang.Integer");
@@ -20,6 +25,7 @@ public class PumlType implements PumlElement{
         primitiveObjects.add("java.lang.Short");
     }
     private final TypeMirror type;
+    //On stocke le type à représenter en puml
     public PumlType(TypeMirror type){
         this.type = type;
     }
@@ -52,6 +58,7 @@ public class PumlType implements PumlElement{
             }
             case DECLARED -> {
                 DeclaredType declaredType = (DeclaredType) type;
+                //S'il contient plusieurs types
                 if (declaredType.getTypeArguments().size()>0){
                     int taille = declaredType.getTypeArguments().size()-1;
                     PumlType innerType = new PumlType(declaredType.getTypeArguments().get(taille));
@@ -60,11 +67,15 @@ public class PumlType implements PumlElement{
                     }
                     return innerType.getDccCode();
                 }
-                else if(!type.toString().equals("java.lang.String")){
+                //Sinon si ce n'est pas type java.lang....
+                else if(!primitiveObjects.contains(type.toString())){
                     return declaredType.asElement().asType().toString();
                 }
+                //Sinon, on a juste à le traduire
                 else {
-                    return "String";
+                    System.out.println(declaredType);
+                    PumlType realType = new PumlType(declaredType);
+                    return realType.translateToPuml();
                 }
             }
             case EXECUTABLE -> {
@@ -96,9 +107,12 @@ public class PumlType implements PumlElement{
             return getDccCode();
         }
     }
+    //Permet d'obtenir le nom simple dy type
     public String getLongName(){
         return getDccCode().replace("[*]", "");
     }
+
+    //Vérifie si le type fait partie des types primitifs uml
     public boolean isPrimitive(){
         if (type.getKind().isPrimitive()){
             return true;
@@ -124,5 +138,25 @@ public class PumlType implements PumlElement{
             }
         }
         return false;
+    }
+
+    /* "Traduit" un type java.lang.... en un type uml standardisé */
+    private String translateToPuml(){
+        switch (type.toString()){
+            case "java.lang.String","java.lang.Character" -> {
+                return "String";
+            }
+            case "java.lang.Integer","java.lang.Byte","java.lang.Long","java.lang.Short" -> {
+                return "Integer";
+            }
+            case "java.lang.Double","java.lang.Float" -> {
+                return "Real";
+            }
+            case "java.lang.Boolean" -> {
+                return "Boolean";
+            }
+        }
+        return "???";
+        //Si on ne sait vraiment pas de quel type il s'agit (ce n'est pas censé arriver)
     }
 }

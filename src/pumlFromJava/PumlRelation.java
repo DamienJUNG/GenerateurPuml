@@ -4,18 +4,21 @@ import javax.lang.model.element.*;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
+//Représente une relation entre deux éléments (classes, interfaces, enum)
 public class PumlRelation implements PumlElement{
     private final Element element;
     private final PumlType type;
+    private final PumlAccessLevel accessLevel;
     public PumlRelation(Element element) {
         this.element = element;
         this.type = new PumlType(element.asType());
+        this.accessLevel = new PumlAccessLevel(element.getModifiers());
     }
     @Override
     public String getDccCode() {
-        return getSuperClass()+" o-> \""+getMultipicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType();
+        return getSuperClass()+" o--> \""+getMultiplicity()+"\\n"+getAccessLevel()+getSimpleName()+"\" "+getType();
     }
-    public String getMultipicity(){
+    public String getMultiplicity(){
         if(element.asType().toString().contains("<")){
             return "0 .. *";
         }
@@ -24,18 +27,10 @@ public class PumlRelation implements PumlElement{
 
     @Override
     public String getDcaCode() {
-        return getSuperClass()+" - "+getType();
+        return getSuperClass()+" -- "+getType();
     }
     public String getAccessLevel() {
-        if(element.getModifiers().contains(Modifier.PUBLIC)){
-            return " +";
-        }
-        else if(element.getModifiers().contains(Modifier.PROTECTED)){
-            return " #";
-        }
-        else{
-            return " -";
-        }
+        return accessLevel.getDccCode();
     }
     public String getType() {
         return type.getLongName();
