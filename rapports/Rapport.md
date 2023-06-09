@@ -25,17 +25,17 @@ Damien a fait le DCc de Java Language API et Gaël a fait le DCa et DCc du packa
 d'un DCa sans relation.
 
 ### Semaine 3 - 5
-A partir de la Semaine 3 jusqu'a la semaine 5 nous avons pas spécialement suivie les étapes du READEME.
-On à donc commencer par faire les liens entre class et les les methodes pour le dcc et donc tous ce qui est utile pour c'est 2 chose.
+À partir de la Semaine 3 jusqu'à la semaine 5 nous n'avons pas spécialement suivi les étapes du README.
+Nous avons commencé par faire les liens entre classes, ainsi que les redirections de types des méthodes pour le dcc et donc tout ce qui est utile pour ces 2 choses.
 
-Donc Damien à fait les lien et a également ajoute plusieur class afin de centralisé et améilioré le code, gaël de son coté à fait
-les methode et les attibut pour le dcc et le dca.
-Ensuite Damien c'est chargé de reglé d'avoir la possibilité de choisir entre dca et dcc.
+Donc Damien a fait les lien et a également ajoute plusieurs classes afin de centraliser et améliorer le code, Gaël de son côté a fait
+les méthodes et les attributs pour le dcc et le dca.
+Ensuite Damien, s'est chargé d'implémenter la possibilité de choisir entre dca et dcc.
 
-Pour ce qui est du Dca et Dcc au lieu de les faire à la main on à décider d'attendre et une fois que
-nous avions finit le projet nous les avons généré avec le projet que  l'on à fait.
+Pour ce qui est du Dca et Dcc au lieu de les faire à la main, on a décidé d'attendre sur le projet
+afin que ce dernier puisse générer ses propres diagrammes.
 
 ### Semaine 6
-Pour la semaine 6 nous avons essayer de faire les annotations. Et finalement nous avons réussie à faire
-les  annotations de type Override.
+Pour la semaine 6 nous avons essayé de faire les annotations. Et finalement, nous avons réussi à faire
+les annotations de type Override.
 

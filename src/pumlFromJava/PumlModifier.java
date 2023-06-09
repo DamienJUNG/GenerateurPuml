@@ -1,6 +1,8 @@
 package pumlFromJava;
 import javax.lang.model.element.Modifier;
 import java.util.Set;
+
+//Cette classe représente les Modifier d'un élément, et permet d'en construire le code Puml
 public class PumlModifier implements PumlElement {
     private final Set<Modifier> modifiers;
     //On a besoin de stocker les Modifier de l'élément dont on cherche à représenter la visibilité
@@ -12,6 +14,8 @@ public class PumlModifier implements PumlElement {
     public String getDccCode() {
         return null;
     }
+    /*Ces deux méthodes retournent null car un modifier produit son code en fonction des demandes, comme le niveau
+     * d'accès ou les modifiers plus standards*/
     @Override
     public String getDcaCode() {
         return null;
@@ -33,6 +37,7 @@ public class PumlModifier implements PumlElement {
         }
     }
 
+    //Cette méthode s'adresse aux PumlClass
     public String getClassModifiers() {
         String modifiersCode = "";
         if(modifiers.contains(Modifier.ABSTRACT)){
@@ -45,6 +50,7 @@ public class PumlModifier implements PumlElement {
     }
 
 
+    //Cette méthode s'adresse aux PumlAttributs et aux PumlMethods
     public String getSimpleModifiers(){
         String modifiersCode = "";
         if(modifiers.contains(Modifier.ABSTRACT)){
