@@ -11,12 +11,12 @@ public class PumlAttribut implements PumlElement {
     //On y garde l'élement à représenter
     private final PumlType type;
     //Le type de l'attribut
-    PumlAccessLevel accessLevel;
+    PumlModifier modifier;
     //Et son niveau d'accès
 
     public PumlAttribut(Element element){
         this.element = element;
-        accessLevel = new PumlAccessLevel(element.getModifiers());
+        modifier = new PumlModifier(element.getModifiers());
         type = new PumlType(element.asType());
     }
 
@@ -39,13 +39,9 @@ public class PumlAttribut implements PumlElement {
         return " : "+type.getDccCode();
     }
     public String getAccessLevel() {
-        return accessLevel.getDccCode();
+        return modifier.getAccessLevel();
     }
     public String getOthersModifiers(){
-        String modifiers = "";
-        if(element.getModifiers().contains(Modifier.STATIC)){
-            modifiers+=" {static}";
-        }
-        return modifiers;
+        return modifier.getSimpleModifiers();
     }
 }

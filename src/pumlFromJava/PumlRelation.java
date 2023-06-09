@@ -8,11 +8,11 @@ import javax.lang.model.type.TypeMirror;
 public class PumlRelation implements PumlElement{
     private final Element element;
     private final PumlType type;
-    private final PumlAccessLevel accessLevel;
+    private final PumlModifier modifier;
     public PumlRelation(Element element) {
         this.element = element;
+        this.modifier = new PumlModifier(element.getModifiers());
         this.type = new PumlType(element.asType());
-        this.accessLevel = new PumlAccessLevel(element.getModifiers());
     }
     @Override
     public String getDccCode() {
@@ -30,7 +30,7 @@ public class PumlRelation implements PumlElement{
         return getSuperClass()+" -- "+getType();
     }
     public String getAccessLevel() {
-        return accessLevel.getDccCode();
+        return modifier.getAccessLevel();
     }
     public String getType() {
         return type.getLongName();

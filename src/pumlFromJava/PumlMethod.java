@@ -10,13 +10,12 @@ public class PumlMethod implements PumlElement {
     //Elle dispose d'un PumlType pour représenter le type de retour de la méthode
     private final Element element;
     //Et de l'élément qu'elle doit représenter
-    private final PumlAccessLevel accessLevel;
-    //Mais aussi d'un PumlAccessLevel qui représente le niveau d'accès de la méthode
+    private final PumlModifier modifier;
     public PumlMethod(Element element){
         this.element = element;
+        this.modifier = new PumlModifier(element.getModifiers());
         ExecutableElement executableElement = (ExecutableElement) element;
         this.type = new PumlType(executableElement.getReturnType());
-        accessLevel = new PumlAccessLevel(element.getModifiers());
     }
 
     @Override
@@ -46,7 +45,7 @@ public class PumlMethod implements PumlElement {
     }
 
     public String getAccessLevel() {
-        return accessLevel.getDccCode();
+        return modifier.getAccessLevel();
     }
     public String getParameters() {
 
@@ -69,17 +68,7 @@ public class PumlMethod implements PumlElement {
     }
 
     public String getOthersModifiers(){
-        String modifiers = "";
-        if(element.getModifiers().contains(Modifier.ABSTRACT)){
-            modifiers+=" {abstract}";
-        }
-        if(element.getModifiers().contains(Modifier.STATIC)){
-            modifiers+=" {static}";
-        }
-        if(element.getModifiers().contains(Modifier.FINAL)){
-            modifiers+=" {ReadOnly}";
-        }
-        return modifiers;
+        return modifier.getSimpleModifiers();
     }
     public String getAnnotation() {
         for(AnnotationMirror annotationMirror : element.getAnnotationMirrors())

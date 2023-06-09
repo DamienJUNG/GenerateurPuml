@@ -8,7 +8,7 @@ import javax.lang.model.type.TypeKind;
 import java.util.ArrayList;
 import java.util.List;
 
-//Cette classe représente... un classe, et en produit son code au format puml
+//Cette classe représente... une classe, et en produit son code au format puml
 public class PumlClass implements PumlElement {
     private final Element element;
     //Comme d'habitude, on conserve l'élément à représenter
@@ -18,8 +18,11 @@ public class PumlClass implements PumlElement {
     //Ses PumlMethod
     private final ArrayList<PumlRelation> relations = new ArrayList<>();
     //Et ses PumlRelation :>
+    private final PumlModifier modifier;
+    //Et enfin ses modifiers
     public PumlClass(Element element){
         this.element = element;
+        this.modifier = new PumlModifier(element.getModifiers());
         for (Element thing:element.getEnclosedElements()) {
             boolean isPrimitive = false;
             if(thing.getKind()== ElementKind.FIELD){
@@ -122,13 +125,6 @@ public class PumlClass implements PumlElement {
         return relationsCode.toString();
     }
     public String getOthersModifiers(){
-        String modifiers = "";
-        if(element.getModifiers().contains(Modifier.ABSTRACT)){
-            modifiers+="abstract ";
-        }
-        if(element.getModifiers().contains(Modifier.STATIC)){
-            modifiers+="static ";
-        }
-        return modifiers;
+        return modifier.getClassModifiers();
     }
 }

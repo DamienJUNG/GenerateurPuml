@@ -73,7 +73,6 @@ public class PumlType implements PumlElement{
                 }
                 //Sinon, on a juste à le traduire
                 else {
-                    System.out.println(declaredType);
                     PumlType realType = new PumlType(declaredType);
                     return realType.translateToPuml();
                 }
