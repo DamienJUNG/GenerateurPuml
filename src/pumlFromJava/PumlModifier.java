@@ -43,6 +43,8 @@ public class PumlModifier implements PumlElement {
         }
         return modifiersCode;
     }
+
+
     public String getSimpleModifiers(){
         String modifiersCode = "";
         if(modifiers.contains(Modifier.ABSTRACT)){
