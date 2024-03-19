@@ -1,8 +1,5 @@
-P21-P22 SAE21 2023  
-SCR - IUT R. Schuman
-
 Projet *PumlFromJava*
----
+=====================
 
 L'objectif du projet est de générer automatiquement le source PlantUML de diagrammes de classes UML (DCA et DCC)
 pour des éléments qui figurent dans un ou des packages et/ou un ou plusieurs fichiers sources Java.  
@@ -11,11 +8,15 @@ pour produire le source PlantUml des diagrammes.
 L'API est un package Java qui définit pour chaque élément du langage UML une classe.  
 Cette classe permet de produire le code PlantUML pour cet élément.
 
-On ne traite pas :
-- les types imbriquées
-- les types génériques
-- les modules
+Installation
+=============
 
+Installer le projet et ouvrez le dans un IDE.
+Lancez le projet a l'aide du bouton run, le résultat apparaîtra dans le dossier exemples
+
+
+Cahier des charges
+==================
 
 ##### Semaine 1 : les *doclets* de javadoc
 
@@ -45,11 +46,6 @@ les éléments sélectionnés.
 ###### Exemple de diagramme généré pour le package western
 
 ![Diagramme western_s1](img/western_s1.svg)
-  
-###### Rendus :
-  - DS `Doclet`, DCA et DCC des classes `Doclet`
-  - le source de la commande `Java2Puml` et du doclet `PumlDoclet`
-  - rapport hebdomadaire
 
 ###### En savoir plus :
 - [la commande `javadoc`](https://docs.oracle.com/en/java/javase/18/docs/specs/man/javadoc.html)
@@ -85,12 +81,6 @@ Le doclet a accès aux éléments à travers son environnement (`DocletEnvironme
 
 ![Diagramme western_s2](img/western_s2.svg)
 
-###### Rendus:
-- DCC de Java Language API
-- DCA et DCC API `pumlFromJava`
-- commande `Java2Puml` de production d'un DCA sans relations
-- rapport hebdomadaire
-
 #### Semaine 3 : Amélioration du DCA
 
 > ###### Objectif
@@ -114,12 +104,6 @@ Les relations de dépendance ne seront traitées qu'en semaine 5.
 
 - [l'interface `javax.lang.model.TypeElement`](https://docs.oracle.com/en/java/javase/19/docs/api//java.compiler/javax/lang/model/element/TypeElement.html)
 - [l'interface `javax.lang.model.VariableElement`](https://docs.oracle.com/en/java/javase/19/docs/api//java.compiler/javax/lang/model/element/VariableElement.html)
-
-###### Rendus:
-- DCCs et DCAs mis à jour
-- sources des classes
-- rapport hebdomadaire
-
     
 #### Semaine 4 : Production d'un premier DCC
 
@@ -145,12 +129,6 @@ Le DCC produit doit :
 - [l'interface `javax.lang.model.VariableElement`](https://docs.oracle.com/en/java/javase/19/docs/api//java.compiler/javax/lang/model/element/VariableElement.html)
 - [l'interface `javax.lang.model.ExecutableElement`](https://docs.oracle.com/en/java/javase/19/docs/api//java.compiler/javax/lang/model/element/ExecutableElement.html)
 
-###### Rendus:
-- DCCs et DCAs mis à jour
-- sources des classes
-- rapport hebdomadaire
-
-
 #### Semaine 5 : Associations et dépendances
 
 > ###### Objectif
@@ -164,11 +142,6 @@ Le DCC produit doit :
 Le DCA produit doit :  
 - faire figurer les dépendances sous la forme d'une relation non nommée.  
   Dans le DCA, les dépendances ne sont pas caractérisées.
-
-###### Rendus:
-- DCCs et DCAs mis à jour
-- sources des classes
-- rapport hebdomadaire
 
 #### Semaine 6
 
@@ -187,11 +160,6 @@ Le DCA produit doit :
    - `@pumlAggregation` et `@pumlComposition`
    ...
    Cette extension implique la lecture et l'inspection des commentaires de documentation.
-
-###### Rendus: Rendu final
-- tous les DCCs et DCAs à jour
-- tous les sources des classes
-- rapport hebdomadaire avec conclusion
 
 ###### En savoir plus :
 
